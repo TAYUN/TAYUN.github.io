@@ -1,0 +1,299 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>JS事件 | 踏云</title><meta name="author" content="良客"><meta name="copyright" content="良客"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="事件ie6，没有 flex 定位 事件传播的三个阶段执行顺序：Capturing &gt; Target &gt; Bubbling 捕获 目标 冒泡 事件绑定函数1.ele.onxxx &#x3D; function (event) {}兼容性很好，但是一个元素只能绑定一个处理程序基本等同于写在 HTML 行间上2.ele.addEventListener(type, fn, false);IE9 以下不">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS事件">
+<meta property="og:url" content="http://example.com/2021/11/06/%E4%BA%8B%E4%BB%B6/index.html">
+<meta property="og:site_name" content="踏云">
+<meta property="og:description" content="事件ie6，没有 flex 定位 事件传播的三个阶段执行顺序：Capturing &gt; Target &gt; Bubbling 捕获 目标 冒泡 事件绑定函数1.ele.onxxx &#x3D; function (event) {}兼容性很好，但是一个元素只能绑定一个处理程序基本等同于写在 HTML 行间上2.ele.addEventListener(type, fn, false);IE9 以下不">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.pixabay.com/photo/2021/08/01/17/31/path-6514885__480.jpg">
+<meta property="article:published_time" content="2021-11-06T10:17:12.000Z">
+<meta property="article:modified_time" content="2021-11-07T10:31:49.789Z">
+<meta property="article:author" content="良客">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.pixabay.com/photo/2021/08/01/17/31/path-6514885__480.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2021/11/06/%E4%BA%8B%E4%BB%B6/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'JS事件',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-11-07 18:31:49'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    document.addEventListener('pjax:complete', detectApple)})(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://th.wallhaven.cc/small/72/72rd8e.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.pixabay.com/photo/2021/08/01/17/31/path-6514885__480.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">踏云</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">JS事件</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-11-06T10:17:12.000Z" title="发表于 2021-11-06 18:17:12">2021-11-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-11-07T10:31:49.789Z" title="更新于 2021-11-07 18:31:49">2021-11-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">828</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>2分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="JS事件"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h1><p>ie6，没有 flex 定位</p>
+<p>事件传播的三个阶段执行顺序：Capturing &gt; Target &gt; Bubbling 捕获 目标 冒泡</p>
+<h2 id="事件绑定函数"><a href="#事件绑定函数" class="headerlink" title="事件绑定函数"></a>事件绑定函数</h2><p>1.ele.onxxx = function (event) {}<br>兼容性很好，但是一个元素只能绑定一个处理程序<br>基本等同于写在 HTML 行间上<br>2.ele.addEventListener(type, fn, false);<br>IE9 以下不兼容，可以为一个事件绑定多个处理程序<br>同一个函数只能绑定一次<br>3.ele.attachEvent(‘on’ + type, fn);<br>IE 独有，一个事件同样可以绑定多个处理程序</p>
+<p>eg: 行间不用写 function</p>
+<pre><code>一旦事件出现在了函数里面，就要考虑是否出现闭包，考虑要不要用立即执行函数解决。
+</code></pre>
+<h2 id="事件处理程序的运行环境"><a href="#事件处理程序的运行环境" class="headerlink" title="事件处理程序的运行环境"></a>事件处理程序的运行环境</h2><p>1.ele.onxxx = function (event) {}<br>程序 this 指向是 dom 元素本身<br>2.obj.addEventListener(type, fn, false);<br>程序 this 指向是 dom 元素本身<br>3.obj.attachEvent(‘on’ + type, fn);<br>程序 this 指向 window 4.封装兼容性的 addEvent(elem, type, handle);方法</p>
+<h2 id="解除事件处理程序"><a href="#解除事件处理程序" class="headerlink" title="解除事件处理程序"></a>解除事件处理程序</h2><ol>
+<li>ele.onclick = false/‘’/null;</li>
+<li>ele.removeEventListener(type, fn, false);</li>
+<li>ele.detachEvent(‘on’ + type, fn);<br><strong>注:若绑定匿名函数，则无法解除</strong></li>
+</ol>
+<h2 id="事件处理模型-—-事件冒泡、捕获"><a href="#事件处理模型-—-事件冒泡、捕获" class="headerlink" title="事件处理模型 — 事件冒泡、捕获"></a>事件处理模型 — 事件冒泡、捕获</h2><ul>
+<li>事件冒泡：<br>结构上（非视觉上）嵌套关系的元素，会存在事件冒泡的功能，即同一事件，自子元素冒泡向父元素。（自底向上）</li>
+<li>事件捕获：<br>结构上（非视觉上）嵌套关系的元素，会存在事件捕获的功能，即同一事件，自父元素捕获至子元素（事件源元素）。（自底向上）<br>IE 没有捕获事件</li>
+</ul>
+<p>但是：ie 的两个事件捕获函数：<br>div.setCapture();div.releaseCapture();</p>
+<p>触发顺序，先捕获，后冒泡,</p>
+<p>事件执行顺序是先绑定先执行</p>
+<p>focus，blur，change，submit，reset，select 等事件不冒泡</p>
+<h2 id="取消冒泡和阻止默认事件"><a href="#取消冒泡和阻止默认事件" class="headerlink" title="取消冒泡和阻止默认事件"></a>取消冒泡和阻止默认事件</h2><ul>
+<li>取消冒泡：<br>W3C 标准 event.stopPropagation();但不支持 ie9 以下版本<br>IE 独有 event.cancelBubble = true;<br>封装取消冒泡的函数 stopBubble(event)</li>
+<li>阻止默认事件:<br>默认事件 — 表单提交，a 标签跳转，右键菜单等<br>1.return false; 以对象属性的方式注册的事件才生效<br>2.event.preventDefault(); W3C 标注，IE9 以下不兼容<br>3.event.returnValue = false; 兼容 IE<br>封装阻止默认事件的函数 cancelHandler(event);<br>取消 a 标签默认事件：<a href="javascript:void(fasle)"></a></li>
+</ul>
+<h2 id="事件对象"><a href="#事件对象" class="headerlink" title="事件对象"></a>事件对象</h2><ul>
+<li>event || window.event 用于 IE</li>
+<li>事件源对象:<br>event.target 火狐独有的<br>event.srcElement ie 独有的<br>这俩 chrome 都有</li>
+<li>兼容性写法：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> ul = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&quot;ul&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">ul.onclick = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="comment">//非ie浏览器会将事件对象打包传到参数里。ie会记录在window.event</span></span><br><span class="line">  <span class="keyword">var</span> event = e || <span class="built_in">window</span>.event;</span><br><span class="line">  <span class="keyword">var</span> target = event.target || event.srcElement;</span><br><span class="line">  <span class="built_in">console</span>.log(target.innerText);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>非 ie 浏览器会将事件对象打包传到参数里。ie 会记录在 window.event</strong></p>
+<h2 id="事件委托"><a href="#事件委托" class="headerlink" title="事件委托"></a>事件委托</h2><p>利用事件冒泡，和事件源对象进行处理</p>
+<ul>
+<li>优点：<ol>
+<li>性能 不需要循环所有的元素一个个绑定事件</li>
+<li>灵活 当有新的子元素时不需要重新绑定事件</li>
+</ol>
+</li>
+</ul>
+<h2 id="事件分类"><a href="#事件分类" class="headerlink" title="事件分类"></a>事件分类</h2><ul>
+<li><p>鼠标事件<br>click、mousedown、mousemove、mouseup、contextmenu、mouseover、mouseout、 mouseenter mouseleave</p>
+</li>
+<li><p>用 button 来区分鼠标的按键，0/1/2</p>
+</li>
+<li><p>DOM3 标准规定:<br>click 事件只能监听左键,只能通过 mousedown 和 mouseu p 来判断鼠标键<br>如何解决 mousedown 和 click 的冲突</p>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">良客</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2021/11/06/%E4%BA%8B%E4%BB%B6/">http://example.com/2021/11/06/%E4%BA%8B%E4%BB%B6/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">踏云</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://cdn.pixabay.com/photo/2021/08/01/17/31/path-6514885__480.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/11/07/js%E6%97%A7%E7%AC%94%E8%AE%B0/"><img class="prev-cover" src="https://cdn.pixabay.com/photo/2021/09/22/04/54/surreal-6645614__480.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">JavaScript 笔记02</div></div></a></div><div class="next-post pull-right"><a href="/2021/11/06/%E6%97%B6%E9%97%B4%E7%BA%BF/"><img class="next-cover" src="https://cdn.pixabay.com/photo/2021/07/30/04/17/orange-6508617__480.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">JS时间线</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://th.wallhaven.cc/small/72/72rd8e.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">良客</div><div class="author-info__description">hello world</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/TAYUN"><i class="fab fa-github"></i><span>关注我</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/TAYUN" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:xxxxxx@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">欢迎来到云阁</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6"><span class="toc-number">1.</span> <span class="toc-text">事件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6%E7%BB%91%E5%AE%9A%E5%87%BD%E6%95%B0"><span class="toc-number">1.1.</span> <span class="toc-text">事件绑定函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E7%A8%8B%E5%BA%8F%E7%9A%84%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83"><span class="toc-number">1.2.</span> <span class="toc-text">事件处理程序的运行环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%99%A4%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E7%A8%8B%E5%BA%8F"><span class="toc-number">1.3.</span> <span class="toc-text">解除事件处理程序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E6%A8%A1%E5%9E%8B-%E2%80%94-%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1%E3%80%81%E6%8D%95%E8%8E%B7"><span class="toc-number">1.4.</span> <span class="toc-text">事件处理模型 — 事件冒泡、捕获</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%96%E6%B6%88%E5%86%92%E6%B3%A1%E5%92%8C%E9%98%BB%E6%AD%A2%E9%BB%98%E8%AE%A4%E4%BA%8B%E4%BB%B6"><span class="toc-number">1.5.</span> <span class="toc-text">取消冒泡和阻止默认事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.6.</span> <span class="toc-text">事件对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98"><span class="toc-number">1.7.</span> <span class="toc-text">事件委托</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6%E5%88%86%E7%B1%BB"><span class="toc-number">1.8.</span> <span class="toc-text">事件分类</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/01/06/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B+%E8%B7%A8%E5%9F%9F%E5%A4%84%E7%90%86/" title="三次握手/四次挥手"><img src="https://th.wallhaven.cc/lg/pk/pkgkkp.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="三次握手/四次挥手"/></a><div class="content"><a class="title" href="/2022/01/06/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B+%E8%B7%A8%E5%9F%9F%E5%A4%84%E7%90%86/" title="三次握手/四次挥手">三次握手/四次挥手</a><time datetime="2022-01-06T10:16:12.000Z" title="发表于 2022-01-06 18:16:12">2022-01-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/08/BOM/" title="BOM"><img src="https://cdn.pixabay.com/photo/2021/07/30/04/17/orange-6508617__480.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="BOM"/></a><div class="content"><a class="title" href="/2021/11/08/BOM/" title="BOM">BOM</a><time datetime="2021-11-08T02:12:12.000Z" title="发表于 2021-11-08 10:12:12">2021-11-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/07/js%E6%97%A7%E7%AC%94%E8%AE%B0/" title="JavaScript 笔记02"><img src="https://cdn.pixabay.com/photo/2021/09/22/04/54/surreal-6645614__480.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JavaScript 笔记02"/></a><div class="content"><a class="title" href="/2021/11/07/js%E6%97%A7%E7%AC%94%E8%AE%B0/" title="JavaScript 笔记02">JavaScript 笔记02</a><time datetime="2021-11-07T07:14:12.000Z" title="发表于 2021-11-07 15:14:12">2021-11-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/06/%E4%BA%8B%E4%BB%B6/" title="JS事件"><img src="https://cdn.pixabay.com/photo/2021/08/01/17/31/path-6514885__480.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JS事件"/></a><div class="content"><a class="title" href="/2021/11/06/%E4%BA%8B%E4%BB%B6/" title="JS事件">JS事件</a><time datetime="2021-11-06T10:17:12.000Z" title="发表于 2021-11-06 18:17:12">2021-11-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/06/%E6%97%B6%E9%97%B4%E7%BA%BF/" title="JS时间线"><img src="https://cdn.pixabay.com/photo/2021/07/30/04/17/orange-6508617__480.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JS时间线"/></a><div class="content"><a class="title" href="/2021/11/06/%E6%97%B6%E9%97%B4%E7%BA%BF/" title="JS时间线">JS时间线</a><time datetime="2021-11-06T10:16:12.000Z" title="发表于 2021-11-06 18:16:12">2021-11-06</time></div></div></div></div></div></div></main><footer id="footer" style="background: ff655467"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By 良客</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">欢迎来到云阁</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><div class="js-pjax"></div><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.removeEventListener('scroll', window.tocScrollFn)
+  window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

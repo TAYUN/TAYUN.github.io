@@ -1,0 +1,1648 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>BOM</title>
+    <url>/2021/11/08/BOM/</url>
+    <content><![CDATA[<h1 id="Window-对象"><a href="#Window-对象" class="headerlink" title="Window 对象"></a>Window 对象</h1><p>Window 对象表示浏览器中打开的窗口。</p>
+<p>如果文档包含框<code>&lt;frame&gt; 或 &lt;iframe&gt;标签</code>，浏览器会为 HTML 文档创建一个 window 对象，并为每个框架创建一个额外的 window 对象。</p>
+<h2 id="Window方法"><a href="#Window方法" class="headerlink" title="Window方法"></a>Window方法</h2><p><code>window.name()</code></p>
+<p><code>window.open() 返回值是打开的 window</code></p>
+<h2 id="Navigator-对象"><a href="#Navigator-对象" class="headerlink" title="Navigator 对象"></a>Navigator 对象</h2><p>Navigator 对象包含有关浏览器的信息。</p>
+<p><img src="https://www.runoob.com/images/lamp.gif" alt="Note"><strong>注意：</strong> 没有应用于 navigator 对象的公开标准，不过所有浏览器都支持该对象。</p>
+<hr>
+<h3 id="Navigator-对象属性"><a href="#Navigator-对象属性" class="headerlink" title="Navigator 对象属性"></a>Navigator 对象属性</h3><table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a href="https://www.runoob.com/jsref/prop-nav-appcodename.html">appCodeName</a></td>
+<td align="left">返回浏览器的代码名</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsref/prop-nav-appname.html">appName</a></td>
+<td align="left">返回浏览器的名称</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsref/prop-nav-appversion.html">appVersion</a></td>
+<td align="left">返回浏览器的平台和版本信息</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsref/prop-nav-cookieenabled.html">cookieEnabled</a></td>
+<td align="left">返回指明浏览器中是否启用 cookie 的布尔值</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsref/prop-nav-platform.html">platform</a></td>
+<td align="left">返回运行浏览器的操作系统平台</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsref/prop-nav-useragent.html">userAgent</a></td>
+<td align="left">返回由客户机发送服务器的 user-agent 头部的值</td>
+</tr>
+</tbody></table>
+<h3 id="Navigator-对象方法"><a href="#Navigator-对象方法" class="headerlink" title="Navigator 对象方法"></a>Navigator 对象方法</h3><table>
+<thead>
+<tr>
+<th align="left">方法</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a href="https://www.runoob.com/jsref/met-nav-javaenabled.html">javaEnabled()</a></td>
+<td align="left">指定是否在浏览器中启用 Java</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsref/met-nav-taintenabled.html">taintEnabled()</a></td>
+<td align="left">规定浏览器是否启用数据污点(data tainting)</td>
+</tr>
+</tbody></table>
+<h2 id="History-对象"><a href="#History-对象" class="headerlink" title="History 对象"></a>History 对象</h2><p>History 对象包含用户（在浏览器窗口中）访问过的 URL。</p>
+<p>History 对象是 window 对象的一部分，可通过 window.history 属性对其进行访问。</p>
+<hr>
+<h3 id="History-对象属性"><a href="#History-对象属性" class="headerlink" title="History 对象属性"></a>History 对象属性</h3><table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a href="https://www.runoob.com/jsref/prop-his-length.html">length</a></td>
+<td align="left">返回历史列表中的网址数</td>
+</tr>
+</tbody></table>
+<h3 id="History-对象方法"><a href="#History-对象方法" class="headerlink" title="History 对象方法"></a>History 对象方法</h3><table>
+<thead>
+<tr>
+<th align="left">方法</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a href="https://www.runoob.com/jsref/met-his-back.html">back()</a></td>
+<td align="left">加载 history 列表中的前一个 URL</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsref/met-his-forward.html">forward()</a></td>
+<td align="left">加载 history 列表中的下一个 URL</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsref/met-his-go.html">go()</a></td>
+<td align="left">加载 history 列表中的某个具体页面</td>
+</tr>
+</tbody></table>
+<h2 id="Screen-对象"><a href="#Screen-对象" class="headerlink" title="Screen 对象"></a>Screen 对象</h2><p>Screen 对象包含有关客户端显示屏幕的信息。</p>
+<p><img src="https://www.runoob.com/images/lamp.gif" alt="Note"><strong>注意：</strong> 没有应用于 screen 对象的公开标准，不过所有浏览器都支持该对象。</p>
+<hr>
+<h3 id="Screen-对象属性"><a href="#Screen-对象属性" class="headerlink" title="Screen 对象属性"></a>Screen 对象属性</h3><table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a href="https://www.runoob.com/jsref/prop-screen-availheight.html">availHeight</a></td>
+<td align="left">返回屏幕的高度（不包括 Windows 任务栏）</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsref/prop-screen-availwidth.html">availWidth</a></td>
+<td align="left">返回屏幕的宽度（不包括 Windows 任务栏）</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsref/prop-screen-colordepth.html">colorDepth</a></td>
+<td align="left">返回目标设备或缓冲器上的调色板的比特深度</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsref/prop-screen-height.html">height</a></td>
+<td align="left">返回屏幕的总高度</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsref/prop-screen-pixeldepth.html">pixelDepth</a></td>
+<td align="left">返回屏幕的颜色分辨率（每象素的位数）</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsref/prop-screen-width.html">width</a></td>
+<td align="left">返回屏幕的总宽度</td>
+</tr>
+</tbody></table>
+<h2 id="Location"><a href="#Location" class="headerlink" title="Location"></a>Location</h2><h3 id="Location-对象属性"><a href="#Location-对象属性" class="headerlink" title="Location 对象属性"></a>Location 对象属性</h3><table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a href="https://www.runoob.com/jsref/prop-loc-hash.html">hash</a></td>
+<td align="left">返回一个 URL 的锚部分</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsref/prop-loc-host.html">host</a></td>
+<td align="left">返回一个 URL 的主机名和端口</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsref/prop-loc-hostname.html">hostname</a></td>
+<td align="left">返回 URL 的主机名</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsref/prop-loc-href.html">href</a></td>
+<td align="left">返回完整的 URL</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsref/prop-loc-pathname.html">pathname</a></td>
+<td align="left">返回的 URL 路径名。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsref/prop-loc-port.html">port</a></td>
+<td align="left">返回一个 URL 服务器使用的端口号</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsref/prop-loc-protocol.html">protocol</a></td>
+<td align="left">返回一个 URL 协议</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsref/prop-loc-search.html">search</a></td>
+<td align="left">返回一个 URL 的查询部分</td>
+</tr>
+</tbody></table>
+<h3 id="Location-对象方法"><a href="#Location-对象方法" class="headerlink" title="Location 对象方法"></a>Location 对象方法</h3><table>
+<thead>
+<tr>
+<th align="left">方法</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a href="https://www.runoob.com/jsref/met-loc-assign.html">assign()</a></td>
+<td align="left">载入一个新的文档</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsref/met-loc-reload.html">reload()</a></td>
+<td align="left">重新载入当前文档</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsref/met-loc-replace.html">replace()</a></td>
+<td align="left">用新的文档替换当前文档</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>BOM操作</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>浏览器组成部分</title>
+    <url>/2021/11/06/js%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<h2 id="浏览器组成部分"><a href="#浏览器组成部分" class="headerlink" title="浏览器组成部分"></a>浏览器组成部分</h2><ol>
+<li>shell 部分： 外观看到的</li>
+<li>内核部分<ul>
+<li>渲染引擎</li>
+<li>js 引擎</li>
+<li>其他模块</li>
+</ul>
+</li>
+</ol>
+<h2 id="主流浏览器"><a href="#主流浏览器" class="headerlink" title="主流浏览器"></a>主流浏览器</h2><table>
+<thead>
+<tr>
+<th>浏览器</th>
+<th>内核</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IE</td>
+<td>trident</td>
+</tr>
+<tr>
+<td>Chrome</td>
+<td>webkit/blink</td>
+</tr>
+<tr>
+<td>firefox</td>
+<td>Gecko</td>
+</tr>
+<tr>
+<td>Opera</td>
+<td>presto</td>
+</tr>
+<tr>
+<td>Safari</td>
+<td>webkit</td>
+</tr>
+</tbody></table>
+<h2 id="js-介绍"><a href="#js-介绍" class="headerlink" title="js 介绍"></a>js 介绍</h2><ul>
+<li>解释性语言，看一行翻译一行。<ul>
+<li>优点：跨平台（不需要生成文件）。缺点：稍微慢</li>
+</ul>
+</li>
+<li>单线程<ul>
+<li>轮转时间片</li>
+</ul>
+</li>
+<li>ECMScript 兼容 ECMA 标准</li>
+<li>DOM</li>
+<li>BOM</li>
+</ul>
+<h3 id="js-小知识"><a href="#js-小知识" class="headerlink" title="js 小知识"></a>js 小知识</h3><ol>
+<li>赋值顺序 自右向左, 计算顺序, 自左向右</li>
+<li>删除一个对象没有的属性是允许的，返回 true</li>
+<li>对象的数字，参与数字运算就变成原始值了，类似的，string 也一样</li>
+<li>有 new，this 指向发生变化</li>
+<li>原始值，null 和 undefined 不能有自己的属性</li>
+<li>在构造函数中显式的返回原始值，是不起作用的，可以返回对象，数组，方法。</li>
+<li>未经声明的变量就 typeof 不会报错</li>
+<li>逗号运算符 <code>var a = (1-1, 1+1)</code> =&gt; 2</li>
+<li>大于 255，字节 2</li>
+<li>变量没声明就输出会报错，预编译知识</li>
+<li>css 文字类属性如果子元素没设置属性，子类默认继承父类的属性</li>
+<li>故意让 js 运行不了，写成”text/tpl”</li>
+<li>NaN：NaN 不等于 NaN，NaN 不是 Number</li>
+<li>比较两个对象相等性，不能用三等或双等，好像用方法调用，两个地址相等的话就相等。</li>
+<li>Math.sqrt (100) =&gt;10</li>
+<li>null 转换成数字是 0，undefined 转成数字是 NaN</li>
+<li>string 转化成 Boolean 类型，空字符串为 false，其余字符串全是 true</li>
+<li>false == 0 输出 true。把 boolean 先转化为 number，false 为 0，true 是 1。等价判断 0 == 0 ，结果为 true</li>
+<li>把未定义的变量放在 typeof(a)里不报错</li>
+<li>toFixed()，科学计数法</li>
+<li>NaN 不等于任何东西包括它本身</li>
+<li>转化为 false 的值:<br>undefined, null, NaN, “”, 0, false</li>
+<li>赋值是自右向左的过程</li>
+<li>“11” * 2 ==&gt;22<br>“11” - 2”” ==&gt;9<br>“abc” &amp;&amp; “wer” ==&gt;true</li>
+<li>+ -优先级大于&amp;&amp;</li>
+<li>||优先级大于=</li>
+<li>有些属性需要在控制台打印，如：对象</li>
+<li>原始值坚决不能有属性和方法，能调用是因为经历了包装类</li>
+<li>对象类型的数据转布尔值结果都是 true</li>
+<li>数据转成什么类型还要看其所在地环境〔环境期望它转成什么〕</li>
+<li>[0]转成 0，因为数组里只存了一个数据，同时这个数据能转成数字</li>
+<li>null 和 undefined,自己和自己相等,自己和对方相等，余都是不等</li>
+<li>加号 ➕ 运算符的数据，如果出现字符串和对象，都会转成字符串</li>
+<li>删除一个对象没有的属性返回结果是 true</li>
+<li>js 中 null、undefined 中自己与自己相等，自己与对方相等，与其他都不等。</li>
+<li>undefined 转数字变成 NaN。任何数字和 undefined 比都是 false</li>
+<li>alert(null == undefined) 结果为 true</li>
+<li>null 和 undefined 不能调用 toString()方法。因为它们是原始值且没有原型；</li>
+<li>document.write()打印结果前会隐式的调用 toString()方法。</li>
+<li>toFixed()保留两位有效数字。</li>
+<li>Math.ceil()向上取整</li>
+<li>Math.floor()向下取整</li>
+<li>Math。random()产生 0~1 之间的随机数。</li>
+<li>可正常计算的范围，小数点，前 16 位，和后 16 位</li>
+<li>call()改变 this 的指向，可以借助别的函数实现自己的功能</li>
+<li>call: 需要把实参按照形参的个数传进<br>apply：需要传一个数组 arguments</li>
+<li>this 指向，看函数是否为独立调用，如果是独立调用指向 windos，否则是谁调用指向谁。</li>
+<li>window 有自己的属性 name: window</li>
+<li>两个<strong>新建</strong>的对象不相等，（但把 a 对象赋值给 b，a==b ==&gt;true）</li>
+<li>属性拼接</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//属性拼接</span></span><br><span class="line"><span class="keyword">var</span> wang = &#123;</span><br><span class="line">  <span class="attr">wife1</span>: &#123; <span class="attr">name</span>: <span class="string">&quot;XiaoLiu&quot;</span> &#125;,</span><br><span class="line">  <span class="attr">wife2</span>: &#123; <span class="attr">name</span>: <span class="string">&quot;XianZhang&quot;</span> &#125;,</span><br><span class="line">  <span class="attr">wife3</span>: &#123; <span class="attr">name</span>: <span class="string">&quot;XiaoLi&quot;</span> &#125;,</span><br><span class="line">  <span class="attr">sayWife</span>: <span class="function"><span class="keyword">function</span> (<span class="params">num</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>[<span class="string">&quot;wife&quot;</span> + num];</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line">wang.sayWife(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+<p>32.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="number">2.</span>toString();<span class="comment">//报错</span></span><br><span class="line"><span class="comment">/*这个.有两个解释：1、小数点；2、方法调用，所以这里产生了一个歧义。</span></span><br><span class="line"><span class="comment">在这里因为这个点紧跟于一个数字之后，所以按照规范，解释器就把它判断为一个小数点，这行代码就变成了一个浮点数，但是问题就产生了，toString()不是一个数字，所以编译之后就报错了。*/</span></span><br><span class="line"><span class="comment">//不报错：</span></span><br><span class="line"><span class="number">2.</span>.toString()    <span class="comment">//这里第一个点是表示小数点，相当于（2.0）.toString()</span></span><br><span class="line"><span class="number">2</span> .toString()   <span class="comment">//这里用一个空格来告诉解释器，这个.是方法调用</span></span><br><span class="line">(<span class="number">2</span>).toString()  <span class="comment">//()的优先级高，优先解释(个人的一种理解)</span></span><br></pre></td></tr></table></figure>
+
+<ol start="33">
+<li>可以乱给一个非对象的变量添加属性，但属性被赋值过后会立马被删除，再访问是结果是 undefined。相当于不存在</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = (b = <span class="number">2</span>);</span><br><span class="line"><span class="comment">//相当于</span></span><br><span class="line"><span class="comment">//b = 2;</span></span><br><span class="line"><span class="comment">//var a = 2;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="34">
+<li>当自己的作用域 AO 没有变量的定义时，才会去全局 GO 里面找。</li>
+<li>数组的 length 是可读可写的属性<br>字符串的 length 是只读属性</li>
+<li>浅度克隆，对引用值克隆的是地址，会导致你改我也改。防止这种情况可以采用深度克隆。</li>
+</ol>
+<p>故意让 js 运行不了，写成”text/tpl”</p>
+<ol start="37">
+<li>NaN：NaN 不等于 NaN，NaN 不是 Number</li>
+<li>Math.sqrt (100) =&gt;10</li>
+<li>null 转换成数字是 0，undefined 转成数字是 NaN</li>
+<li>string 转化成 Boolean 类型，空字符串为 false，其余字符串全是 true</li>
+<li>false == 0 输出 true。把 boolean 先转化为 number，false 为 0，true 是 1。等价判断 0 == 0 ，结果为 true</li>
+<li>把未定义的变量放在 typeof(a)里不报错</li>
+<li>toFixed()，科学计数法</li>
+</ol>
+<h4 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h4><ul>
+<li>命名规则</li>
+</ul>
+<ol>
+<li>变量名必须以英文字母、_、$ 开头</li>
+<li>变量名可以包括英文字母、_、$、数字</li>
+<li>不可以用系统的关键字、保留字作为变量名</li>
+</ol>
+<h4 id="原始值"><a href="#原始值" class="headerlink" title="原始值"></a>原始值</h4><p>不可改</p>
+<ul>
+<li>Number</li>
+<li>Boolean</li>
+<li>String</li>
+<li>undefined</li>
+<li>null</li>
+</ul>
+<p><code>var a = 1;var b = a; a = 2;//b 的值不变，而引用值会变</code><br>存于栈 stack，先进后出。</p>
+<h4 id="引用值"><a href="#引用值" class="headerlink" title="引用值"></a>引用值</h4><p>赋值形式不同<br>array Object function …. date RegExp<br>引用值之间拷贝的是堆的地址。<br>存于堆 heap，先进先出。</p>
+<h4 id="错误"><a href="#错误" class="headerlink" title="错误"></a>错误</h4><p>js 语法错误会引发后续代码终止，但不会影响其它 js 代码块</p>
+<ul>
+<li><p>低级错误（语法解析错误）：一行都不执行</p>
+<ul>
+<li><strong>Uncaught SyntaxError</strong>：</li>
+</ul>
+</li>
+<li><p>逻辑错误：执行到错误的地方。</p>
+<ul>
+<li><strong>Uncaught ReferenceError</strong>:</li>
+</ul>
+</li>
+</ul>
+<h4 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h4><h5 id="运算操作符"><a href="#运算操作符" class="headerlink" title="运算操作符"></a>运算操作符</h5><p>“-”，“*”，“/“，“%”，”=“，“()”<br>“+” 1. 数学运算、字符串链接 2. 任何数据类型加字符串都等于字符串<br>优先级”=“最弱，”()”优先级较高</p>
+<p>“++”，“- -”，”+=“，“-=”，“/=“，“*=”，“%=”</p>
+<p>赋值顺序，自左向右，计算顺序，自右向左。</p>
+<pre><code>var b = 10;
+b = b + b + 1 + ++b;
+document.write(b);
+</code></pre>
+<p>1/0 -1/0 0/0 1%0 的结果特殊。 0/0 1%0 不知道得什么就会出现 NaN（非数）。</p>
+<p>字符串大小比较的是 ascll 码。</p>
+<h5 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h5><p>“&gt;”，”&lt;”，”==”，“&gt;=”，“&lt;=”，”!=”</p>
+<h5 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h5><p>“&amp;&amp;”，“||”，“!“</p>
+<ul>
+<li>运算结果为真实的值，如 <code>var a = 0 &amp;&amp; 2+2</code>结果为 4</li>
+<li>被认定为 false 的值<br>undefined， null， NaN， “”， 0， false</li>
+<li>0 || false =&gt; false</li>
+<li>做兼容 <code>var a = e || windos.event</code></li>
+</ul>
+<p>（ &amp; 相同为 1，不同为 0，）</p>
+<h4 id="条件语句和循环语句"><a href="#条件语句和循环语句" class="headerlink" title="条件语句和循环语句"></a>条件语句和循环语句</h4><p>没啥好记的</p>
+<h4 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h4><h5 id="typeof-返回结果"><a href="#typeof-返回结果" class="headerlink" title="typeof 返回结果"></a>typeof 返回结果</h5><ul>
+<li><p>number</p>
+</li>
+<li><p>string</p>
+<ul>
+<li>undefined</li>
+</ul>
+</li>
+<li><p>boolean</p>
+</li>
+<li><p>object</p>
+<blockquote>
+<p>数组<br>null</p>
+</blockquote>
+</li>
+<li><p>null</p>
+</li>
+<li><p>undefined</p>
+</li>
+<li><p>function</p>
+<blockquote>
+<p>function</p>
+</blockquote>
+</li>
+</ul>
+<h5 id="显式类型转换"><a href="#显式类型转换" class="headerlink" title="显式类型转换"></a>显式类型转换</h5><ol>
+<li>Number()</li>
+<li>parserInt()-&gt;两个参数</li>
+<li>parserFloat()</li>
+<li>toString()<ul>
+<li>null 和 undefined 不能用这个方法</li>
+<li>123.toString(2) 把十进制的 123 转换成二进制后的字符串</li>
+</ul>
+</li>
+<li>String()<ul>
+<li>String(123 , 2) 把二进制的 123 转换成十进制的字符串</li>
+</ul>
+</li>
+<li>Boolean()<ul>
+<li>Boolean（‘0’） 正确输出为 true，</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>undefined,字母能转化为数字,会变成 NaN</p>
+</blockquote>
+<h5 id="隐式类型转换"><a href="#隐式类型转换" class="headerlink" title="隐式类型转换"></a>隐式类型转换</h5><ol>
+<li>isNaN() 先用 Number()转换再进行比较转换</li>
+<li>++ – + - 一元正负</li>
+<li>+</li>
+<li>- * / %</li>
+<li>&amp;&amp; || ! 6. &lt; &gt; &lt;= &gt;=</li>
+<li>== !=</li>
+</ol>
+<h5 id="不发生类型转换"><a href="#不发生类型转换" class="headerlink" title="不发生类型转换"></a>不发生类型转换</h5><ul>
+<li><p>绝对等于号: ===</p>
+</li>
+<li><p>绝对不等于: !===</p>
+</li>
+</ul>
+<p>特例:<code>NaN !== NaN</code></p>
+]]></content>
+      <categories>
+        <category>dom操作</category>
+      </categories>
+      <tags>
+        <tag>DOM</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JSON</title>
+    <url>/2021/11/06/json,%E5%BC%82%E6%AD%A5%E5%8A%A0%E8%BD%BD/</url>
+    <content><![CDATA[<h2 id="json"><a href="#json" class="headerlink" title="json"></a>json</h2><p>json.parse() string -&gt; json<br>json.stringify jsosn -&gt; string</p>
+<h2 id="异步加载-js"><a href="#异步加载-js" class="headerlink" title="异步加载 js"></a>异步加载 js</h2><p>domTree + css = randerTree<br>reflow 重排 dom 节点的增加 删除<br>repaint 重绘</p>
+<p>js 加载的缺点：加载工具方法没必要阻塞文档，过得 js 加载会影响页面效率，一旦网速不好，那么整个网站将等待 js 加载而不进行后续渲染等工作。</p>
+<p>有些工具方法需要按需加载，用到再加载，不用不加载，。</p>
+<h4 id="三种方法"><a href="#三种方法" class="headerlink" title="三种方法"></a>三种方法</h4><ol>
+<li>defer 异步加载，但要等到 dom 文档全部解析完才会被执行。只有 IE 能用。</li>
+<li>async 异步加载，加载完就执行，async 只能加载外部脚本，不能把 js 写在 script 标签里。<br>1.2 执行时也不阻塞页面</li>
+<li>创建 script，插入到 DOM 中，加载完毕后 callBack，</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">        <span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">&#x27;script&#x27;</span>);</span><br><span class="line">        script.type = <span class="string">&quot;text/javascript&quot;</span>;</span><br><span class="line">        script.src = <span class="string">&quot;demo.js&quot;</span>;</span><br><span class="line">        <span class="built_in">document</span>.head.appendChild(script);</span><br><span class="line"></span><br><span class="line">    &lt;/script&gt;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>JavaScript 笔记02</title>
+    <url>/2021/11/07/js%E6%97%A7%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id=""><a href="#" class="headerlink" title=""></a></h1><h1 id="JavaScript-笔记"><a href="#JavaScript-笔记" class="headerlink" title="JavaScript 笔记"></a>JavaScript 笔记</h1><h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><ul>
+<li><p><strong>原因</strong> ：内部函数被保存到了外部,一定产生闭包</p>
+</li>
+<li><p><strong>坏处</strong> ：当内部函数被保存到外部时,将会生成闭包。闭包会导致原有作用域链不释放，造成内存泄露。</p>
+</li>
+<li><p><strong>闭包的防范</strong>：闭包导致多个执行函数共用一个私有变量,非必要尽量避免这样使用。</p>
+</li>
+</ul>
+<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><ul>
+<li><p>实现共有变量</p>
+</li>
+<li><p>可以做缓存</p>
+</li>
+<li><p>可以实现封装，属性是私有化</p>
+</li>
+<li><p>模块化开发，防止污染全局变量</p>
+</li>
+</ul>
+<h3 id="一道闭包题和解决办法-1·"><a href="#一道闭包题和解决办法-1·" class="headerlink" title="一道闭包题和解决办法 1·"></a>一道闭包题和解决办法 1·</h3><hr>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="line">     <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">       <span class="keyword">var</span> arr = [];</span><br><span class="line">       <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i ++)&#123;</span><br><span class="line">           arr[i] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">               <span class="built_in">document</span>.writeln(i);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> arr;</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">var</span> myArr = test();</span><br><span class="line">     <span class="keyword">for</span>(<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; <span class="number">10</span>; j ++)&#123;</span><br><span class="line">         myArr[j]();</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">   &lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> arr = [];</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">                (</span><br><span class="line">                    <span class="function"><span class="keyword">function</span> (<span class="params">j</span>) </span>&#123;</span><br><span class="line">                        arr[j] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                            <span class="built_in">document</span>.writeln(j);</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;(i)</span><br><span class="line">                );</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> arr;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">var</span> myArr = test();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; <span class="number">10</span>; j++) &#123;</span><br><span class="line">            myArr[j]();</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="JS-运行三部曲"><a href="#JS-运行三部曲" class="headerlink" title="JS 运行三部曲"></a>JS 运行三部曲</h2><ol>
+<li>预编译</li>
+</ol>
+<blockquote>
+<p>预编译发生在函数执行的前一刻</p>
+</blockquote>
+<h3 id="预编译前奏"><a href="#预编译前奏" class="headerlink" title="预编译前奏"></a>预编译前奏</h3><ul>
+<li><p>任何变量, 如果未经声明就赋值,此变量就归全局对象所有。</p>
+</li>
+<li><p>全局中 一切声明的变量，全是 window 属性。</p>
+</li>
+<li><p>window 就是全局。</p>
+</li>
+</ul>
+<h3 id="预编译四部曲"><a href="#预编译四部曲" class="headerlink" title="预编译四部曲"></a>预编译四部曲</h3><ol>
+<li>创建 AO 对象</li>
+<li>找形参和变量声明,将形参和变量声明作为 AO 对象的属性名,并赋值为 undefined。</li>
+<li>将实参值和形参值相统一。</li>
+<li>在函数体里找到函数声明,值赋给函数体。</li>
+</ol>
+<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><blockquote>
+<p>对象中有些属性可以被获取,有些仅供 javascript 引擎获取,如:</p>
+</blockquote>
+<ul>
+<li>[[scoope]]</li>
+</ul>
+<h3 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h3><blockquote>
+<ul>
+<li>[[scopel]指的就是我们所说的作用域,其中存储了运行期上下文的集合。</li>
+<li>[[scope]]中储存的执行期上下文对象的集合,这个集合呈链式链接,我们把这种链接称为作用域链</li>
+</ul>
+</blockquote>
+<h3 id="运行期上下文"><a href="#运行期上下文" class="headerlink" title="运行期上下文"></a>运行期上下文</h3><p>运行期上下文:当函数执行时，会创建一个称为<strong>执行期上下文</strong>的<strong>内部对象</strong>。一个执行期上下文定义了一个函数执行时的环境,函数每次执行时对应的执行上下文都是独一无二的，所以多次调用一个函数会导致创建多个执行上下文，当函数执行完毕，它所产生的执行上下文被销毁。</p>
+<p><strong>查找变量</strong>:从作用域链的顶端依次向下查找。</p>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ul>
+<li><p>只有函数被执行的时候，才能执行函数内的语句；</p>
+</li>
+<li><p>函数不执行，系统就不知道函数内的写了什么</p>
+</li>
+</ul>
+<h3 id="函数声明"><a href="#函数声明" class="headerlink" title="函数声明"></a>函数声明</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;Hello World&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="函数表达式"><a href="#函数表达式" class="headerlink" title="函数表达式"></a>函数表达式</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> test = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;Hello World&quot;</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="立即执行函数"><a href="#立即执行函数" class="headerlink" title="立即执行函数"></a>立即执行函数</h3><ul>
+<li><p><strong>在函数声明前加个正 + 号,函数声明会被转换成表达式,从而可以被函数执行符号()执行</strong></p>
+</li>
+<li><p><strong>只有表达式才能被执行符号执行</strong></p>
+</li>
+<li><p><strong>能被执行符号执行的表达式,这个函数的名字就会被自动忽略</strong></p>
+</li>
+</ul>
+<p><strong>格式</strong>：执行完立即被销毁</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">//语句</span></span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> <span class="title">abc</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">//语句</span></span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">+(<span class="function"><span class="keyword">function</span> <span class="title">abc</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">//语句</span></span><br><span class="line">&#125;)();</span><br><span class="line"><span class="comment">// 可以是+ - ！（正 负 非）</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> num = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">//语句</span></span><br><span class="line">  <span class="keyword">var</span> a = <span class="number">3</span>;</span><br><span class="line">  <span class="keyword">return</span> a;</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line"><span class="comment">//执行完abc也会被销毁</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><p>-大驼峰</p>
+<h4 id="构造函数内部原理"><a href="#构造函数内部原理" class="headerlink" title="构造函数内部原理"></a>构造函数内部原理</h4><ol>
+<li><p>在函数体最前面隐式加上 this = {}；（有 new 之后）</p>
+</li>
+<li><p>执行 this.xxx = xxx;</p>
+</li>
+<li><p>隐式返回 this</p>
+</li>
+</ol>
+<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><p>属性和方法，对象独有；</p>
+<h3 id="创建对象三种方式"><a href="#创建对象三种方式" class="headerlink" title="创建对象三种方式"></a>创建对象三种方式</h3><ol>
+<li>对象字面量/对象直接量</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> empty = &#123;&#125;;</span><br><span class="line"><span class="keyword">let</span> point = &#123;</span><br><span class="line">  <span class="attr">x</span>: <span class="number">0</span>,</span><br><span class="line">  <span class="attr">y</span>: <span class="number">0</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>使用 new 关键字，构造函数</li>
+</ol>
+<ul>
+<li>有 new 了，不会返回原始值，就隐式的返回对象</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> o = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line"><span class="keyword">let</span> a = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line"><span class="keyword">let</span> b = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"><span class="keyword">let</span> c = <span class="keyword">new</span> <span class="built_in">Map</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">//约束用大驼峰</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">this</span>.sex = <span class="string">&quot;male&quot;</span>;</span><br><span class="line">  <span class="built_in">this</span>.color = cl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Person1 = <span class="keyword">new</span> Person(cl);</span><br><span class="line">person.name = <span class="string">&quot;韦业&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 加方法,要用 = 号</span></span><br><span class="line">o.fangfa = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>用 Object.Create()函数创建</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> o1 = <span class="built_in">Object</span>.Create(&#123; <span class="attr">x</span>: <span class="number">1</span>, <span class="attr">y</span>: <span class="number">2</span> &#125;); <span class="comment">//第一个参数作为新对象的原型</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> o2 = <span class="built_in">Object</span>.Create(<span class="literal">null</span>); <span class="comment">//null为参数，创建一个没用原型的的新对象</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> o3 = <span class="built_in">Object</span>.Create(<span class="built_in">Object</span>.prototype); <span class="comment">//创建普通空对象</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="查看对象"><a href="#查看对象" class="headerlink" title="查看对象"></a>查看对象</h3><blockquote>
+<p><strong>一个对象没有声明就访问，会输出 undefined</strong></p>
+</blockquote>
+<h3 id="对象的枚举"><a href="#对象的枚举" class="headerlink" title="对象的枚举"></a>对象的枚举</h3><p>区别对象和数组的三种方法 ！！！</p>
+<p><code>&#39;height&#39; in obj</code>要写字符串<br>写对象的属性时尽量用 obj[‘key’]的形式</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> obj) &#123;</span><br><span class="line">  consloe.log(ker + <span class="string">&quot;&quot;</span> + obj[key]);</span><br><span class="line">  <span class="comment">//对象的枚举不能用obj.key和obj[&#x27;key&#x27;]</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h2><ul>
+<li><p>定义：原型是个对象。原型是 function 的一个属性。它定义了构造函数制造出的新对象的一个共同祖先。通过构造函数产生的对象可以继承原型的属性和方法。</p>
+</li>
+<li><p>利用原型的特点和概念，可以提取共有属性。</p>
+</li>
+<li><p>不能通过<strong>后代对象</strong>修改原型的属性。</p>
+</li>
+</ul>
+<h3 id="原型对象的修改"><a href="#原型对象的修改" class="headerlink" title="原型对象的修改"></a>原型对象的修改</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//方法一</span></span><br><span class="line">Person.prototype = &#123;</span><br><span class="line">  <span class="attr">LastName</span>: wei,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//方法二</span></span><br><span class="line">Person.prototype.LastName = ye;</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看原型的方法"><a href="#查看原型的方法" class="headerlink" title="查看原型的方法"></a>查看原型的方法</h3><p>prototype 查看原型<br>prototype 放的是原型</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 数字代表执行顺序</span></span><br><span class="line">Person.prototype.name = <span class="string">&quot; sunny&quot;</span>; <span class="comment">//2</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// var this = &#123;__proto_ : Person.prototype //5</span></span><br><span class="line">&#125; <span class="comment">//1</span></span><br><span class="line"></span><br><span class="line">Person.prototype = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;cherry&quot;</span>,</span><br><span class="line">&#125;; <span class="comment">//3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> Person(); <span class="comment">//4</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>constructor 返回构造当前对象的构造方法</strong><br>用法：<br><code>Person.constructor</code><br>也可以修改它的值</p>
+<h3 id="原型-prototype"><a href="#原型-prototype" class="headerlink" title="原型 prototype"></a>原型 prototype</h3><ul>
+<li>每一个函数（类）都有一个 prototype 属性，属性值是一个对象；这个对象中存储了当前类供实例调取使用的共有属性和方法</li>
+</ul>
+<h4 id="构造器-constructor"><a href="#构造器-constructor" class="headerlink" title="构造器 constructor"></a>构造器 constructor</h4><ul>
+<li>浏览器默认给原型开辟的堆内存中有一个属性 constructor:存储的是当前类本身</li>
+<li>可读可写</li>
+</ul>
+<h3 id="原型链proto"><a href="#原型链proto" class="headerlink" title="原型链proto"></a>原型链<strong>proto</strong></h3><ul>
+<li>每一个对象（实例）都有<strong>proto</strong>(原型链)属性，这个属性指向当前实例所属类的原型（不确定所属的类，都指向 Object.prototype）</li>
+</ul>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><h3 id="圣杯模式"><a href="#圣杯模式" class="headerlink" title="圣杯模式"></a>圣杯模式</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 圣杯模式</span></span><br><span class="line">Father.prototype.LastName = <span class="string">&quot;wei&quot;</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">inherit</span>(<span class="params">Target, Origin</span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">  F.prototype = Origin.prototype;</span><br><span class="line">  <span class="comment">//这上下两行顺序不能颠倒</span></span><br><span class="line">  Target.prototype = <span class="keyword">new</span> F();</span><br><span class="line">  Target.prototype.constutor = Target;</span><br><span class="line">  Target.prototype.uber = Origin.prototype;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Father</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Son</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">inherit(Son, Father);</span><br><span class="line"><span class="keyword">var</span> son = <span class="keyword">new</span> Son();</span><br><span class="line"><span class="keyword">var</span> father = <span class="keyword">new</span> Father();</span><br></pre></td></tr></table></figure>
+
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>数组是原始值，放到栈内存</p>
+<p>字符串索引：</p>
+<ol>
+<li><p>原串的索引 = 字串的索引 + 挪动次数</p>
+</li>
+<li><p>数组索引没有负数，如 arr[-1] = undefined,只不过数组的方法可以给负数</p>
+</li>
+</ol>
+<h3 id="改变原数组"><a href="#改变原数组" class="headerlink" title="改变原数组"></a>改变原数组</h3><ul>
+<li><p>push()</p>
+</li>
+<li><p>reverse()</p>
+</li>
+<li><p>sort()</p>
+</li>
+<li><p>pop()</p>
+</li>
+<li><p>unshift()</p>
+</li>
+<li><p>shift()</p>
+</li>
+<li><p>splice()</p>
+</li>
+</ul>
+<h3 id="不改变原数组"><a href="#不改变原数组" class="headerlink" title="不改变原数组"></a>不改变原数组</h3><ul>
+<li>concat()</li>
+<li>join()</li>
+<li>split()</li>
+<li>toString()</li>
+<li>slice()</li>
+</ul>
+<h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><ol>
+<li>必须写两个参数</li>
+<li>看返回值</li>
+</ol>
+<ul>
+<li>当返回值为负数时，那么前面的数放在前面。</li>
+<li>当返回值为正数时，那么后面的数在前</li>
+<li>为零，不动</li>
+</ul>
+<h2 id="类数组"><a href="#类数组" class="headerlink" title="类数组"></a>类数组</h2><p>组成：<br>属性为索引（数字）属性，必须有 length 有属性，最好有 push()<br>原理：</p>
+<p>Array.prototype.push = function (target){<br>obj.[obj.length] = target;<br>length ++；</p>
+<p>}</p>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>三次握手/四次挥手</title>
+    <url>/2022/01/06/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B+%E8%B7%A8%E5%9F%9F%E5%A4%84%E7%90%86/</url>
+    <content><![CDATA[<h1 id="三次握手-四次挥手"><a href="#三次握手-四次挥手" class="headerlink" title="三次握手/四次挥手"></a><strong>三次握手/四次挥手</strong></h1><p><strong>TCP(Transmission control protocol)传输层协议中出现的两个概念</strong></p>
+<h2 id="什么是TCP"><a href="#什么是TCP" class="headerlink" title="什么是TCP?"></a>什么是TCP?</h2><p>​    <strong>TCP协议，传输控制协议（英语：Transmission Control Protocol，缩写为 TCP）</strong>是一种面向连接的、可靠的、基于字节流的传输层通信协议;</p>
+<p>​    TCP通信需要经过<strong>创建连接、数据传送、终止连接</strong>三个步骤, TCP通信模型中，在通信开始之前，一定要先建立相关的链接，才能发送数据</p>
+<h2 id="tcp特点"><a href="#tcp特点" class="headerlink" title="tcp特点"></a>tcp特点</h2><ol>
+<li><p><strong>面向连接</strong></p>
+</li>
+<li><p><strong>传输可靠</strong></p>
+<ul>
+<li>TCP采用发送应答机制</li>
+<li>超时重传</li>
+<li>错误校验</li>
+<li>流量控制和阻塞管理</li>
+</ul>
+</li>
+</ol>
+<h2 id="不同http版本中三次握手表现"><a href="#不同http版本中三次握手表现" class="headerlink" title="不同http版本中三次握手表现"></a>不同http版本中三次握手表现</h2><p>​    <img src="https://adminimg.hyfarsight.com/image-20210408223456177.png" alt="image-20210408223456177" style="zoom: 80%;" /></p>
+<ul>
+<li><p><strong>http 1.0</strong></p>
+<p>http请求创建的时候同时创建了tcp连接,请求发送,服务器响应之后,tcp连接关闭</p>
+</li>
+<li><p><strong>http 1.1</strong></p>
+<p>通过声明的方式(keep alive),保持连接(<strong>节省tcp连接开销</strong>)</p>
+</li>
+<li><p><strong>http 2.0</strong></p>
+<p>http请求可以处理并发,只需要一个http连接就可以了</p>
+</li>
+</ul>
+<h2 id="tcp中的标志位、序列号"><a href="#tcp中的标志位、序列号" class="headerlink" title="tcp中的标志位、序列号"></a>tcp中的标志位、序列号</h2><ul>
+<li><p>SYN(synchronous建立联机标志位) </p>
+</li>
+<li><p>ACK(acknowledgement 联机确认标志位) </p>
+</li>
+<li><p>Sequence number(顺序号码，数据包的序号)</p>
+</li>
+<li><p>Acknowledge number(确认号码，响应数据包的序号)</p>
+</li>
+<li><p>FIN(finish结束，终止链路标志位) </p>
+<hr>
+</li>
+</ul>
+<h2 id="三次握手的实现"><a href="#三次握手的实现" class="headerlink" title="三次握手的实现"></a>三次握手的实现</h2><p>​                                     <img src="https://adminimg.hyfarsight.com/v2-576b043d12353928eea6e45373655668_720w.jpg" alt="img"  /></p>
+<ol>
+<li><p><strong>第一次握手</strong> </p>
+<p>客户端协议栈向服务器端发送了 <code>SYN</code> 包，并告诉服务器端当前发送序列号 SYN = 1, seq=x，x为本次TCP通信的字节流的初始序号, 客户端 进入 SYNC_SENT 状态；</p>
+</li>
+<li><p><strong>第二次握手</strong>  </p>
+<p>服务器端的协议栈收到这个包之后，和客户端进行 <code>ACK </code>应答，应答的值为 <code>x+1</code>，表示 对 SYN 包 1的确认，同时服务器也发送一个 SYN 包，告诉客户端当前我的发送序列号 为 1，服务器端进入 <code>SYNC_RCVD</code> 状态；</p>
+</li>
+<li><p><strong>第三次握手</strong>   </p>
+<p>客户端协议栈收到 <code>ACK</code> 之后，还要向服务端发送一个确认报文段, 表示：服务端发来的连接同意应答已经成功收到，表示客户端到服务器端的单向连接建立成功，客户端发完这个报文段后便进入ESTABLISHED状态，此时连接的建立完成,该报文段的头部为：ACK=1，seq=x+1，ack=y+1, 这个时候服务器 端到客户端的单向连接也建立成功,服务端收到这个应答后进入ESTABLISHED状态</p>
+</li>
+</ol>
+<h3 id="握手生活映射"><a href="#握手生活映射" class="headerlink" title="握手生活映射"></a>握手生活映射</h3><img src="https://adminimg.hyfarsight.com/1643a1dd6df4813b" alt="img" style="zoom: 67%;" />
+
+<img src="https://adminimg.hyfarsight.com/1643a1f3fa6c21b0" alt="img" style="zoom:67%;" />
+
+<p>TCP 三次握手就好比两个人在街上隔着一定的距离看见了对方，但是因为雾霾等原因不能100%确认，所以要通过招手的方式相互确定对方是否认识自己</p>
+<h2 id="为什么会有三次握手"><a href="#为什么会有三次握手" class="headerlink" title="为什么会有三次握手?"></a>为什么会有三次握手?</h2><p>​    </p>
+<p><strong>客户端失效的连接请求</strong></p>
+<p>​    若客户端向服务端发送的连接请求丢失,客户端等待应答超时后就会再次发送连接请求，此时，上一个连接请求就是『失效的』</p>
+<img src="https://adminimg.hyfarsight.com/v2-2e92a8054ba98532592aecc47c37722e_720w.jpg" alt="img" style="zoom: 67%;" />
+
+
+
+<p><strong>两次握手没有第三次的情况</strong></p>
+<p>​    客户端影响不大,仍然需要获得服务端的应答后才进入ESTABLISHED状态 ,如果网络拥塞，,服务端收到请求就会进入ESTABLISHED状态,时的客户端早已进入CLOSED状态,服务端一直等待下去</p>
+<img src="https://adminimg.hyfarsight.com/v2-3d4e77b23469ae84358d90d5b0bd451d_720w.jpg" alt="img" style="zoom: 67%;" />
+
+
+
+
+
+<h2 id="四次挥手"><a href="#四次挥手" class="headerlink" title="四次挥手"></a>四次挥手</h2><img src="https://pic1.zhimg.com/80/v2-c8b61ed2a249700583b11bc5d16c5711_720w.jpg?source=1940ef5c" alt="img" style="zoom:80%;" />
+
+
+
+<p><strong>第一次挥手</strong></p>
+<p>客户端数据发送完成，需要向服务端发送连接释放请求。请求只有报文头</p>
+<p><strong>第二次挥手</strong></p>
+<p>服务端接收到释放请求，通知相应程序,客户端要进行关闭。此时服务端进入CLOSE-WAIT状态，并向客户端发送连接释放的应答</p>
+<p><strong>第三次挥手</strong></p>
+<p>当服务端向客户端发送完所有数据后，开始向客户端发送连接释放请求,此时服务端进行LAST-ACK状态</p>
+<p><strong>第四次挥手</strong></p>
+<p>客户端接收释放请求后，向服务端发送确认应答，客户端进入TIME-WAIT状态。该状态会持续2MSL时间，服务端没有后续数据发送，进入CLOSED状态，撤销TCB。服务端收到确认应答后，也便进入CLOSED状态，撤销TCB。</p>
+<h3 id="挥手生活映射"><a href="#挥手生活映射" class="headerlink" title="挥手生活映射"></a>挥手生活映射</h3><img src="https://adminimg.hyfarsight.com/1643a20296de1ff0" alt="img" style="zoom: 67%;" />
+
+<img src="https://adminimg.hyfarsight.com/1643b1147fbbc5e7" alt="img" style="zoom:67%;" />
+
+
+
+<p>小明(client)挥手(fin)——小亮(sever)伤感地微笑(ack)——小亮(server)挥手(fin)——小明(client)伤感地微笑</p>
+<h1 id="跨域处理"><a href="#跨域处理" class="headerlink" title="跨域处理"></a>跨域处理</h1><h2 id="产生原因-gt-同源策略"><a href="#产生原因-gt-同源策略" class="headerlink" title="产生原因 =&gt; 同源策略"></a>产生原因 =&gt; 同源策略</h2><p>​    <strong>同源策略</strong>是浏览器的一种安全策略，所谓同源是指协议、域名、端口完全相同，只有同源的地址才可以相互通过 AJAX 的方式请求</p>
+<p>同源或者不同源说的是两个地址之间的关系，不同源地址之间请求我们称之为跨域请求;</p>
+<p><strong>是否同源对比</strong></p>
+<p>对比地址: <a href="http://www.demo.com/detail.html">http://www.demo.com/detail.html</a></p>
+<table>
+<thead>
+<tr>
+<th align="left">对比地址</th>
+<th align="center">是否同源</th>
+<th align="center">问题原因</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a href="http://api.demo.com/detail.html">http://api.demo.com/detail.html</a></td>
+<td align="center">不同源</td>
+<td align="center">域名不同</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.demo.com/detail.html">https://www.demo.com/detail.html</a></td>
+<td align="center">不同源</td>
+<td align="center">协议不同</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.demo.com:8080/detail.html">https://www.demo.com:8080/detail.html</a></td>
+<td align="center">不同源</td>
+<td align="center">端口不同</td>
+</tr>
+<tr>
+<td align="left"><a href="https://api.demo.com:8080/detail.html">https://api.demo.com:8080/detail.html</a></td>
+<td align="center">不同源</td>
+<td align="center">域名端口不同</td>
+</tr>
+<tr>
+<td align="left"><a href="https://api.demo.com/detail.html">https://api.demo.com/detail.html</a></td>
+<td align="center">不同源</td>
+<td align="center">协议、域名不同</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.demo.com:8080/detail.html">https://www.demo.com:8080/detail.html</a></td>
+<td align="center">不同源</td>
+<td align="center">端口协议不同</td>
+</tr>
+<tr>
+<td align="left"><a href="http://www.demo.com/index.html">http://www.demo.com/index.html</a></td>
+<td align="center">同源</td>
+<td align="center">只是目录不同</td>
+</tr>
+</tbody></table>
+<h2 id="跨域的解决方案"><a href="#跨域的解决方案" class="headerlink" title="跨域的解决方案"></a>跨域的解决方案</h2><p>前端跨域标识测试: <a href="https://www.hyfarsight.com/api/test/testRequest">https://www.hyfarsight.com/api/test/testRequest</a></p>
+<p><img src="https://adminimg.hyfarsight.com/image-20210409170219611.png" alt="image-20210409170219611"></p>
+<h3 id="CORS"><a href="#CORS" class="headerlink" title="CORS"></a>CORS</h3><p><code>Cross-origin resource sharing</code>跨域资源共享</p>
+<p><code>特点</code></p>
+<p>后端返回的响应头会自动携带 **<code>Access-Control-Allow-Origin</code>**字段</p>
+<p><code>实现流程</code></p>
+<p>​        整个CORS通信过程，都是浏览器自动完成, 对于开发者来说，CORS通信与同源的AJAX通信没有差别,浏览器一旦发现AJAX请求跨源，就会自动添加一些附加的头信息，有时还会多出一次附加的请求，但用户不会有感觉, 只是在被请求的服务端响应的时候添加一个 AccessControl-Allow-Origin 的响应头，表示这个资源是否允许指定域请求.</p>
+<p><code>cors的两种请求方式:</code></p>
+<p><strong>简单请求</strong></p>
+<p>只要同时满足以下两大条件，就属于简单请求</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">（<span class="number">1</span>) 请求方法是以下三种方法之一：</span><br><span class="line"></span><br><span class="line">- HEAD</span><br><span class="line">- GET</span><br><span class="line">- POST</span><br><span class="line"></span><br><span class="line">（<span class="number">2</span>）HTTP的头信息不超出以下几种字段：</span><br><span class="line"></span><br><span class="line">- Accept</span><br><span class="line">- Accept-Language</span><br><span class="line">- Content-Language</span><br><span class="line">- Last-Event-ID</span><br><span class="line">- Content-Type：只限于三个值<span class="string">`application/x-www-form-urlencoded`</span>、<span class="string">`multipart/form-data`</span>、<span class="string">`text/plain`</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>非简单请求</strong></p>
+<p>​        非简单请求是那种对服务器有特殊要求的请求，比如请求方法是<code>PUT</code>或<code>DELETE</code>，或者<code>Content-Type</code>字段的类型是<code>application/json</code></p>
+<p>非简单请求的CORS请求，会在正式通信之前，增加一次HTTP查询请求，称为”预检”请求（preflight）。</p>
+<p>​        浏览器先询问服务器，当前网页所在的域名是否在服务器的许可名单之中，以及可以使用哪些HTTP动词和头信息字段。只有得到肯定答复，浏览器才会发出正式的<code>XMLHttpRequest</code>请求，返回状态码204, 否则就报错,返回状态码405</p>
+<hr>
+<h3 id="JSONP"><a href="#JSONP" class="headerlink" title="JSONP"></a>JSONP</h3><p>JSONP是服务器与客户端跨源通信的常用方法。最大特点就是简单适用，老式浏览器全部支持，服务器改造非常小</p>
+<p><strong>实现原理</strong></p>
+<p>网页通过添加一个<code>&lt;script&gt;</code>元素，向服务器请求JSON数据，利用src属性不受同源策略影响的特点；服务器收到请求后，将数据放在一个指定名字的回调函数里作为形参传回来,前端拿到这个形参,就是本次请求的结果.</p>
+<p><strong>特点</strong></p>
+<ul>
+<li>只接受GET请求的形式;</li>
+<li>需要与后端进行请求参数的约定</li>
+<li>有参数数据大小的限制</li>
+<li>不是一个真正的ajax请求</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> scriptNode = <span class="built_in">document</span>.createElement(<span class="string">&#x27;script&#x27;</span>)</span><br><span class="line">scriptNode.src = <span class="string">&#x27;http://localhost:3000/?callback=responseFn&#x27;</span>;</span><br><span class="line"><span class="built_in">document</span>.body.append(scriptNode)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">responseFn</span>(<span class="params">res</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(res)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="proxy代理"><a href="#proxy代理" class="headerlink" title="proxy代理"></a>proxy代理</h3><p><strong>实现方法</strong></p>
+<p>本地开启代理服务器，前端代码在代理环境下进行开发，请求由代理服务器进行转发，服务器与服务器之间不涉及到跨域问题</p>
+<p><strong>常见的代理方式</strong></p>
+<ul>
+<li>liveServer =&gt; IDE的三方插件</li>
+<li>webpack devServer =&gt;  前端工程化构建工具</li>
+<li>nginx  =&gt;   nginx服务器代理</li>
+</ul>
+<p><strong>liveServer代理服务配置方法</strong></p>
+<ol>
+<li>visual studio code 安装live-server插件</li>
+<li>在设置中进行找到liveServer的配置项</li>
+<li>添加proxy代理设置</li>
+<li>选项信息: enable =&gt; 是否可使用代理，选择 true ;  baseUri =&gt;  当前项目中的需要代理地址的基础路径   =&gt; proxyUri =&gt; 需要代理到哪一个服务器</li>
+<li>选择完成之后，重新启动liveServer  实现代理成功</li>
+</ol>
+<p><img src="https://adminimg.hyfarsight.com/image-20210410112817548.png" alt="image-20210410112817548"></p>
+<h3 id="iframe跨域"><a href="#iframe跨域" class="headerlink" title="iframe跨域"></a>iframe跨域</h3><p><strong>postMessage</strong></p>
+<p>该方法为html5扩展的API，允许来自不同源的脚本采用异步方式进行有限的通信，可以实现跨文本档、多窗口、跨域消息传递；</p>
+<p><strong>实现流程</strong></p>
+<ul>
+<li><p><strong>父页面像子页面进行数据的传递</strong></p>
+<p>父页面找到iframe标签，为ifrme的window(iframe.contentWindow获取)定义绑定postMessage事件(必须保证页面全部加载完成之后使用该事件)</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">iframe.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            iframe.contentWindow.postMessage(<span class="string">&#x27;父页面传递给子页面的用户信息&#x27;</span>, <span class="string">&#x27;http://127.0.0.1:5501/iframe.html&#x27;</span>)</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<p>子页面window进行message事件的监听，通过回调函数获取父页面传递的信息</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">window.addEventListener(&#x27;message&#x27;, function(res) &#123;</span><br><span class="line">           parentTxt.innerHTML = res.data</span><br><span class="line">       &#125;)</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>子页面像父页面进行数据的传递</strong></p>
+<ol>
+<li><p>子页面获取父页面的window(<code>window.parent</code>获取父级window)，进行postMessage事件注册</p>
+<p>子页面</p>
+</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 子页面的点击事件触发像父页面进行发送数据的事件</span></span><br><span class="line">      closeBtn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">          <span class="comment">//window.parent 获取父级的window</span></span><br><span class="line">          <span class="built_in">window</span>.parent.postMessage(<span class="string">&quot;关闭ifrmae页面&quot;</span>, <span class="string">&#x27;http://127.0.0.1:5500/home.html&#x27;</span>)</span><br><span class="line">      &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>​              父页面</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 进行message事件的监听处理</span></span><br><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">&#x27;message&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</span><br><span class="line">            frameContainer.style.display = <span class="string">&#x27;none&#x27;</span></span><br><span class="line">        &#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="简单测试服务器搭建"><a href="#简单测试服务器搭建" class="headerlink" title="简单测试服务器搭建"></a>简单测试服务器搭建</h1><p>本地下载nodeJS  <a href="http://nodejs.cn/download/">http://nodejs.cn/download/</a></p>
+<ol>
+<li>安装nodeJS，一路next</li>
+<li>完成之后，打开终端，输入 node -v    显示node版本号即可 </li>
+<li>打开后端文件夹，在后端文件夹的目录下进行终端的打开操作  文件夹目录下面执行cmd，调用终端  执行npm install</li>
+<li>出现提示信息： “服务器创建成功，你现在本地已经开启了3000的端口”  本地服务器开启成功  </li>
+</ol>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>网络</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JS事件</title>
+    <url>/2021/11/06/%E4%BA%8B%E4%BB%B6/</url>
+    <content><![CDATA[<h1 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h1><p>ie6，没有 flex 定位</p>
+<p>事件传播的三个阶段执行顺序：Capturing &gt; Target &gt; Bubbling 捕获 目标 冒泡</p>
+<h2 id="事件绑定函数"><a href="#事件绑定函数" class="headerlink" title="事件绑定函数"></a>事件绑定函数</h2><p>1.ele.onxxx = function (event) {}<br>兼容性很好，但是一个元素只能绑定一个处理程序<br>基本等同于写在 HTML 行间上<br>2.ele.addEventListener(type, fn, false);<br>IE9 以下不兼容，可以为一个事件绑定多个处理程序<br>同一个函数只能绑定一次<br>3.ele.attachEvent(‘on’ + type, fn);<br>IE 独有，一个事件同样可以绑定多个处理程序</p>
+<p>eg: 行间不用写 function</p>
+<pre><code>一旦事件出现在了函数里面，就要考虑是否出现闭包，考虑要不要用立即执行函数解决。
+</code></pre>
+<h2 id="事件处理程序的运行环境"><a href="#事件处理程序的运行环境" class="headerlink" title="事件处理程序的运行环境"></a>事件处理程序的运行环境</h2><p>1.ele.onxxx = function (event) {}<br>程序 this 指向是 dom 元素本身<br>2.obj.addEventListener(type, fn, false);<br>程序 this 指向是 dom 元素本身<br>3.obj.attachEvent(‘on’ + type, fn);<br>程序 this 指向 window 4.封装兼容性的 addEvent(elem, type, handle);方法</p>
+<h2 id="解除事件处理程序"><a href="#解除事件处理程序" class="headerlink" title="解除事件处理程序"></a>解除事件处理程序</h2><ol>
+<li>ele.onclick = false/‘’/null;</li>
+<li>ele.removeEventListener(type, fn, false);</li>
+<li>ele.detachEvent(‘on’ + type, fn);<br><strong>注:若绑定匿名函数，则无法解除</strong></li>
+</ol>
+<h2 id="事件处理模型-—-事件冒泡、捕获"><a href="#事件处理模型-—-事件冒泡、捕获" class="headerlink" title="事件处理模型 — 事件冒泡、捕获"></a>事件处理模型 — 事件冒泡、捕获</h2><ul>
+<li>事件冒泡：<br>结构上（非视觉上）嵌套关系的元素，会存在事件冒泡的功能，即同一事件，自子元素冒泡向父元素。（自底向上）</li>
+<li>事件捕获：<br>结构上（非视觉上）嵌套关系的元素，会存在事件捕获的功能，即同一事件，自父元素捕获至子元素（事件源元素）。（自底向上）<br>IE 没有捕获事件</li>
+</ul>
+<p>但是：ie 的两个事件捕获函数：<br>div.setCapture();div.releaseCapture();</p>
+<p>触发顺序，先捕获，后冒泡,</p>
+<p>事件执行顺序是先绑定先执行</p>
+<p>focus，blur，change，submit，reset，select 等事件不冒泡</p>
+<h2 id="取消冒泡和阻止默认事件"><a href="#取消冒泡和阻止默认事件" class="headerlink" title="取消冒泡和阻止默认事件"></a>取消冒泡和阻止默认事件</h2><ul>
+<li>取消冒泡：<br>W3C 标准 event.stopPropagation();但不支持 ie9 以下版本<br>IE 独有 event.cancelBubble = true;<br>封装取消冒泡的函数 stopBubble(event)</li>
+<li>阻止默认事件:<br>默认事件 — 表单提交，a 标签跳转，右键菜单等<br>1.return false; 以对象属性的方式注册的事件才生效<br>2.event.preventDefault(); W3C 标注，IE9 以下不兼容<br>3.event.returnValue = false; 兼容 IE<br>封装阻止默认事件的函数 cancelHandler(event);<br>取消 a 标签默认事件：<a href="javascript:void(fasle)"></a></li>
+</ul>
+<h2 id="事件对象"><a href="#事件对象" class="headerlink" title="事件对象"></a>事件对象</h2><ul>
+<li>event || window.event 用于 IE</li>
+<li>事件源对象:<br>event.target 火狐独有的<br>event.srcElement ie 独有的<br>这俩 chrome 都有</li>
+<li>兼容性写法：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> ul = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&quot;ul&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">ul.onclick = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="comment">//非ie浏览器会将事件对象打包传到参数里。ie会记录在window.event</span></span><br><span class="line">  <span class="keyword">var</span> event = e || <span class="built_in">window</span>.event;</span><br><span class="line">  <span class="keyword">var</span> target = event.target || event.srcElement;</span><br><span class="line">  <span class="built_in">console</span>.log(target.innerText);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>非 ie 浏览器会将事件对象打包传到参数里。ie 会记录在 window.event</strong></p>
+<h2 id="事件委托"><a href="#事件委托" class="headerlink" title="事件委托"></a>事件委托</h2><p>利用事件冒泡，和事件源对象进行处理</p>
+<ul>
+<li>优点：<ol>
+<li>性能 不需要循环所有的元素一个个绑定事件</li>
+<li>灵活 当有新的子元素时不需要重新绑定事件</li>
+</ol>
+</li>
+</ul>
+<h2 id="事件分类"><a href="#事件分类" class="headerlink" title="事件分类"></a>事件分类</h2><ul>
+<li><p>鼠标事件<br>click、mousedown、mousemove、mouseup、contextmenu、mouseover、mouseout、 mouseenter mouseleave</p>
+</li>
+<li><p>用 button 来区分鼠标的按键，0/1/2</p>
+</li>
+<li><p>DOM3 标准规定:<br>click 事件只能监听左键,只能通过 mousedown 和 mouseu p 来判断鼠标键<br>如何解决 mousedown 和 click 的冲突</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>JS时间线</title>
+    <url>/2021/11/06/%E6%97%B6%E9%97%B4%E7%BA%BF/</url>
+    <content><![CDATA[<h1 id="js-时间线"><a href="#js-时间线" class="headerlink" title="js 时间线"></a>js 时间线</h1><p>1、创建 Document 对象，开始解析 web 页面。解析 HTML 元素和他们的文本内容后添加 Element 对象和 Text 节点到文档中。这个阶段 document.readyState = ‘loading’。</p>
+<p>2、遇到 link 外部 css，创建线程加载，并继续解析文档。</p>
+<p>3、遇到 script 外部 js，并且没有设置 async、defer，浏览器加载，并阻塞，等待 js 加载完成并执行该脚本，然后继续解析文档。</p>
+<p>4、遇到 script 外部 js，并且设置有 async、defer，浏览器创建线程加载，并继续解析文档。</p>
+<p>对于 async 属性的脚本，脚本加载完成后立即执行。（**异步禁止使用 document.write()**）</p>
+<p>5、遇到 img 等，先正常解析 dom 结构，然后浏览器<strong>异步加载 src</strong>，并继续解析文档。</p>
+<p>6、当文档解析完成，document.readyState = ‘interactive’。</p>
+<p>7、文档解析完成后，所有设置有 defer 的脚本会按照顺序执行。（注意与 async 的不同,但同样禁止使用 document.write()）;</p>
+<p>8、document 对象触发 DOMContentLoaded 事件，这也标志着程序执行从同步脚本执行阶段，转化为事件驱动阶段。</p>
+<p>9、当所有 async 的脚本加载完成并执行后、img 等加载完成后，document.readyState = ‘complete’，window 对象触发 load 事件。</p>
+<p>10、从此，以异步响应方式处理用户输入、网络事件等。</p>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>RegExp-正则表达式</title>
+    <url>/2021/11/06/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</url>
+    <content><![CDATA[<p>正则表达式式一种描述文本的对象。</p>
+<h2 id="定义正则表达式"><a href="#定义正则表达式" class="headerlink" title="定义正则表达式"></a>定义正则表达式</h2><ol>
+<li>字面量：var reg = /\w$/;</li>
+<li>构造函数 var reg = new RegExp(“s$”);</li>
+</ol>
+<h3 id="标志"><a href="#标志" class="headerlink" title="标志"></a>标志</h3><ul>
+<li>g 全局匹配</li>
+<li>i 不区分大小写</li>
+<li>m 多行匹配</li>
+<li>s</li>
+<li>u 没有特殊原因应该都写</li>
+<li>y</li>
+</ul>
+<h3 id="字面量字符"><a href="#字面量字符" class="headerlink" title="字面量字符"></a>字面量字符</h3><table>
+<thead>
+<tr>
+<th>字符</th>
+<th>匹配目标</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>字母数字字符</td>
+<td>自身</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>制表符(\u0009)</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>换行符(\u000A)</td>
+</tr>
+<tr>
+<td>\v</td>
+<td>垂直制表符(\u000B)</td>
+</tr>
+<tr>
+<td>\f</td>
+<td>进纸符(\u000c)</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>回车 符(\u000D)</td>
+</tr>
+<tr>
+<td>\0</td>
+<td>NUL 字符(\u0000)</td>
+</tr>
+</tbody></table>
+<h3 id="字符类"><a href="#字符类" class="headerlink" title="字符类"></a>字符类</h3><table>
+<thead>
+<tr>
+<th>字符</th>
+<th>匹配目标</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>[…]</td>
+<td>方括号 中任意字符</td>
+</tr>
+<tr>
+<td>^</td>
+<td>取反</td>
+</tr>
+<tr>
+<td>\w</td>
+<td>所有字母 [a-zA-Z0-9]</td>
+</tr>
+<tr>
+<td>\W</td>
+<td>非所有字母</td>
+</tr>
+<tr>
+<td>\s</td>
+<td>空白字符</td>
+</tr>
+<tr>
+<td>\S</td>
+<td>非空白字符</td>
+</tr>
+<tr>
+<td>\d</td>
+<td>数字 [0-9]</td>
+</tr>
+<tr>
+<td>\D</td>
+<td>非数字</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>退格字面值（特例）</td>
+</tr>
+<tr>
+<td>.</td>
+<td>除了换行符和回车符</td>
+</tr>
+</tbody></table>
+<h3 id="量词"><a href="#量词" class="headerlink" title="量词"></a>量词</h3><table>
+<thead>
+<tr>
+<th>字符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>?</td>
+<td>匹配前项零次或一次，等同{0，1}</td>
+</tr>
+<tr>
+<td>+</td>
+<td>匹配前项一次或多次，等同{1，}</td>
+</tr>
+<tr>
+<td>*</td>
+<td>匹配前项零次 或多次，等同{0，}</td>
+</tr>
+<tr>
+<td>{n}</td>
+<td>匹配前项恰好 n 次</td>
+</tr>
+<tr>
+<td>{n,}</td>
+<td>匹配前项 n 次 或多次</td>
+</tr>
+<tr>
+<td>{n,m}</td>
+<td>匹配前项最少 n 次，但不超过 m 次</td>
+</tr>
+</tbody></table>
+<h3 id="贪婪和非贪婪重复"><a href="#贪婪和非贪婪重复" class="headerlink" title="贪婪和非贪婪重复"></a>贪婪和非贪婪重复</h3><p>贪婪的：尽可能多的匹配重复字符，允许正则表达式剩余的部分继续匹配。</p>
+<p>非贪婪的：在重复字符后面加个？就可以了。</p>
+<p>但有时候没有达到预期效果，例如：</p>
+<p>/a+b/ 与 /a+?b/去匹配“aaab”结果都是“aaab”。</p>
+<h2 id="任选、分组引用"><a href="#任选、分组引用" class="headerlink" title="任选、分组引用"></a>任选、分组引用</h2><table>
+<thead>
+<tr>
+<th>字符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>|</td>
+<td>任选 或</td>
+</tr>
+<tr>
+<td>(…)</td>
+<td>分组：分成一个单元，方便使用引号和 *、+、？、|。</td>
+</tr>
+<tr>
+<td>(?:…)</td>
+<td>仅仅分组为一个单元，但 不记住分组匹配 的 字符</td>
+</tr>
+<tr>
+<td>\数字</td>
+<td>匹配第 n 个分组，子表达式分组是按照左括号来计算的。（?:开头的不算）</td>
+</tr>
+</tbody></table>
+<h3 id="任选"><a href="#任选" class="headerlink" title="任选 |"></a>任选 |</h3><ul>
+<li>var reg = /ab|cd|ef|;</li>
+</ul>
+<h3 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h3><p>小括号允许我们重复多个字符，中括号表示范围内选择，大括号表示重复次数。</p>
+<table>
+<thead>
+<tr>
+<th>种类</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>分组+量词</td>
+<td>alert(/(dog){2}/.test(“dogdog”))//true</td>
+</tr>
+<tr>
+<td>分组+范围</td>
+<td>alert(“baddad”.match(/([bd]ad?)*/))//baddad,dad</td>
+</tr>
+<tr>
+<td>分组+分组</td>
+<td>alert(“mon and dad”.match(/(mon( and dad)?)/))//mon and dad,mon and dad, and dad</td>
+</tr>
+</tbody></table>
+<h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><p>在圆括号分组的表达式中 ，回引子表达式。</p>
+<p>格式： \数字</p>
+<p>注意：</p>
+<ul>
+<li>由于子表达式可能会嵌套，所以它们的位置是按照左括号来计算的。</li>
+<li>在字符中使用引用是不合法的 ，因此不能这么写/<a href="%5E%5C1">[‘ “]</a>*\1/</li>
+</ul>
+<p>例子：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 开头不一定都是单引号或双引号：/[&#x27;&quot;][^&#x27;&quot;]*[&#x27;&quot;]/</span></span><br><span class="line"><span class="comment">//修改:/[&#x27;&quot;][^&#x27;&quot;]*\1/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> color = <span class="string">&quot;#990000&quot;</span>;</span><br><span class="line"><span class="regexp">/#(\d+)/</span>.test(color);</span><br><span class="line">alert(<span class="built_in">RegExp</span>.$1); <span class="comment">//990000</span></span><br><span class="line"></span><br><span class="line">alert(<span class="regexp">/(dog)\1/</span>.test(<span class="string">&quot;dogdog&quot;</span>)); <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> num = <span class="string">&quot;1234 5678&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> newNum = num.replace(<span class="regexp">/(\d&#123;4&#125;) (\d&#123;4&#125;)/</span>, <span class="string">&quot;$2 $1&quot;</span>);</span><br><span class="line">alert(newNum);</span><br></pre></td></tr></table></figure>
+
+<h3 id="正向断言"><a href="#正向断言" class="headerlink" title="正向断言"></a>正向断言</h3><p>正向前瞻用来检查接下来的出现的是不是某个特定的字符集。而负向前瞻则是检查接下来的不应该出现的特定字符串集。零宽断言是不会被捕获的。</p>
+<table>
+<thead>
+<tr>
+<th>零宽断言</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>正则</td>
+<td>名称</td>
+<td>描述</td>
+</tr>
+<tr>
+<td>(?=exp)</td>
+<td>正向前瞻</td>
+<td>要求后面的字符匹配 exp，（但匹配结果不包含与值匹配的字符）</td>
+</tr>
+<tr>
+<td>(?!exp)</td>
+<td>负向前瞻</td>
+<td>要求后面的字符不匹配 exp</td>
+</tr>
+<tr>
+<td>(?&lt;=exp)</td>
+<td>正向后瞻</td>
+<td>匹配 exp 后面的位置不支持</td>
+</tr>
+<tr>
+<td>(?&lt;!exp)</td>
+<td>负向后瞻</td>
+<td>匹配前面不是 exp 的位置不支持</td>
+</tr>
+</tbody></table>
+<h3 id="边界锚点"><a href="#边界锚点" class="headerlink" title="边界锚点"></a>边界锚点</h3><table>
+<thead>
+<tr>
+<th>正则</th>
+<th>名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>^</td>
+<td>开头</td>
+<td>注意不能紧跟于左中括号的后面</td>
+</tr>
+<tr>
+<td>$</td>
+<td>结尾</td>
+<td></td>
+</tr>
+<tr>
+<td>\b</td>
+<td>单词边界</td>
+<td>指[a-zA-Z_0-9]之外的字符， 注意[\b]匹配推个字符</td>
+</tr>
+<tr>
+<td>\B</td>
+<td>非单词边界</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>题目，设计一个字符串原型方法，实现首字母大写！</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="string">&quot;ruby&quot;</span>;</span><br><span class="line"><span class="built_in">String</span>.prototype.capitalize = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">this</span>.replace(<span class="regexp">/^\w/</span>, <span class="function"><span class="keyword">function</span> (<span class="params">s</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> s.toUpperCase();</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br><span class="line">alert(a.capitalize()); <span class="comment">//Ruby</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="模式匹配的字符串方法"><a href="#模式匹配的字符串方法" class="headerlink" title="模式匹配的字符串方法"></a>模式匹配的字符串方法</h2><h3 id="search"><a href="#search" class="headerlink" title="search()"></a>search()</h3><ul>
+<li><p>接收一个正则表达式参数，返回第一个匹配项的位置，没有返回-1</p>
+</li>
+<li><p>不支持全局</p>
+</li>
+</ul>
+<h3 id="replace"><a href="#replace" class="headerlink" title="replace()"></a>replace()</h3><ul>
+<li>执行搜索替换功能</li>
+<li>表达式作为第一个参数，替换字符串作为第二个参数</li>
+<li>可以配合$使用</li>
+</ul>
+<h3 id="match"><a href="#match" class="headerlink" title="match()"></a>match()</h3><ul>
+<li>接收一个正则表达式参数，返回结果是数组。</li>
+<li>执行非全局搜索时，返回的数组元素不同，第一个是匹配的字符串，剩下的是子表达式分组所匹配的字符串，a[1]相当于$1,a[2]相当于 $2，以此类推。</li>
+</ul>
+<h3 id="split"><a href="#split" class="headerlink" title="split()"></a>split()</h3><ul>
+<li>接收一个正则表达式参数，使用传入的参数作为分隔符。</li>
+</ul>
+<h3 id="match-1"><a href="#match-1" class="headerlink" title="match()"></a>match()</h3><h2 id="RegExp-类"><a href="#RegExp-类" class="headerlink" title="RegExp 类"></a>RegExp 类</h2><h3 id="RegExp-属性"><a href="#RegExp-属性" class="headerlink" title="RegExp 属性"></a>RegExp 属性</h3><ul>
+<li>lastIndex 可读可写</li>
+<li>global g</li>
+<li>ignoreCase i</li>
+<li>等等</li>
+</ul>
+<h3 id="RegExp"><a href="#RegExp" class="headerlink" title="RegExp()"></a>RegExp()</h3><ul>
+<li><p>接收一个或两个字符串参数。第一个参数可以是字符串，也可以时一个 RegExp 对象，这样可以复制已有的表达式，并修改它的标志</p>
+</li>
+<li><p>构造函数，用于动态创建正则表达式。有些正则表达式字面量语法无法创建</p>
+</li>
+<li><p>要搜索用户输入的字符串，必须用 RegExp()在运行时创建正则表示式</p>
+</li>
+</ul>
+<h3 id="test"><a href="#test" class="headerlink" title="test()"></a>test()</h3><ul>
+<li>有 匹配项返回 true，没有就 false</li>
+</ul>
+<h3 id="exec"><a href="#exec" class="headerlink" title="exec()"></a>exec()</h3><ul>
+<li><p>接收 一个字符串参数，有匹配项就 返回一个数组，没有就返回 null</p>
+</li>
+<li><p>返回的数组，index 记录匹配的起始位置，input 属性包含搜索的目标字符串。</p>
+</li>
+<li><p>有 g 和没 g 返回数组相同，和 match()不同。</p>
+</li>
+</ul>
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2>]]></content>
+      <categories>
+        <category>js正则表达式</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>Markdown</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaScript 权威指南</title>
+    <url>/2021/11/06/%E7%8A%80%E7%89%9B%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="JavaScript-权威指南"><a href="#JavaScript-权威指南" class="headerlink" title="JavaScript 权威指南"></a>JavaScript 权威指南</h1><h2 id="第一章-JavaScript-简介"><a href="#第一章-JavaScript-简介" class="headerlink" title="第一章 JavaScript 简介"></a>第一章 JavaScript 简介</h2><h2 id="第二章-词法结构"><a href="#第二章-词法结构" class="headerlink" title="第二章 词法结构"></a>第二章 词法结构</h2><h2 id="第三章-类型、值和变量"><a href="#第三章-类型、值和变量" class="headerlink" title="第三章 类型、值和变量"></a>第三章 类型、值和变量</h2><h2 id="第四章-表达式与操作符"><a href="#第四章-表达式与操作符" class="headerlink" title="第四章 表达式与操作符"></a>第四章 表达式与操作符</h2><h2 id="第五章-语句"><a href="#第五章-语句" class="headerlink" title="第五章 语句"></a>第五章 语句</h2><h2 id="第六章-对象"><a href="#第六章-对象" class="headerlink" title="第六章 对象"></a>第六章 对象</h2><ol>
+<li><p>对象简介</p>
+</li>
+<li><p>创建对象</p>
+<ol>
+<li><p>对象字面量</p>
+<ul>
+<li><p><code>let empty = &#123;&#125;</code></p>
+</li>
+<li><p><code>let point = &#123; x:0; y: 0&#125;</code></p>
+</li>
+<li><p>对象字面量最后一个属性后面有逗号是合法的</p>
+</li>
+</ul>
+</li>
+<li><p>new 关键字</p>
+<ul>
+<li><code>let o = new Object();</code></li>
+<li>以这个方式使用的函数被称为<strong>构造函数</strong></li>
+</ul>
+</li>
+<li><p>Object.Create()</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> o1 = <span class="built_in">Object</span>.Create(&#123; <span class="attr">x</span>: <span class="number">1</span>, <span class="attr">y</span>: <span class="number">2</span> &#125;); <span class="comment">//第一个参数作为新对象的原型</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> o2 = <span class="built_in">Object</span>.Create(<span class="literal">null</span>); <span class="comment">//null为参数，创建一个没用原型的的新对象</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> o3 = <span class="built_in">Object</span>.Create(<span class="built_in">Object</span>.prototype); <span class="comment">//创建普通空对象</span></span><br></pre></td></tr></table></figure></li>
+<li><p>原型</p>
+<ul>
+<li>几乎所有的对象都有原型，而只有少数对象有 prototype 属性</li>
+<li>Object.prototype 没有原型对象，它不继承任何属性；</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>查询和设置属性</p>
+</li>
+<li><p>删除属性</p>
+<ol>
+<li><code>delete book.author</code></li>
+</ol>
+</li>
+<li><p>测试属性</p>
+</li>
+<li><p>枚举属性</p>
+</li>
+<li><p>拓展对象</p>
+</li>
+<li><p>序列化对象</p>
+</li>
+<li><p>对象方法</p>
+</li>
+<li><p>对象字面量拓展语法</p>
+</li>
+<li><p>小结</p>
+</li>
+</ol>
+<h2 id="第七章-数组"><a href="#第七章-数组" class="headerlink" title="第七章 数组"></a>第七章 数组</h2><h2 id="第八章-函数"><a href="#第八章-函数" class="headerlink" title="第八章 函数"></a>第八章 函数</h2><h2 id="第九章-类"><a href="#第九章-类" class="headerlink" title="第九章 类"></a>第九章 类</h2><h2 id="第十章-模块"><a href="#第十章-模块" class="headerlink" title="第十章 模块"></a>第十章 模块</h2><h2 id="第十一章-JavaScrip-标准库"><a href="#第十一章-JavaScrip-标准库" class="headerlink" title="第十一章 JavaScrip 标准库"></a>第十一章 JavaScrip 标准库</h2><h3 id="11-3-正则表达式与模式匹配"><a href="#11-3-正则表达式与模式匹配" class="headerlink" title="11.3 正则表达式与模式匹配"></a>11.3 正则表达式与模式匹配</h3><h4 id="RegExp-正则表达式"><a href="#RegExp-正则表达式" class="headerlink" title="RegExp-正则表达式"></a>RegExp-正则表达式</h4><p>正则表达式式一种描述文本的对象。</p>
+<h5 id="定义正则表达式"><a href="#定义正则表达式" class="headerlink" title="定义正则表达式"></a>定义正则表达式</h5><ol>
+<li>字面量：var reg = /\w$/;</li>
+<li>构造函数 var reg = new RegExp(“s$”);</li>
+</ol>
+<h6 id="标志"><a href="#标志" class="headerlink" title="标志"></a>标志</h6><ul>
+<li>g 全局匹配</li>
+<li>i 不区分大小写</li>
+<li>m 多行匹配</li>
+<li>s</li>
+<li>u 没有特殊原因应该都写</li>
+<li>y</li>
+</ul>
+<h6 id="字面量字符"><a href="#字面量字符" class="headerlink" title="字面量字符"></a>字面量字符</h6><table>
+<thead>
+<tr>
+<th>字符</th>
+<th>匹配目标</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>字母数字字符</td>
+<td>自身</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>制表符(\u0009)</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>换行符(\u000A)</td>
+</tr>
+<tr>
+<td>\v</td>
+<td>垂直制表符(\u000B)</td>
+</tr>
+<tr>
+<td>\f</td>
+<td>进纸符(\u000c)</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>回车 符(\u000D)</td>
+</tr>
+<tr>
+<td>\0</td>
+<td>NUL 字符(\u0000)</td>
+</tr>
+</tbody></table>
+<h6 id="字符类"><a href="#字符类" class="headerlink" title="字符类"></a>字符类</h6><table>
+<thead>
+<tr>
+<th>字符</th>
+<th>匹配目标</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>[…]</td>
+<td>方括号 中任意字符</td>
+</tr>
+<tr>
+<td>^</td>
+<td>取反</td>
+</tr>
+<tr>
+<td>\w</td>
+<td>所有字母 [a-zA-Z0-9]</td>
+</tr>
+<tr>
+<td>\W</td>
+<td>非所有字母</td>
+</tr>
+<tr>
+<td>\s</td>
+<td>空白字符</td>
+</tr>
+<tr>
+<td>\S</td>
+<td>非空白字符</td>
+</tr>
+<tr>
+<td>\d</td>
+<td>数字 [0-9]</td>
+</tr>
+<tr>
+<td>\D</td>
+<td>非数字</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>退格字面值（特例）</td>
+</tr>
+<tr>
+<td>.</td>
+<td>除了换行符和回车符</td>
+</tr>
+</tbody></table>
+<h6 id="量词"><a href="#量词" class="headerlink" title="量词"></a>量词</h6><table>
+<thead>
+<tr>
+<th>字符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>?</td>
+<td>匹配前项零次或一次，等同{0，1}</td>
+</tr>
+<tr>
+<td>+</td>
+<td>匹配前项一次或多次，等同{1，}</td>
+</tr>
+<tr>
+<td>*</td>
+<td>匹配前项零次 或多次，等同{0，}</td>
+</tr>
+<tr>
+<td>{n}</td>
+<td>匹配前项恰好 n 次</td>
+</tr>
+<tr>
+<td>{n,}</td>
+<td>匹配前项 n 次 或多次</td>
+</tr>
+<tr>
+<td>{n,m}</td>
+<td>匹配前项最少 n 次，但不超过 m 次</td>
+</tr>
+</tbody></table>
+<h6 id="贪婪和非贪婪重复"><a href="#贪婪和非贪婪重复" class="headerlink" title="贪婪和非贪婪重复"></a>贪婪和非贪婪重复</h6><p>贪婪的：尽可能多的匹配重复字符，允许正则表达式剩余的部分继续匹配。</p>
+<p>非贪婪的：在重复字符后面加个？就可以了。</p>
+<p>但有时候没有达到预期效果，例如：</p>
+<p>/a+b/ 与 /a+?b/去匹配“aaab”结果都是“aaab”。</p>
+<h5 id="任选、分组引用"><a href="#任选、分组引用" class="headerlink" title="任选、分组引用"></a>任选、分组引用</h5><table>
+<thead>
+<tr>
+<th>字符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>|</td>
+<td>任选 或</td>
+</tr>
+<tr>
+<td>(…)</td>
+<td>分组：分成一个单元，方便使用引号和 *、+、？、|。</td>
+</tr>
+<tr>
+<td>(?:…)</td>
+<td>仅仅分组为一个单元，但 不记住分组匹配 的 字符</td>
+</tr>
+<tr>
+<td>\数字</td>
+<td>匹配第 n 个分组，子表达式分组是按照左括号来计算的。（?:开头的不算）</td>
+</tr>
+</tbody></table>
+<h6 id="任选"><a href="#任选" class="headerlink" title="任选 |"></a>任选 |</h6><ul>
+<li>var reg = /ab|cd|ef|;</li>
+</ul>
+<h6 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h6><p>小括号允许我们重复多个字符，中括号表示范围内选择，大括号表示重复次数。</p>
+<table>
+<thead>
+<tr>
+<th>种类</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>分组+量词</td>
+<td>alert(/(dog){2}/.test(“dogdog”))//true</td>
+</tr>
+<tr>
+<td>分组+范围</td>
+<td>alert(“baddad”.match(/([bd]ad?)*/))//baddad,dad</td>
+</tr>
+<tr>
+<td>分组+分组</td>
+<td>alert(“mon and dad”.match(/(mon( and dad)?)/))//mon and dad,mon and dad, and dad</td>
+</tr>
+</tbody></table>
+<h6 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h6><p>在圆括号分组的表达式中 ，回引子表达式。</p>
+<p>格式： \数字</p>
+<p>注意：</p>
+<ul>
+<li>由于子表达式可能会嵌套，所以它们的位置是按照左括号来计算的。</li>
+<li>在字符中使用引用是不合法的 ，因此不能这么写/<a href="%5E%5C1">[‘ “]</a>*\1/</li>
+</ul>
+<p>例子：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 开头不一定都是单引号或双引号：/[&#x27;&quot;][^&#x27;&quot;]*[&#x27;&quot;]/</span></span><br><span class="line"><span class="comment">//修改:/[&#x27;&quot;][^&#x27;&quot;]*\1/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> color = <span class="string">&quot;#990000&quot;</span>;</span><br><span class="line"><span class="regexp">/#(\d+)/</span>.test(color);</span><br><span class="line">alert(<span class="built_in">RegExp</span>.$1); <span class="comment">//990000</span></span><br><span class="line"></span><br><span class="line">alert(<span class="regexp">/(dog)\1/</span>.test(<span class="string">&quot;dogdog&quot;</span>)); <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> num = <span class="string">&quot;1234 5678&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> newNum = num.replace(<span class="regexp">/(\d&#123;4&#125;) (\d&#123;4&#125;)/</span>, <span class="string">&quot;$2 $1&quot;</span>);</span><br><span class="line">alert(newNum);</span><br></pre></td></tr></table></figure>
+
+<h6 id="正向断言"><a href="#正向断言" class="headerlink" title="正向断言"></a>正向断言</h6><p>正向前瞻用来检查接下来的出现的是不是某个特定的字符集。而负向前瞻则是检查接下来的不应该出现的特定字符串集。零宽断言是不会被捕获的。</p>
+<table>
+<thead>
+<tr>
+<th>零宽断言</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>正则</td>
+<td>名称</td>
+<td>描述</td>
+</tr>
+<tr>
+<td>(?=exp)</td>
+<td>正向前瞻</td>
+<td>要求后面的字符匹配 exp，（但匹配结果不包含与值匹配的字符）</td>
+</tr>
+<tr>
+<td>(?!exp)</td>
+<td>负向前瞻</td>
+<td>要求后面的字符不匹配 exp</td>
+</tr>
+<tr>
+<td>(?&lt;=exp)</td>
+<td>正向后瞻</td>
+<td>匹配 exp 后面的位置不支持</td>
+</tr>
+<tr>
+<td>(?&lt;!exp)</td>
+<td>负向后瞻</td>
+<td>匹配前面不是 exp 的位置不支持</td>
+</tr>
+</tbody></table>
+<h6 id="边界锚点"><a href="#边界锚点" class="headerlink" title="边界锚点"></a>边界锚点</h6><table>
+<thead>
+<tr>
+<th>正则</th>
+<th>名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>^</td>
+<td>开头</td>
+<td>注意不能紧跟于左中括号的后面</td>
+</tr>
+<tr>
+<td>$</td>
+<td>结尾</td>
+<td></td>
+</tr>
+<tr>
+<td>\b</td>
+<td>单词边界</td>
+<td>指[a-zA-Z_0-9]之外的字符， 注意[\b]匹配推个字符</td>
+</tr>
+<tr>
+<td>\B</td>
+<td>非单词边界</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>题目，设计一个字符串原型方法，实现首字母大写！</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="string">&quot;ruby&quot;</span>;</span><br><span class="line"><span class="built_in">String</span>.prototype.capitalize = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">this</span>.replace(<span class="regexp">/^\w/</span>, <span class="function"><span class="keyword">function</span> (<span class="params">s</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> s.toUpperCase();</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br><span class="line">alert(a.capitalize()); <span class="comment">//Ruby</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="模式匹配的字符串方法"><a href="#模式匹配的字符串方法" class="headerlink" title="模式匹配的字符串方法"></a>模式匹配的字符串方法</h5><h6 id="search"><a href="#search" class="headerlink" title="search()"></a>search()</h6><ul>
+<li><p>接收一个正则表达式参数，返回第一个匹配项的位置，没有返回-1</p>
+</li>
+<li><p>不支持全局</p>
+</li>
+</ul>
+<h6 id="replace"><a href="#replace" class="headerlink" title="replace()"></a>replace()</h6><ul>
+<li>执行搜索替换功能</li>
+<li>表达式作为第一个参数，替换字符串作为第二个参数</li>
+<li>可以配合$使用</li>
+</ul>
+<h6 id="match"><a href="#match" class="headerlink" title="match()"></a>match()</h6><ul>
+<li>接收一个正则表达式参数，返回结果是数组。</li>
+<li>执行非全局搜索时，返回的数组元素不同，第一个是匹配的字符串，剩下的是子表达式分组所匹配的字符串，a[1]相当于$1,a[2]相当于 $2，以此类推。</li>
+</ul>
+<h6 id="split"><a href="#split" class="headerlink" title="split()"></a>split()</h6><ul>
+<li>接收一个正则表达式参数，使用传入的参数作为分隔符。</li>
+</ul>
+<h6 id="match-1"><a href="#match-1" class="headerlink" title="match()"></a>match()</h6><h5 id="RegExp-类"><a href="#RegExp-类" class="headerlink" title="RegExp 类"></a>RegExp 类</h5><h6 id="RegExp-属性"><a href="#RegExp-属性" class="headerlink" title="RegExp 属性"></a>RegExp 属性</h6><ul>
+<li>lastIndex 可读可写</li>
+<li>global g</li>
+<li>ignoreCase i</li>
+<li>等等</li>
+</ul>
+<h6 id="RegExp"><a href="#RegExp" class="headerlink" title="RegExp()"></a>RegExp()</h6><ul>
+<li><p>接收一个或两个字符串参数。第一个参数可以是字符串，也可以时一个 RegExp 对象，这样可以复制已有的表达式，并修改它的标志</p>
+</li>
+<li><p>构造函数，用于动态创建正则表达式。有些正则表达式字面量语法无法创建</p>
+</li>
+<li><p>要搜索用户输入的字符串，必须用 RegExp()在运行时创建正则表示式</p>
+</li>
+</ul>
+<h6 id="test"><a href="#test" class="headerlink" title="test()"></a>test()</h6><ul>
+<li>有 匹配项返回 true，没有就 false</li>
+</ul>
+<h6 id="exec"><a href="#exec" class="headerlink" title="exec()"></a>exec()</h6><ul>
+<li><p>接收 一个字符串参数，有匹配项就 返回一个数组，没有就返回 null</p>
+</li>
+<li><p>返回的数组，index 记录匹配的起始位置，input 属性包含搜索的目标字符串。</p>
+</li>
+<li><p>有 g 和没 g 返回数组相同，和 match()不同。</p>
+</li>
+</ul>
+<h5 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h5><p>还没整理</p>
+<p>·</p>
+<h2 id="第十二章-迭代器和生成器"><a href="#第十二章-迭代器和生成器" class="headerlink" title="第十二章 迭代器和生成器"></a>第十二章 迭代器和生成器</h2><h2 id="第十三章-异步-JavaScript"><a href="#第十三章-异步-JavaScript" class="headerlink" title="第十三章 异步 JavaScript"></a>第十三章 异步 JavaScript</h2><h2 id="第十四章-元编程"><a href="#第十四章-元编程" class="headerlink" title="第十四章 元编程"></a>第十四章 元编程</h2><h2 id="第十五章-浏览器中的-JavaScript"><a href="#第十五章-浏览器中的-JavaScript" class="headerlink" title="第十五章 浏览器中的 JavaScript"></a>第十五章 浏览器中的 JavaScript</h2><h2 id="第十六章-服务器端的-JavaScript"><a href="#第十六章-服务器端的-JavaScript" class="headerlink" title="第十六章 服务器端的 JavaScript"></a>第十六章 服务器端的 JavaScript</h2><h2 id="第十七章-JavaScript-工具和拓展"><a href="#第十七章-JavaScript-工具和拓展" class="headerlink" title="第十七章 JavaScript 工具和拓展"></a>第十七章 JavaScript 工具和拓展</h2>]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+</search>
