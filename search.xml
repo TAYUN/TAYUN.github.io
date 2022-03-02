@@ -411,237 +411,6 @@
       </tags>
   </entry>
   <entry>
-    <title>三次握手/四次挥手</title>
-    <url>/2022/01/06/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B+%E8%B7%A8%E5%9F%9F%E5%A4%84%E7%90%86/</url>
-    <content><![CDATA[<h1 id="三次握手-四次挥手"><a href="#三次握手-四次挥手" class="headerlink" title="三次握手/四次挥手"></a><strong>三次握手/四次挥手</strong></h1><p><strong>TCP(Transmission control protocol)传输层协议中出现的两个概念</strong></p>
-<h2 id="什么是TCP"><a href="#什么是TCP" class="headerlink" title="什么是TCP?"></a>什么是TCP?</h2><p>​    <strong>TCP协议，传输控制协议（英语：Transmission Control Protocol，缩写为 TCP）</strong>是一种面向连接的、可靠的、基于字节流的传输层通信协议;</p>
-<p>​    TCP通信需要经过<strong>创建连接、数据传送、终止连接</strong>三个步骤, TCP通信模型中，在通信开始之前，一定要先建立相关的链接，才能发送数据</p>
-<h2 id="tcp特点"><a href="#tcp特点" class="headerlink" title="tcp特点"></a>tcp特点</h2><ol>
-<li><p><strong>面向连接</strong></p>
-</li>
-<li><p><strong>传输可靠</strong></p>
-<ul>
-<li>TCP采用发送应答机制</li>
-<li>超时重传</li>
-<li>错误校验</li>
-<li>流量控制和阻塞管理</li>
-</ul>
-</li>
-</ol>
-<h2 id="不同http版本中三次握手表现"><a href="#不同http版本中三次握手表现" class="headerlink" title="不同http版本中三次握手表现"></a>不同http版本中三次握手表现</h2><p>​    <img src="https://adminimg.hyfarsight.com/image-20210408223456177.png" alt="image-20210408223456177" style="zoom: 80%;" /></p>
-<ul>
-<li><p><strong>http 1.0</strong></p>
-<p>http请求创建的时候同时创建了tcp连接,请求发送,服务器响应之后,tcp连接关闭</p>
-</li>
-<li><p><strong>http 1.1</strong></p>
-<p>通过声明的方式(keep alive),保持连接(<strong>节省tcp连接开销</strong>)</p>
-</li>
-<li><p><strong>http 2.0</strong></p>
-<p>http请求可以处理并发,只需要一个http连接就可以了</p>
-</li>
-</ul>
-<h2 id="tcp中的标志位、序列号"><a href="#tcp中的标志位、序列号" class="headerlink" title="tcp中的标志位、序列号"></a>tcp中的标志位、序列号</h2><ul>
-<li><p>SYN(synchronous建立联机标志位) </p>
-</li>
-<li><p>ACK(acknowledgement 联机确认标志位) </p>
-</li>
-<li><p>Sequence number(顺序号码，数据包的序号)</p>
-</li>
-<li><p>Acknowledge number(确认号码，响应数据包的序号)</p>
-</li>
-<li><p>FIN(finish结束，终止链路标志位) </p>
-<hr>
-</li>
-</ul>
-<h2 id="三次握手的实现"><a href="#三次握手的实现" class="headerlink" title="三次握手的实现"></a>三次握手的实现</h2><p>​                                     <img src="https://adminimg.hyfarsight.com/v2-576b043d12353928eea6e45373655668_720w.jpg" alt="img"  /></p>
-<ol>
-<li><p><strong>第一次握手</strong> </p>
-<p>客户端协议栈向服务器端发送了 <code>SYN</code> 包，并告诉服务器端当前发送序列号 SYN = 1, seq=x，x为本次TCP通信的字节流的初始序号, 客户端 进入 SYNC_SENT 状态；</p>
-</li>
-<li><p><strong>第二次握手</strong>  </p>
-<p>服务器端的协议栈收到这个包之后，和客户端进行 <code>ACK </code>应答，应答的值为 <code>x+1</code>，表示 对 SYN 包 1的确认，同时服务器也发送一个 SYN 包，告诉客户端当前我的发送序列号 为 1，服务器端进入 <code>SYNC_RCVD</code> 状态；</p>
-</li>
-<li><p><strong>第三次握手</strong>   </p>
-<p>客户端协议栈收到 <code>ACK</code> 之后，还要向服务端发送一个确认报文段, 表示：服务端发来的连接同意应答已经成功收到，表示客户端到服务器端的单向连接建立成功，客户端发完这个报文段后便进入ESTABLISHED状态，此时连接的建立完成,该报文段的头部为：ACK=1，seq=x+1，ack=y+1, 这个时候服务器 端到客户端的单向连接也建立成功,服务端收到这个应答后进入ESTABLISHED状态</p>
-</li>
-</ol>
-<h3 id="握手生活映射"><a href="#握手生活映射" class="headerlink" title="握手生活映射"></a>握手生活映射</h3><img src="https://adminimg.hyfarsight.com/1643a1dd6df4813b" alt="img" style="zoom: 67%;" />
-
-<img src="https://adminimg.hyfarsight.com/1643a1f3fa6c21b0" alt="img" style="zoom:67%;" />
-
-<p>TCP 三次握手就好比两个人在街上隔着一定的距离看见了对方，但是因为雾霾等原因不能100%确认，所以要通过招手的方式相互确定对方是否认识自己</p>
-<h2 id="为什么会有三次握手"><a href="#为什么会有三次握手" class="headerlink" title="为什么会有三次握手?"></a>为什么会有三次握手?</h2><p>​    </p>
-<p><strong>客户端失效的连接请求</strong></p>
-<p>​    若客户端向服务端发送的连接请求丢失,客户端等待应答超时后就会再次发送连接请求，此时，上一个连接请求就是『失效的』</p>
-<img src="https://adminimg.hyfarsight.com/v2-2e92a8054ba98532592aecc47c37722e_720w.jpg" alt="img" style="zoom: 67%;" />
-
-
-
-<p><strong>两次握手没有第三次的情况</strong></p>
-<p>​    客户端影响不大,仍然需要获得服务端的应答后才进入ESTABLISHED状态 ,如果网络拥塞，,服务端收到请求就会进入ESTABLISHED状态,时的客户端早已进入CLOSED状态,服务端一直等待下去</p>
-<img src="https://adminimg.hyfarsight.com/v2-3d4e77b23469ae84358d90d5b0bd451d_720w.jpg" alt="img" style="zoom: 67%;" />
-
-
-
-
-
-<h2 id="四次挥手"><a href="#四次挥手" class="headerlink" title="四次挥手"></a>四次挥手</h2><img src="https://pic1.zhimg.com/80/v2-c8b61ed2a249700583b11bc5d16c5711_720w.jpg?source=1940ef5c" alt="img" style="zoom:80%;" />
-
-
-
-<p><strong>第一次挥手</strong></p>
-<p>客户端数据发送完成，需要向服务端发送连接释放请求。请求只有报文头</p>
-<p><strong>第二次挥手</strong></p>
-<p>服务端接收到释放请求，通知相应程序,客户端要进行关闭。此时服务端进入CLOSE-WAIT状态，并向客户端发送连接释放的应答</p>
-<p><strong>第三次挥手</strong></p>
-<p>当服务端向客户端发送完所有数据后，开始向客户端发送连接释放请求,此时服务端进行LAST-ACK状态</p>
-<p><strong>第四次挥手</strong></p>
-<p>客户端接收释放请求后，向服务端发送确认应答，客户端进入TIME-WAIT状态。该状态会持续2MSL时间，服务端没有后续数据发送，进入CLOSED状态，撤销TCB。服务端收到确认应答后，也便进入CLOSED状态，撤销TCB。</p>
-<h3 id="挥手生活映射"><a href="#挥手生活映射" class="headerlink" title="挥手生活映射"></a>挥手生活映射</h3><img src="https://adminimg.hyfarsight.com/1643a20296de1ff0" alt="img" style="zoom: 67%;" />
-
-<img src="https://adminimg.hyfarsight.com/1643b1147fbbc5e7" alt="img" style="zoom:67%;" />
-
-
-
-<p>小明(client)挥手(fin)——小亮(sever)伤感地微笑(ack)——小亮(server)挥手(fin)——小明(client)伤感地微笑</p>
-<h1 id="跨域处理"><a href="#跨域处理" class="headerlink" title="跨域处理"></a>跨域处理</h1><h2 id="产生原因-gt-同源策略"><a href="#产生原因-gt-同源策略" class="headerlink" title="产生原因 =&gt; 同源策略"></a>产生原因 =&gt; 同源策略</h2><p>​    <strong>同源策略</strong>是浏览器的一种安全策略，所谓同源是指协议、域名、端口完全相同，只有同源的地址才可以相互通过 AJAX 的方式请求</p>
-<p>同源或者不同源说的是两个地址之间的关系，不同源地址之间请求我们称之为跨域请求;</p>
-<p><strong>是否同源对比</strong></p>
-<p>对比地址: <a href="http://www.demo.com/detail.html">http://www.demo.com/detail.html</a></p>
-<table>
-<thead>
-<tr>
-<th align="left">对比地址</th>
-<th align="center">是否同源</th>
-<th align="center">问题原因</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><a href="http://api.demo.com/detail.html">http://api.demo.com/detail.html</a></td>
-<td align="center">不同源</td>
-<td align="center">域名不同</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.demo.com/detail.html">https://www.demo.com/detail.html</a></td>
-<td align="center">不同源</td>
-<td align="center">协议不同</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.demo.com:8080/detail.html">https://www.demo.com:8080/detail.html</a></td>
-<td align="center">不同源</td>
-<td align="center">端口不同</td>
-</tr>
-<tr>
-<td align="left"><a href="https://api.demo.com:8080/detail.html">https://api.demo.com:8080/detail.html</a></td>
-<td align="center">不同源</td>
-<td align="center">域名端口不同</td>
-</tr>
-<tr>
-<td align="left"><a href="https://api.demo.com/detail.html">https://api.demo.com/detail.html</a></td>
-<td align="center">不同源</td>
-<td align="center">协议、域名不同</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.demo.com:8080/detail.html">https://www.demo.com:8080/detail.html</a></td>
-<td align="center">不同源</td>
-<td align="center">端口协议不同</td>
-</tr>
-<tr>
-<td align="left"><a href="http://www.demo.com/index.html">http://www.demo.com/index.html</a></td>
-<td align="center">同源</td>
-<td align="center">只是目录不同</td>
-</tr>
-</tbody></table>
-<h2 id="跨域的解决方案"><a href="#跨域的解决方案" class="headerlink" title="跨域的解决方案"></a>跨域的解决方案</h2><p>前端跨域标识测试: <a href="https://www.hyfarsight.com/api/test/testRequest">https://www.hyfarsight.com/api/test/testRequest</a></p>
-<p><img src="https://adminimg.hyfarsight.com/image-20210409170219611.png" alt="image-20210409170219611"></p>
-<h3 id="CORS"><a href="#CORS" class="headerlink" title="CORS"></a>CORS</h3><p><code>Cross-origin resource sharing</code>跨域资源共享</p>
-<p><code>特点</code></p>
-<p>后端返回的响应头会自动携带 **<code>Access-Control-Allow-Origin</code>**字段</p>
-<p><code>实现流程</code></p>
-<p>​        整个CORS通信过程，都是浏览器自动完成, 对于开发者来说，CORS通信与同源的AJAX通信没有差别,浏览器一旦发现AJAX请求跨源，就会自动添加一些附加的头信息，有时还会多出一次附加的请求，但用户不会有感觉, 只是在被请求的服务端响应的时候添加一个 AccessControl-Allow-Origin 的响应头，表示这个资源是否允许指定域请求.</p>
-<p><code>cors的两种请求方式:</code></p>
-<p><strong>简单请求</strong></p>
-<p>只要同时满足以下两大条件，就属于简单请求</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">（<span class="number">1</span>) 请求方法是以下三种方法之一：</span><br><span class="line"></span><br><span class="line">- HEAD</span><br><span class="line">- GET</span><br><span class="line">- POST</span><br><span class="line"></span><br><span class="line">（<span class="number">2</span>）HTTP的头信息不超出以下几种字段：</span><br><span class="line"></span><br><span class="line">- Accept</span><br><span class="line">- Accept-Language</span><br><span class="line">- Content-Language</span><br><span class="line">- Last-Event-ID</span><br><span class="line">- Content-Type：只限于三个值<span class="string">`application/x-www-form-urlencoded`</span>、<span class="string">`multipart/form-data`</span>、<span class="string">`text/plain`</span></span><br></pre></td></tr></table></figure>
-
-
-
-<p><strong>非简单请求</strong></p>
-<p>​        非简单请求是那种对服务器有特殊要求的请求，比如请求方法是<code>PUT</code>或<code>DELETE</code>，或者<code>Content-Type</code>字段的类型是<code>application/json</code></p>
-<p>非简单请求的CORS请求，会在正式通信之前，增加一次HTTP查询请求，称为”预检”请求（preflight）。</p>
-<p>​        浏览器先询问服务器，当前网页所在的域名是否在服务器的许可名单之中，以及可以使用哪些HTTP动词和头信息字段。只有得到肯定答复，浏览器才会发出正式的<code>XMLHttpRequest</code>请求，返回状态码204, 否则就报错,返回状态码405</p>
-<hr>
-<h3 id="JSONP"><a href="#JSONP" class="headerlink" title="JSONP"></a>JSONP</h3><p>JSONP是服务器与客户端跨源通信的常用方法。最大特点就是简单适用，老式浏览器全部支持，服务器改造非常小</p>
-<p><strong>实现原理</strong></p>
-<p>网页通过添加一个<code>&lt;script&gt;</code>元素，向服务器请求JSON数据，利用src属性不受同源策略影响的特点；服务器收到请求后，将数据放在一个指定名字的回调函数里作为形参传回来,前端拿到这个形参,就是本次请求的结果.</p>
-<p><strong>特点</strong></p>
-<ul>
-<li>只接受GET请求的形式;</li>
-<li>需要与后端进行请求参数的约定</li>
-<li>有参数数据大小的限制</li>
-<li>不是一个真正的ajax请求</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> scriptNode = <span class="built_in">document</span>.createElement(<span class="string">&#x27;script&#x27;</span>)</span><br><span class="line">scriptNode.src = <span class="string">&#x27;http://localhost:3000/?callback=responseFn&#x27;</span>;</span><br><span class="line"><span class="built_in">document</span>.body.append(scriptNode)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">responseFn</span>(<span class="params">res</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(res)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="proxy代理"><a href="#proxy代理" class="headerlink" title="proxy代理"></a>proxy代理</h3><p><strong>实现方法</strong></p>
-<p>本地开启代理服务器，前端代码在代理环境下进行开发，请求由代理服务器进行转发，服务器与服务器之间不涉及到跨域问题</p>
-<p><strong>常见的代理方式</strong></p>
-<ul>
-<li>liveServer =&gt; IDE的三方插件</li>
-<li>webpack devServer =&gt;  前端工程化构建工具</li>
-<li>nginx  =&gt;   nginx服务器代理</li>
-</ul>
-<p><strong>liveServer代理服务配置方法</strong></p>
-<ol>
-<li>visual studio code 安装live-server插件</li>
-<li>在设置中进行找到liveServer的配置项</li>
-<li>添加proxy代理设置</li>
-<li>选项信息: enable =&gt; 是否可使用代理，选择 true ;  baseUri =&gt;  当前项目中的需要代理地址的基础路径   =&gt; proxyUri =&gt; 需要代理到哪一个服务器</li>
-<li>选择完成之后，重新启动liveServer  实现代理成功</li>
-</ol>
-<p><img src="https://adminimg.hyfarsight.com/image-20210410112817548.png" alt="image-20210410112817548"></p>
-<h3 id="iframe跨域"><a href="#iframe跨域" class="headerlink" title="iframe跨域"></a>iframe跨域</h3><p><strong>postMessage</strong></p>
-<p>该方法为html5扩展的API，允许来自不同源的脚本采用异步方式进行有限的通信，可以实现跨文本档、多窗口、跨域消息传递；</p>
-<p><strong>实现流程</strong></p>
-<ul>
-<li><p><strong>父页面像子页面进行数据的传递</strong></p>
-<p>父页面找到iframe标签，为ifrme的window(iframe.contentWindow获取)定义绑定postMessage事件(必须保证页面全部加载完成之后使用该事件)</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">iframe.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            iframe.contentWindow.postMessage(<span class="string">&#x27;父页面传递给子页面的用户信息&#x27;</span>, <span class="string">&#x27;http://127.0.0.1:5501/iframe.html&#x27;</span>)</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-
-<p>子页面window进行message事件的监听，通过回调函数获取父页面传递的信息</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">window.addEventListener(&#x27;message&#x27;, function(res) &#123;</span><br><span class="line">           parentTxt.innerHTML = res.data</span><br><span class="line">       &#125;)</span><br></pre></td></tr></table></figure></li>
-<li><p><strong>子页面像父页面进行数据的传递</strong></p>
-<ol>
-<li><p>子页面获取父页面的window(<code>window.parent</code>获取父级window)，进行postMessage事件注册</p>
-<p>子页面</p>
-</li>
-</ol>
-</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 子页面的点击事件触发像父页面进行发送数据的事件</span></span><br><span class="line">      closeBtn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">          <span class="comment">//window.parent 获取父级的window</span></span><br><span class="line">          <span class="built_in">window</span>.parent.postMessage(<span class="string">&quot;关闭ifrmae页面&quot;</span>, <span class="string">&#x27;http://127.0.0.1:5500/home.html&#x27;</span>)</span><br><span class="line">      &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>​              父页面</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 进行message事件的监听处理</span></span><br><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">&#x27;message&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</span><br><span class="line">            frameContainer.style.display = <span class="string">&#x27;none&#x27;</span></span><br><span class="line">        &#125;)</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="简单测试服务器搭建"><a href="#简单测试服务器搭建" class="headerlink" title="简单测试服务器搭建"></a>简单测试服务器搭建</h1><p>本地下载nodeJS  <a href="http://nodejs.cn/download/">http://nodejs.cn/download/</a></p>
-<ol>
-<li>安装nodeJS，一路next</li>
-<li>完成之后，打开终端，输入 node -v    显示node版本号即可 </li>
-<li>打开后端文件夹，在后端文件夹的目录下进行终端的打开操作  文件夹目录下面执行cmd，调用终端  执行npm install</li>
-<li>出现提示信息： “服务器创建成功，你现在本地已经开启了3000的端口”  本地服务器开启成功  </li>
-</ol>
-]]></content>
-      <categories>
-        <category>笔记</category>
-      </categories>
-      <tags>
-        <tag>网络</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>浏览器组成部分</title>
     <url>/2021/11/06/js%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<h2 id="浏览器组成部分"><a href="#浏览器组成部分" class="headerlink" title="浏览器组成部分"></a>浏览器组成部分</h2><ol>
@@ -891,6 +660,237 @@ document.write(b);
       </tags>
   </entry>
   <entry>
+    <title>三次握手/四次挥手</title>
+    <url>/2022/01/06/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B+%E8%B7%A8%E5%9F%9F%E5%A4%84%E7%90%86/</url>
+    <content><![CDATA[<h1 id="三次握手-四次挥手"><a href="#三次握手-四次挥手" class="headerlink" title="三次握手/四次挥手"></a><strong>三次握手/四次挥手</strong></h1><p><strong>TCP(Transmission control protocol)传输层协议中出现的两个概念</strong></p>
+<h2 id="什么是TCP"><a href="#什么是TCP" class="headerlink" title="什么是TCP?"></a>什么是TCP?</h2><p>​    <strong>TCP协议，传输控制协议（英语：Transmission Control Protocol，缩写为 TCP）</strong>是一种面向连接的、可靠的、基于字节流的传输层通信协议;</p>
+<p>​    TCP通信需要经过<strong>创建连接、数据传送、终止连接</strong>三个步骤, TCP通信模型中，在通信开始之前，一定要先建立相关的链接，才能发送数据</p>
+<h2 id="tcp特点"><a href="#tcp特点" class="headerlink" title="tcp特点"></a>tcp特点</h2><ol>
+<li><p><strong>面向连接</strong></p>
+</li>
+<li><p><strong>传输可靠</strong></p>
+<ul>
+<li>TCP采用发送应答机制</li>
+<li>超时重传</li>
+<li>错误校验</li>
+<li>流量控制和阻塞管理</li>
+</ul>
+</li>
+</ol>
+<h2 id="不同http版本中三次握手表现"><a href="#不同http版本中三次握手表现" class="headerlink" title="不同http版本中三次握手表现"></a>不同http版本中三次握手表现</h2><p>​    <img src="https://adminimg.hyfarsight.com/image-20210408223456177.png" alt="image-20210408223456177" style="zoom: 80%;" /></p>
+<ul>
+<li><p><strong>http 1.0</strong></p>
+<p>http请求创建的时候同时创建了tcp连接,请求发送,服务器响应之后,tcp连接关闭</p>
+</li>
+<li><p><strong>http 1.1</strong></p>
+<p>通过声明的方式(keep alive),保持连接(<strong>节省tcp连接开销</strong>)</p>
+</li>
+<li><p><strong>http 2.0</strong></p>
+<p>http请求可以处理并发,只需要一个http连接就可以了</p>
+</li>
+</ul>
+<h2 id="tcp中的标志位、序列号"><a href="#tcp中的标志位、序列号" class="headerlink" title="tcp中的标志位、序列号"></a>tcp中的标志位、序列号</h2><ul>
+<li><p>SYN(synchronous建立联机标志位) </p>
+</li>
+<li><p>ACK(acknowledgement 联机确认标志位) </p>
+</li>
+<li><p>Sequence number(顺序号码，数据包的序号)</p>
+</li>
+<li><p>Acknowledge number(确认号码，响应数据包的序号)</p>
+</li>
+<li><p>FIN(finish结束，终止链路标志位) </p>
+<hr>
+</li>
+</ul>
+<h2 id="三次握手的实现"><a href="#三次握手的实现" class="headerlink" title="三次握手的实现"></a>三次握手的实现</h2><p>​                                     <img src="https://adminimg.hyfarsight.com/v2-576b043d12353928eea6e45373655668_720w.jpg" alt="img"  /></p>
+<ol>
+<li><p><strong>第一次握手</strong> </p>
+<p>客户端协议栈向服务器端发送了 <code>SYN</code> 包，并告诉服务器端当前发送序列号 SYN = 1, seq=x，x为本次TCP通信的字节流的初始序号, 客户端 进入 SYNC_SENT 状态；</p>
+</li>
+<li><p><strong>第二次握手</strong>  </p>
+<p>服务器端的协议栈收到这个包之后，和客户端进行 <code>ACK </code>应答，应答的值为 <code>x+1</code>，表示 对 SYN 包 1的确认，同时服务器也发送一个 SYN 包，告诉客户端当前我的发送序列号 为 1，服务器端进入 <code>SYNC_RCVD</code> 状态；</p>
+</li>
+<li><p><strong>第三次握手</strong>   </p>
+<p>客户端协议栈收到 <code>ACK</code> 之后，还要向服务端发送一个确认报文段, 表示：服务端发来的连接同意应答已经成功收到，表示客户端到服务器端的单向连接建立成功，客户端发完这个报文段后便进入ESTABLISHED状态，此时连接的建立完成,该报文段的头部为：ACK=1，seq=x+1，ack=y+1, 这个时候服务器 端到客户端的单向连接也建立成功,服务端收到这个应答后进入ESTABLISHED状态</p>
+</li>
+</ol>
+<h3 id="握手生活映射"><a href="#握手生活映射" class="headerlink" title="握手生活映射"></a>握手生活映射</h3><img src="https://adminimg.hyfarsight.com/1643a1dd6df4813b" alt="img" style="zoom: 67%;" />
+
+<img src="https://adminimg.hyfarsight.com/1643a1f3fa6c21b0" alt="img" style="zoom:67%;" />
+
+<p>TCP 三次握手就好比两个人在街上隔着一定的距离看见了对方，但是因为雾霾等原因不能100%确认，所以要通过招手的方式相互确定对方是否认识自己</p>
+<h2 id="为什么会有三次握手"><a href="#为什么会有三次握手" class="headerlink" title="为什么会有三次握手?"></a>为什么会有三次握手?</h2><p>​    </p>
+<p><strong>客户端失效的连接请求</strong></p>
+<p>​    若客户端向服务端发送的连接请求丢失,客户端等待应答超时后就会再次发送连接请求，此时，上一个连接请求就是『失效的』</p>
+<img src="https://adminimg.hyfarsight.com/v2-2e92a8054ba98532592aecc47c37722e_720w.jpg" alt="img" style="zoom: 67%;" />
+
+
+
+<p><strong>两次握手没有第三次的情况</strong></p>
+<p>​    客户端影响不大,仍然需要获得服务端的应答后才进入ESTABLISHED状态 ,如果网络拥塞，,服务端收到请求就会进入ESTABLISHED状态,时的客户端早已进入CLOSED状态,服务端一直等待下去</p>
+<img src="https://adminimg.hyfarsight.com/v2-3d4e77b23469ae84358d90d5b0bd451d_720w.jpg" alt="img" style="zoom: 67%;" />
+
+
+
+
+
+<h2 id="四次挥手"><a href="#四次挥手" class="headerlink" title="四次挥手"></a>四次挥手</h2><img src="https://pic1.zhimg.com/80/v2-c8b61ed2a249700583b11bc5d16c5711_720w.jpg?source=1940ef5c" alt="img" style="zoom:80%;" />
+
+
+
+<p><strong>第一次挥手</strong></p>
+<p>客户端数据发送完成，需要向服务端发送连接释放请求。请求只有报文头</p>
+<p><strong>第二次挥手</strong></p>
+<p>服务端接收到释放请求，通知相应程序,客户端要进行关闭。此时服务端进入CLOSE-WAIT状态，并向客户端发送连接释放的应答</p>
+<p><strong>第三次挥手</strong></p>
+<p>当服务端向客户端发送完所有数据后，开始向客户端发送连接释放请求,此时服务端进行LAST-ACK状态</p>
+<p><strong>第四次挥手</strong></p>
+<p>客户端接收释放请求后，向服务端发送确认应答，客户端进入TIME-WAIT状态。该状态会持续2MSL时间，服务端没有后续数据发送，进入CLOSED状态，撤销TCB。服务端收到确认应答后，也便进入CLOSED状态，撤销TCB。</p>
+<h3 id="挥手生活映射"><a href="#挥手生活映射" class="headerlink" title="挥手生活映射"></a>挥手生活映射</h3><img src="https://adminimg.hyfarsight.com/1643a20296de1ff0" alt="img" style="zoom: 67%;" />
+
+<img src="https://adminimg.hyfarsight.com/1643b1147fbbc5e7" alt="img" style="zoom:67%;" />
+
+
+
+<p>小明(client)挥手(fin)——小亮(sever)伤感地微笑(ack)——小亮(server)挥手(fin)——小明(client)伤感地微笑</p>
+<h1 id="跨域处理"><a href="#跨域处理" class="headerlink" title="跨域处理"></a>跨域处理</h1><h2 id="产生原因-gt-同源策略"><a href="#产生原因-gt-同源策略" class="headerlink" title="产生原因 =&gt; 同源策略"></a>产生原因 =&gt; 同源策略</h2><p>​    <strong>同源策略</strong>是浏览器的一种安全策略，所谓同源是指协议、域名、端口完全相同，只有同源的地址才可以相互通过 AJAX 的方式请求</p>
+<p>同源或者不同源说的是两个地址之间的关系，不同源地址之间请求我们称之为跨域请求;</p>
+<p><strong>是否同源对比</strong></p>
+<p>对比地址: <a href="http://www.demo.com/detail.html">http://www.demo.com/detail.html</a></p>
+<table>
+<thead>
+<tr>
+<th align="left">对比地址</th>
+<th align="center">是否同源</th>
+<th align="center">问题原因</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a href="http://api.demo.com/detail.html">http://api.demo.com/detail.html</a></td>
+<td align="center">不同源</td>
+<td align="center">域名不同</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.demo.com/detail.html">https://www.demo.com/detail.html</a></td>
+<td align="center">不同源</td>
+<td align="center">协议不同</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.demo.com:8080/detail.html">https://www.demo.com:8080/detail.html</a></td>
+<td align="center">不同源</td>
+<td align="center">端口不同</td>
+</tr>
+<tr>
+<td align="left"><a href="https://api.demo.com:8080/detail.html">https://api.demo.com:8080/detail.html</a></td>
+<td align="center">不同源</td>
+<td align="center">域名端口不同</td>
+</tr>
+<tr>
+<td align="left"><a href="https://api.demo.com/detail.html">https://api.demo.com/detail.html</a></td>
+<td align="center">不同源</td>
+<td align="center">协议、域名不同</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.demo.com:8080/detail.html">https://www.demo.com:8080/detail.html</a></td>
+<td align="center">不同源</td>
+<td align="center">端口协议不同</td>
+</tr>
+<tr>
+<td align="left"><a href="http://www.demo.com/index.html">http://www.demo.com/index.html</a></td>
+<td align="center">同源</td>
+<td align="center">只是目录不同</td>
+</tr>
+</tbody></table>
+<h2 id="跨域的解决方案"><a href="#跨域的解决方案" class="headerlink" title="跨域的解决方案"></a>跨域的解决方案</h2><p>前端跨域标识测试: <a href="https://www.hyfarsight.com/api/test/testRequest">https://www.hyfarsight.com/api/test/testRequest</a></p>
+<p><img src="https://adminimg.hyfarsight.com/image-20210409170219611.png" alt="image-20210409170219611"></p>
+<h3 id="CORS"><a href="#CORS" class="headerlink" title="CORS"></a>CORS</h3><p><code>Cross-origin resource sharing</code>跨域资源共享</p>
+<p><code>特点</code></p>
+<p>后端返回的响应头会自动携带 **<code>Access-Control-Allow-Origin</code>**字段</p>
+<p><code>实现流程</code></p>
+<p>​        整个CORS通信过程，都是浏览器自动完成, 对于开发者来说，CORS通信与同源的AJAX通信没有差别,浏览器一旦发现AJAX请求跨源，就会自动添加一些附加的头信息，有时还会多出一次附加的请求，但用户不会有感觉, 只是在被请求的服务端响应的时候添加一个 AccessControl-Allow-Origin 的响应头，表示这个资源是否允许指定域请求.</p>
+<p><code>cors的两种请求方式:</code></p>
+<p><strong>简单请求</strong></p>
+<p>只要同时满足以下两大条件，就属于简单请求</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">（<span class="number">1</span>) 请求方法是以下三种方法之一：</span><br><span class="line"></span><br><span class="line">- HEAD</span><br><span class="line">- GET</span><br><span class="line">- POST</span><br><span class="line"></span><br><span class="line">（<span class="number">2</span>）HTTP的头信息不超出以下几种字段：</span><br><span class="line"></span><br><span class="line">- Accept</span><br><span class="line">- Accept-Language</span><br><span class="line">- Content-Language</span><br><span class="line">- Last-Event-ID</span><br><span class="line">- Content-Type：只限于三个值<span class="string">`application/x-www-form-urlencoded`</span>、<span class="string">`multipart/form-data`</span>、<span class="string">`text/plain`</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>非简单请求</strong></p>
+<p>​        非简单请求是那种对服务器有特殊要求的请求，比如请求方法是<code>PUT</code>或<code>DELETE</code>，或者<code>Content-Type</code>字段的类型是<code>application/json</code></p>
+<p>非简单请求的CORS请求，会在正式通信之前，增加一次HTTP查询请求，称为”预检”请求（preflight）。</p>
+<p>​        浏览器先询问服务器，当前网页所在的域名是否在服务器的许可名单之中，以及可以使用哪些HTTP动词和头信息字段。只有得到肯定答复，浏览器才会发出正式的<code>XMLHttpRequest</code>请求，返回状态码204, 否则就报错,返回状态码405</p>
+<hr>
+<h3 id="JSONP"><a href="#JSONP" class="headerlink" title="JSONP"></a>JSONP</h3><p>JSONP是服务器与客户端跨源通信的常用方法。最大特点就是简单适用，老式浏览器全部支持，服务器改造非常小</p>
+<p><strong>实现原理</strong></p>
+<p>网页通过添加一个<code>&lt;script&gt;</code>元素，向服务器请求JSON数据，利用src属性不受同源策略影响的特点；服务器收到请求后，将数据放在一个指定名字的回调函数里作为形参传回来,前端拿到这个形参,就是本次请求的结果.</p>
+<p><strong>特点</strong></p>
+<ul>
+<li>只接受GET请求的形式;</li>
+<li>需要与后端进行请求参数的约定</li>
+<li>有参数数据大小的限制</li>
+<li>不是一个真正的ajax请求</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> scriptNode = <span class="built_in">document</span>.createElement(<span class="string">&#x27;script&#x27;</span>)</span><br><span class="line">scriptNode.src = <span class="string">&#x27;http://localhost:3000/?callback=responseFn&#x27;</span>;</span><br><span class="line"><span class="built_in">document</span>.body.append(scriptNode)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">responseFn</span>(<span class="params">res</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(res)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="proxy代理"><a href="#proxy代理" class="headerlink" title="proxy代理"></a>proxy代理</h3><p><strong>实现方法</strong></p>
+<p>本地开启代理服务器，前端代码在代理环境下进行开发，请求由代理服务器进行转发，服务器与服务器之间不涉及到跨域问题</p>
+<p><strong>常见的代理方式</strong></p>
+<ul>
+<li>liveServer =&gt; IDE的三方插件</li>
+<li>webpack devServer =&gt;  前端工程化构建工具</li>
+<li>nginx  =&gt;   nginx服务器代理</li>
+</ul>
+<p><strong>liveServer代理服务配置方法</strong></p>
+<ol>
+<li>visual studio code 安装live-server插件</li>
+<li>在设置中进行找到liveServer的配置项</li>
+<li>添加proxy代理设置</li>
+<li>选项信息: enable =&gt; 是否可使用代理，选择 true ;  baseUri =&gt;  当前项目中的需要代理地址的基础路径   =&gt; proxyUri =&gt; 需要代理到哪一个服务器</li>
+<li>选择完成之后，重新启动liveServer  实现代理成功</li>
+</ol>
+<p><img src="https://adminimg.hyfarsight.com/image-20210410112817548.png" alt="image-20210410112817548"></p>
+<h3 id="iframe跨域"><a href="#iframe跨域" class="headerlink" title="iframe跨域"></a>iframe跨域</h3><p><strong>postMessage</strong></p>
+<p>该方法为html5扩展的API，允许来自不同源的脚本采用异步方式进行有限的通信，可以实现跨文本档、多窗口、跨域消息传递；</p>
+<p><strong>实现流程</strong></p>
+<ul>
+<li><p><strong>父页面像子页面进行数据的传递</strong></p>
+<p>父页面找到iframe标签，为ifrme的window(iframe.contentWindow获取)定义绑定postMessage事件(必须保证页面全部加载完成之后使用该事件)</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">iframe.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            iframe.contentWindow.postMessage(<span class="string">&#x27;父页面传递给子页面的用户信息&#x27;</span>, <span class="string">&#x27;http://127.0.0.1:5501/iframe.html&#x27;</span>)</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<p>子页面window进行message事件的监听，通过回调函数获取父页面传递的信息</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">window.addEventListener(&#x27;message&#x27;, function(res) &#123;</span><br><span class="line">           parentTxt.innerHTML = res.data</span><br><span class="line">       &#125;)</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>子页面像父页面进行数据的传递</strong></p>
+<ol>
+<li><p>子页面获取父页面的window(<code>window.parent</code>获取父级window)，进行postMessage事件注册</p>
+<p>子页面</p>
+</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 子页面的点击事件触发像父页面进行发送数据的事件</span></span><br><span class="line">      closeBtn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">          <span class="comment">//window.parent 获取父级的window</span></span><br><span class="line">          <span class="built_in">window</span>.parent.postMessage(<span class="string">&quot;关闭ifrmae页面&quot;</span>, <span class="string">&#x27;http://127.0.0.1:5500/home.html&#x27;</span>)</span><br><span class="line">      &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>​              父页面</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 进行message事件的监听处理</span></span><br><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">&#x27;message&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</span><br><span class="line">            frameContainer.style.display = <span class="string">&#x27;none&#x27;</span></span><br><span class="line">        &#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="简单测试服务器搭建"><a href="#简单测试服务器搭建" class="headerlink" title="简单测试服务器搭建"></a>简单测试服务器搭建</h1><p>本地下载nodeJS  <a href="http://nodejs.cn/download/">http://nodejs.cn/download/</a></p>
+<ol>
+<li>安装nodeJS，一路next</li>
+<li>完成之后，打开终端，输入 node -v    显示node版本号即可 </li>
+<li>打开后端文件夹，在后端文件夹的目录下进行终端的打开操作  文件夹目录下面执行cmd，调用终端  执行npm install</li>
+<li>出现提示信息： “服务器创建成功，你现在本地已经开启了3000的端口”  本地服务器开启成功  </li>
+</ol>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>网络</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JS事件</title>
     <url>/2021/11/06/%E4%BA%8B%E4%BB%B6/</url>
     <content><![CDATA[<h1 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h1><p>ie6，没有 flex 定位</p>
@@ -964,6 +964,319 @@ document.write(b);
       <categories>
         <category>笔记</category>
       </categories>
+  </entry>
+  <entry>
+    <title>RegExp-正则表达式</title>
+    <url>/2021/11/06/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</url>
+    <content><![CDATA[<p>正则表达式式一种描述文本的对象。</p>
+<h2 id="定义正则表达式"><a href="#定义正则表达式" class="headerlink" title="定义正则表达式"></a>定义正则表达式</h2><ol>
+<li>字面量：var reg = /\w$/;</li>
+<li>构造函数 var reg = new RegExp(“s$”);</li>
+</ol>
+<h3 id="标志"><a href="#标志" class="headerlink" title="标志"></a>标志</h3><ul>
+<li>g 全局匹配</li>
+<li>i 不区分大小写</li>
+<li>m 多行匹配</li>
+<li>s</li>
+<li>u 没有特殊原因应该都写</li>
+<li>y</li>
+</ul>
+<h3 id="字面量字符"><a href="#字面量字符" class="headerlink" title="字面量字符"></a>字面量字符</h3><table>
+<thead>
+<tr>
+<th>字符</th>
+<th>匹配目标</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>字母数字字符</td>
+<td>自身</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>制表符(\u0009)</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>换行符(\u000A)</td>
+</tr>
+<tr>
+<td>\v</td>
+<td>垂直制表符(\u000B)</td>
+</tr>
+<tr>
+<td>\f</td>
+<td>进纸符(\u000c)</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>回车 符(\u000D)</td>
+</tr>
+<tr>
+<td>\0</td>
+<td>NUL 字符(\u0000)</td>
+</tr>
+</tbody></table>
+<h3 id="字符类"><a href="#字符类" class="headerlink" title="字符类"></a>字符类</h3><table>
+<thead>
+<tr>
+<th>字符</th>
+<th>匹配目标</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>[…]</td>
+<td>方括号 中任意字符</td>
+</tr>
+<tr>
+<td>^</td>
+<td>取反</td>
+</tr>
+<tr>
+<td>\w</td>
+<td>所有字母 [a-zA-Z0-9]</td>
+</tr>
+<tr>
+<td>\W</td>
+<td>非所有字母</td>
+</tr>
+<tr>
+<td>\s</td>
+<td>空白字符</td>
+</tr>
+<tr>
+<td>\S</td>
+<td>非空白字符</td>
+</tr>
+<tr>
+<td>\d</td>
+<td>数字 [0-9]</td>
+</tr>
+<tr>
+<td>\D</td>
+<td>非数字</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>退格字面值（特例）</td>
+</tr>
+<tr>
+<td>.</td>
+<td>除了换行符和回车符</td>
+</tr>
+</tbody></table>
+<h3 id="量词"><a href="#量词" class="headerlink" title="量词"></a>量词</h3><table>
+<thead>
+<tr>
+<th>字符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>?</td>
+<td>匹配前项零次或一次，等同{0，1}</td>
+</tr>
+<tr>
+<td>+</td>
+<td>匹配前项一次或多次，等同{1，}</td>
+</tr>
+<tr>
+<td>*</td>
+<td>匹配前项零次 或多次，等同{0，}</td>
+</tr>
+<tr>
+<td>{n}</td>
+<td>匹配前项恰好 n 次</td>
+</tr>
+<tr>
+<td>{n,}</td>
+<td>匹配前项 n 次 或多次</td>
+</tr>
+<tr>
+<td>{n,m}</td>
+<td>匹配前项最少 n 次，但不超过 m 次</td>
+</tr>
+</tbody></table>
+<h3 id="贪婪和非贪婪重复"><a href="#贪婪和非贪婪重复" class="headerlink" title="贪婪和非贪婪重复"></a>贪婪和非贪婪重复</h3><p>贪婪的：尽可能多的匹配重复字符，允许正则表达式剩余的部分继续匹配。</p>
+<p>非贪婪的：在重复字符后面加个？就可以了。</p>
+<p>但有时候没有达到预期效果，例如：</p>
+<p>/a+b/ 与 /a+?b/去匹配“aaab”结果都是“aaab”。</p>
+<h2 id="任选、分组引用"><a href="#任选、分组引用" class="headerlink" title="任选、分组引用"></a>任选、分组引用</h2><table>
+<thead>
+<tr>
+<th>字符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>|</td>
+<td>任选 或</td>
+</tr>
+<tr>
+<td>(…)</td>
+<td>分组：分成一个单元，方便使用引号和 *、+、？、|。</td>
+</tr>
+<tr>
+<td>(?:…)</td>
+<td>仅仅分组为一个单元，但 不记住分组匹配 的 字符</td>
+</tr>
+<tr>
+<td>\数字</td>
+<td>匹配第 n 个分组，子表达式分组是按照左括号来计算的。（?:开头的不算）</td>
+</tr>
+</tbody></table>
+<h3 id="任选"><a href="#任选" class="headerlink" title="任选 |"></a>任选 |</h3><ul>
+<li>var reg = /ab|cd|ef|;</li>
+</ul>
+<h3 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h3><p>小括号允许我们重复多个字符，中括号表示范围内选择，大括号表示重复次数。</p>
+<table>
+<thead>
+<tr>
+<th>种类</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>分组+量词</td>
+<td>alert(/(dog){2}/.test(“dogdog”))//true</td>
+</tr>
+<tr>
+<td>分组+范围</td>
+<td>alert(“baddad”.match(/([bd]ad?)*/))//baddad,dad</td>
+</tr>
+<tr>
+<td>分组+分组</td>
+<td>alert(“mon and dad”.match(/(mon( and dad)?)/))//mon and dad,mon and dad, and dad</td>
+</tr>
+</tbody></table>
+<h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><p>在圆括号分组的表达式中 ，回引子表达式。</p>
+<p>格式： \数字</p>
+<p>注意：</p>
+<ul>
+<li>由于子表达式可能会嵌套，所以它们的位置是按照左括号来计算的。</li>
+<li>在字符中使用引用是不合法的 ，因此不能这么写/<a href="%5E%5C1">[‘ “]</a>*\1/</li>
+</ul>
+<p>例子：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 开头不一定都是单引号或双引号：/[&#x27;&quot;][^&#x27;&quot;]*[&#x27;&quot;]/</span></span><br><span class="line"><span class="comment">//修改:/[&#x27;&quot;][^&#x27;&quot;]*\1/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> color = <span class="string">&quot;#990000&quot;</span>;</span><br><span class="line"><span class="regexp">/#(\d+)/</span>.test(color);</span><br><span class="line">alert(<span class="built_in">RegExp</span>.$1); <span class="comment">//990000</span></span><br><span class="line"></span><br><span class="line">alert(<span class="regexp">/(dog)\1/</span>.test(<span class="string">&quot;dogdog&quot;</span>)); <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> num = <span class="string">&quot;1234 5678&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> newNum = num.replace(<span class="regexp">/(\d&#123;4&#125;) (\d&#123;4&#125;)/</span>, <span class="string">&quot;$2 $1&quot;</span>);</span><br><span class="line">alert(newNum);</span><br></pre></td></tr></table></figure>
+
+<h3 id="正向断言"><a href="#正向断言" class="headerlink" title="正向断言"></a>正向断言</h3><p>正向前瞻用来检查接下来的出现的是不是某个特定的字符集。而负向前瞻则是检查接下来的不应该出现的特定字符串集。零宽断言是不会被捕获的。</p>
+<table>
+<thead>
+<tr>
+<th>零宽断言</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>正则</td>
+<td>名称</td>
+<td>描述</td>
+</tr>
+<tr>
+<td>(?=exp)</td>
+<td>正向前瞻</td>
+<td>要求后面的字符匹配 exp，（但匹配结果不包含与值匹配的字符）</td>
+</tr>
+<tr>
+<td>(?!exp)</td>
+<td>负向前瞻</td>
+<td>要求后面的字符不匹配 exp</td>
+</tr>
+<tr>
+<td>(?&lt;=exp)</td>
+<td>正向后瞻</td>
+<td>匹配 exp 后面的位置不支持</td>
+</tr>
+<tr>
+<td>(?&lt;!exp)</td>
+<td>负向后瞻</td>
+<td>匹配前面不是 exp 的位置不支持</td>
+</tr>
+</tbody></table>
+<h3 id="边界锚点"><a href="#边界锚点" class="headerlink" title="边界锚点"></a>边界锚点</h3><table>
+<thead>
+<tr>
+<th>正则</th>
+<th>名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>^</td>
+<td>开头</td>
+<td>注意不能紧跟于左中括号的后面</td>
+</tr>
+<tr>
+<td>$</td>
+<td>结尾</td>
+<td></td>
+</tr>
+<tr>
+<td>\b</td>
+<td>单词边界</td>
+<td>指[a-zA-Z_0-9]之外的字符， 注意[\b]匹配推个字符</td>
+</tr>
+<tr>
+<td>\B</td>
+<td>非单词边界</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>题目，设计一个字符串原型方法，实现首字母大写！</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="string">&quot;ruby&quot;</span>;</span><br><span class="line"><span class="built_in">String</span>.prototype.capitalize = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">this</span>.replace(<span class="regexp">/^\w/</span>, <span class="function"><span class="keyword">function</span> (<span class="params">s</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> s.toUpperCase();</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br><span class="line">alert(a.capitalize()); <span class="comment">//Ruby</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="模式匹配的字符串方法"><a href="#模式匹配的字符串方法" class="headerlink" title="模式匹配的字符串方法"></a>模式匹配的字符串方法</h2><h3 id="search"><a href="#search" class="headerlink" title="search()"></a>search()</h3><ul>
+<li><p>接收一个正则表达式参数，返回第一个匹配项的位置，没有返回-1</p>
+</li>
+<li><p>不支持全局</p>
+</li>
+</ul>
+<h3 id="replace"><a href="#replace" class="headerlink" title="replace()"></a>replace()</h3><ul>
+<li>执行搜索替换功能</li>
+<li>表达式作为第一个参数，替换字符串作为第二个参数</li>
+<li>可以配合$使用</li>
+</ul>
+<h3 id="match"><a href="#match" class="headerlink" title="match()"></a>match()</h3><ul>
+<li>接收一个正则表达式参数，返回结果是数组。</li>
+<li>执行非全局搜索时，返回的数组元素不同，第一个是匹配的字符串，剩下的是子表达式分组所匹配的字符串，a[1]相当于$1,a[2]相当于 $2，以此类推。</li>
+</ul>
+<h3 id="split"><a href="#split" class="headerlink" title="split()"></a>split()</h3><ul>
+<li>接收一个正则表达式参数，使用传入的参数作为分隔符。</li>
+</ul>
+<h3 id="match-1"><a href="#match-1" class="headerlink" title="match()"></a>match()</h3><h2 id="RegExp-类"><a href="#RegExp-类" class="headerlink" title="RegExp 类"></a>RegExp 类</h2><h3 id="RegExp-属性"><a href="#RegExp-属性" class="headerlink" title="RegExp 属性"></a>RegExp 属性</h3><ul>
+<li>lastIndex 可读可写</li>
+<li>global g</li>
+<li>ignoreCase i</li>
+<li>等等</li>
+</ul>
+<h3 id="RegExp"><a href="#RegExp" class="headerlink" title="RegExp()"></a>RegExp()</h3><ul>
+<li><p>接收一个或两个字符串参数。第一个参数可以是字符串，也可以时一个 RegExp 对象，这样可以复制已有的表达式，并修改它的标志</p>
+</li>
+<li><p>构造函数，用于动态创建正则表达式。有些正则表达式字面量语法无法创建</p>
+</li>
+<li><p>要搜索用户输入的字符串，必须用 RegExp()在运行时创建正则表示式</p>
+</li>
+</ul>
+<h3 id="test"><a href="#test" class="headerlink" title="test()"></a>test()</h3><ul>
+<li>有 匹配项返回 true，没有就 false</li>
+</ul>
+<h3 id="exec"><a href="#exec" class="headerlink" title="exec()"></a>exec()</h3><ul>
+<li><p>接收 一个字符串参数，有匹配项就 返回一个数组，没有就返回 null</p>
+</li>
+<li><p>返回的数组，index 记录匹配的起始位置，input 属性包含搜索的目标字符串。</p>
+</li>
+<li><p>有 g 和没 g 返回数组相同，和 match()不同。</p>
+</li>
+</ul>
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2>]]></content>
+      <categories>
+        <category>js正则表达式</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>Markdown</tag>
+      </tags>
   </entry>
   <entry>
     <title>JavaScript 权威指南</title>
@@ -1330,319 +1643,6 @@ document.write(b);
       </categories>
       <tags>
         <tag>笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>RegExp-正则表达式</title>
-    <url>/2021/11/06/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</url>
-    <content><![CDATA[<p>正则表达式式一种描述文本的对象。</p>
-<h2 id="定义正则表达式"><a href="#定义正则表达式" class="headerlink" title="定义正则表达式"></a>定义正则表达式</h2><ol>
-<li>字面量：var reg = /\w$/;</li>
-<li>构造函数 var reg = new RegExp(“s$”);</li>
-</ol>
-<h3 id="标志"><a href="#标志" class="headerlink" title="标志"></a>标志</h3><ul>
-<li>g 全局匹配</li>
-<li>i 不区分大小写</li>
-<li>m 多行匹配</li>
-<li>s</li>
-<li>u 没有特殊原因应该都写</li>
-<li>y</li>
-</ul>
-<h3 id="字面量字符"><a href="#字面量字符" class="headerlink" title="字面量字符"></a>字面量字符</h3><table>
-<thead>
-<tr>
-<th>字符</th>
-<th>匹配目标</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>字母数字字符</td>
-<td>自身</td>
-</tr>
-<tr>
-<td>\t</td>
-<td>制表符(\u0009)</td>
-</tr>
-<tr>
-<td>\n</td>
-<td>换行符(\u000A)</td>
-</tr>
-<tr>
-<td>\v</td>
-<td>垂直制表符(\u000B)</td>
-</tr>
-<tr>
-<td>\f</td>
-<td>进纸符(\u000c)</td>
-</tr>
-<tr>
-<td>\r</td>
-<td>回车 符(\u000D)</td>
-</tr>
-<tr>
-<td>\0</td>
-<td>NUL 字符(\u0000)</td>
-</tr>
-</tbody></table>
-<h3 id="字符类"><a href="#字符类" class="headerlink" title="字符类"></a>字符类</h3><table>
-<thead>
-<tr>
-<th>字符</th>
-<th>匹配目标</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>[…]</td>
-<td>方括号 中任意字符</td>
-</tr>
-<tr>
-<td>^</td>
-<td>取反</td>
-</tr>
-<tr>
-<td>\w</td>
-<td>所有字母 [a-zA-Z0-9]</td>
-</tr>
-<tr>
-<td>\W</td>
-<td>非所有字母</td>
-</tr>
-<tr>
-<td>\s</td>
-<td>空白字符</td>
-</tr>
-<tr>
-<td>\S</td>
-<td>非空白字符</td>
-</tr>
-<tr>
-<td>\d</td>
-<td>数字 [0-9]</td>
-</tr>
-<tr>
-<td>\D</td>
-<td>非数字</td>
-</tr>
-<tr>
-<td>\b</td>
-<td>退格字面值（特例）</td>
-</tr>
-<tr>
-<td>.</td>
-<td>除了换行符和回车符</td>
-</tr>
-</tbody></table>
-<h3 id="量词"><a href="#量词" class="headerlink" title="量词"></a>量词</h3><table>
-<thead>
-<tr>
-<th>字符</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>?</td>
-<td>匹配前项零次或一次，等同{0，1}</td>
-</tr>
-<tr>
-<td>+</td>
-<td>匹配前项一次或多次，等同{1，}</td>
-</tr>
-<tr>
-<td>*</td>
-<td>匹配前项零次 或多次，等同{0，}</td>
-</tr>
-<tr>
-<td>{n}</td>
-<td>匹配前项恰好 n 次</td>
-</tr>
-<tr>
-<td>{n,}</td>
-<td>匹配前项 n 次 或多次</td>
-</tr>
-<tr>
-<td>{n,m}</td>
-<td>匹配前项最少 n 次，但不超过 m 次</td>
-</tr>
-</tbody></table>
-<h3 id="贪婪和非贪婪重复"><a href="#贪婪和非贪婪重复" class="headerlink" title="贪婪和非贪婪重复"></a>贪婪和非贪婪重复</h3><p>贪婪的：尽可能多的匹配重复字符，允许正则表达式剩余的部分继续匹配。</p>
-<p>非贪婪的：在重复字符后面加个？就可以了。</p>
-<p>但有时候没有达到预期效果，例如：</p>
-<p>/a+b/ 与 /a+?b/去匹配“aaab”结果都是“aaab”。</p>
-<h2 id="任选、分组引用"><a href="#任选、分组引用" class="headerlink" title="任选、分组引用"></a>任选、分组引用</h2><table>
-<thead>
-<tr>
-<th>字符</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>|</td>
-<td>任选 或</td>
-</tr>
-<tr>
-<td>(…)</td>
-<td>分组：分成一个单元，方便使用引号和 *、+、？、|。</td>
-</tr>
-<tr>
-<td>(?:…)</td>
-<td>仅仅分组为一个单元，但 不记住分组匹配 的 字符</td>
-</tr>
-<tr>
-<td>\数字</td>
-<td>匹配第 n 个分组，子表达式分组是按照左括号来计算的。（?:开头的不算）</td>
-</tr>
-</tbody></table>
-<h3 id="任选"><a href="#任选" class="headerlink" title="任选 |"></a>任选 |</h3><ul>
-<li>var reg = /ab|cd|ef|;</li>
-</ul>
-<h3 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h3><p>小括号允许我们重复多个字符，中括号表示范围内选择，大括号表示重复次数。</p>
-<table>
-<thead>
-<tr>
-<th>种类</th>
-<th>例子</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>分组+量词</td>
-<td>alert(/(dog){2}/.test(“dogdog”))//true</td>
-</tr>
-<tr>
-<td>分组+范围</td>
-<td>alert(“baddad”.match(/([bd]ad?)*/))//baddad,dad</td>
-</tr>
-<tr>
-<td>分组+分组</td>
-<td>alert(“mon and dad”.match(/(mon( and dad)?)/))//mon and dad,mon and dad, and dad</td>
-</tr>
-</tbody></table>
-<h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><p>在圆括号分组的表达式中 ，回引子表达式。</p>
-<p>格式： \数字</p>
-<p>注意：</p>
-<ul>
-<li>由于子表达式可能会嵌套，所以它们的位置是按照左括号来计算的。</li>
-<li>在字符中使用引用是不合法的 ，因此不能这么写/<a href="%5E%5C1">[‘ “]</a>*\1/</li>
-</ul>
-<p>例子：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 开头不一定都是单引号或双引号：/[&#x27;&quot;][^&#x27;&quot;]*[&#x27;&quot;]/</span></span><br><span class="line"><span class="comment">//修改:/[&#x27;&quot;][^&#x27;&quot;]*\1/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> color = <span class="string">&quot;#990000&quot;</span>;</span><br><span class="line"><span class="regexp">/#(\d+)/</span>.test(color);</span><br><span class="line">alert(<span class="built_in">RegExp</span>.$1); <span class="comment">//990000</span></span><br><span class="line"></span><br><span class="line">alert(<span class="regexp">/(dog)\1/</span>.test(<span class="string">&quot;dogdog&quot;</span>)); <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> num = <span class="string">&quot;1234 5678&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> newNum = num.replace(<span class="regexp">/(\d&#123;4&#125;) (\d&#123;4&#125;)/</span>, <span class="string">&quot;$2 $1&quot;</span>);</span><br><span class="line">alert(newNum);</span><br></pre></td></tr></table></figure>
-
-<h3 id="正向断言"><a href="#正向断言" class="headerlink" title="正向断言"></a>正向断言</h3><p>正向前瞻用来检查接下来的出现的是不是某个特定的字符集。而负向前瞻则是检查接下来的不应该出现的特定字符串集。零宽断言是不会被捕获的。</p>
-<table>
-<thead>
-<tr>
-<th>零宽断言</th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>正则</td>
-<td>名称</td>
-<td>描述</td>
-</tr>
-<tr>
-<td>(?=exp)</td>
-<td>正向前瞻</td>
-<td>要求后面的字符匹配 exp，（但匹配结果不包含与值匹配的字符）</td>
-</tr>
-<tr>
-<td>(?!exp)</td>
-<td>负向前瞻</td>
-<td>要求后面的字符不匹配 exp</td>
-</tr>
-<tr>
-<td>(?&lt;=exp)</td>
-<td>正向后瞻</td>
-<td>匹配 exp 后面的位置不支持</td>
-</tr>
-<tr>
-<td>(?&lt;!exp)</td>
-<td>负向后瞻</td>
-<td>匹配前面不是 exp 的位置不支持</td>
-</tr>
-</tbody></table>
-<h3 id="边界锚点"><a href="#边界锚点" class="headerlink" title="边界锚点"></a>边界锚点</h3><table>
-<thead>
-<tr>
-<th>正则</th>
-<th>名称</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>^</td>
-<td>开头</td>
-<td>注意不能紧跟于左中括号的后面</td>
-</tr>
-<tr>
-<td>$</td>
-<td>结尾</td>
-<td></td>
-</tr>
-<tr>
-<td>\b</td>
-<td>单词边界</td>
-<td>指[a-zA-Z_0-9]之外的字符， 注意[\b]匹配推个字符</td>
-</tr>
-<tr>
-<td>\B</td>
-<td>非单词边界</td>
-<td></td>
-</tr>
-</tbody></table>
-<p>题目，设计一个字符串原型方法，实现首字母大写！</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="string">&quot;ruby&quot;</span>;</span><br><span class="line"><span class="built_in">String</span>.prototype.capitalize = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">this</span>.replace(<span class="regexp">/^\w/</span>, <span class="function"><span class="keyword">function</span> (<span class="params">s</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> s.toUpperCase();</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br><span class="line">alert(a.capitalize()); <span class="comment">//Ruby</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="模式匹配的字符串方法"><a href="#模式匹配的字符串方法" class="headerlink" title="模式匹配的字符串方法"></a>模式匹配的字符串方法</h2><h3 id="search"><a href="#search" class="headerlink" title="search()"></a>search()</h3><ul>
-<li><p>接收一个正则表达式参数，返回第一个匹配项的位置，没有返回-1</p>
-</li>
-<li><p>不支持全局</p>
-</li>
-</ul>
-<h3 id="replace"><a href="#replace" class="headerlink" title="replace()"></a>replace()</h3><ul>
-<li>执行搜索替换功能</li>
-<li>表达式作为第一个参数，替换字符串作为第二个参数</li>
-<li>可以配合$使用</li>
-</ul>
-<h3 id="match"><a href="#match" class="headerlink" title="match()"></a>match()</h3><ul>
-<li>接收一个正则表达式参数，返回结果是数组。</li>
-<li>执行非全局搜索时，返回的数组元素不同，第一个是匹配的字符串，剩下的是子表达式分组所匹配的字符串，a[1]相当于$1,a[2]相当于 $2，以此类推。</li>
-</ul>
-<h3 id="split"><a href="#split" class="headerlink" title="split()"></a>split()</h3><ul>
-<li>接收一个正则表达式参数，使用传入的参数作为分隔符。</li>
-</ul>
-<h3 id="match-1"><a href="#match-1" class="headerlink" title="match()"></a>match()</h3><h2 id="RegExp-类"><a href="#RegExp-类" class="headerlink" title="RegExp 类"></a>RegExp 类</h2><h3 id="RegExp-属性"><a href="#RegExp-属性" class="headerlink" title="RegExp 属性"></a>RegExp 属性</h3><ul>
-<li>lastIndex 可读可写</li>
-<li>global g</li>
-<li>ignoreCase i</li>
-<li>等等</li>
-</ul>
-<h3 id="RegExp"><a href="#RegExp" class="headerlink" title="RegExp()"></a>RegExp()</h3><ul>
-<li><p>接收一个或两个字符串参数。第一个参数可以是字符串，也可以时一个 RegExp 对象，这样可以复制已有的表达式，并修改它的标志</p>
-</li>
-<li><p>构造函数，用于动态创建正则表达式。有些正则表达式字面量语法无法创建</p>
-</li>
-<li><p>要搜索用户输入的字符串，必须用 RegExp()在运行时创建正则表示式</p>
-</li>
-</ul>
-<h3 id="test"><a href="#test" class="headerlink" title="test()"></a>test()</h3><ul>
-<li>有 匹配项返回 true，没有就 false</li>
-</ul>
-<h3 id="exec"><a href="#exec" class="headerlink" title="exec()"></a>exec()</h3><ul>
-<li><p>接收 一个字符串参数，有匹配项就 返回一个数组，没有就返回 null</p>
-</li>
-<li><p>返回的数组，index 记录匹配的起始位置，input 属性包含搜索的目标字符串。</p>
-</li>
-<li><p>有 g 和没 g 返回数组相同，和 match()不同。</p>
-</li>
-</ul>
-<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2>]]></content>
-      <categories>
-        <category>js正则表达式</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>Markdown</tag>
       </tags>
   </entry>
 </search>
