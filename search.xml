@@ -891,81 +891,6 @@ document.write(b);
       </tags>
   </entry>
   <entry>
-    <title>JS事件</title>
-    <url>/2021/11/06/%E4%BA%8B%E4%BB%B6/</url>
-    <content><![CDATA[<h1 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h1><p>ie6，没有 flex 定位</p>
-<p>事件传播的三个阶段执行顺序：Capturing &gt; Target &gt; Bubbling 捕获 目标 冒泡</p>
-<h2 id="事件绑定函数"><a href="#事件绑定函数" class="headerlink" title="事件绑定函数"></a>事件绑定函数</h2><p>1.ele.onxxx = function (event) {}<br>兼容性很好，但是一个元素只能绑定一个处理程序<br>基本等同于写在 HTML 行间上<br>2.ele.addEventListener(type, fn, false);<br>IE9 以下不兼容，可以为一个事件绑定多个处理程序<br>同一个函数只能绑定一次<br>3.ele.attachEvent(‘on’ + type, fn);<br>IE 独有，一个事件同样可以绑定多个处理程序</p>
-<p>eg: 行间不用写 function</p>
-<pre><code>一旦事件出现在了函数里面，就要考虑是否出现闭包，考虑要不要用立即执行函数解决。
-</code></pre>
-<h2 id="事件处理程序的运行环境"><a href="#事件处理程序的运行环境" class="headerlink" title="事件处理程序的运行环境"></a>事件处理程序的运行环境</h2><p>1.ele.onxxx = function (event) {}<br>程序 this 指向是 dom 元素本身<br>2.obj.addEventListener(type, fn, false);<br>程序 this 指向是 dom 元素本身<br>3.obj.attachEvent(‘on’ + type, fn);<br>程序 this 指向 window 4.封装兼容性的 addEvent(elem, type, handle);方法</p>
-<h2 id="解除事件处理程序"><a href="#解除事件处理程序" class="headerlink" title="解除事件处理程序"></a>解除事件处理程序</h2><ol>
-<li>ele.onclick = false/‘’/null;</li>
-<li>ele.removeEventListener(type, fn, false);</li>
-<li>ele.detachEvent(‘on’ + type, fn);<br><strong>注:若绑定匿名函数，则无法解除</strong></li>
-</ol>
-<h2 id="事件处理模型-—-事件冒泡、捕获"><a href="#事件处理模型-—-事件冒泡、捕获" class="headerlink" title="事件处理模型 — 事件冒泡、捕获"></a>事件处理模型 — 事件冒泡、捕获</h2><ul>
-<li>事件冒泡：<br>结构上（非视觉上）嵌套关系的元素，会存在事件冒泡的功能，即同一事件，自子元素冒泡向父元素。（自底向上）</li>
-<li>事件捕获：<br>结构上（非视觉上）嵌套关系的元素，会存在事件捕获的功能，即同一事件，自父元素捕获至子元素（事件源元素）。（自底向上）<br>IE 没有捕获事件</li>
-</ul>
-<p>但是：ie 的两个事件捕获函数：<br>div.setCapture();div.releaseCapture();</p>
-<p>触发顺序，先捕获，后冒泡,</p>
-<p>事件执行顺序是先绑定先执行</p>
-<p>focus，blur，change，submit，reset，select 等事件不冒泡</p>
-<h2 id="取消冒泡和阻止默认事件"><a href="#取消冒泡和阻止默认事件" class="headerlink" title="取消冒泡和阻止默认事件"></a>取消冒泡和阻止默认事件</h2><ul>
-<li>取消冒泡：<br>W3C 标准 event.stopPropagation();但不支持 ie9 以下版本<br>IE 独有 event.cancelBubble = true;<br>封装取消冒泡的函数 stopBubble(event)</li>
-<li>阻止默认事件:<br>默认事件 — 表单提交，a 标签跳转，右键菜单等<br>1.return false; 以对象属性的方式注册的事件才生效<br>2.event.preventDefault(); W3C 标注，IE9 以下不兼容<br>3.event.returnValue = false; 兼容 IE<br>封装阻止默认事件的函数 cancelHandler(event);<br>取消 a 标签默认事件：<a href="javascript:void(fasle)"></a></li>
-</ul>
-<h2 id="事件对象"><a href="#事件对象" class="headerlink" title="事件对象"></a>事件对象</h2><ul>
-<li>event || window.event 用于 IE</li>
-<li>事件源对象:<br>event.target 火狐独有的<br>event.srcElement ie 独有的<br>这俩 chrome 都有</li>
-<li>兼容性写法：</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> ul = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&quot;ul&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">ul.onclick = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="comment">//非ie浏览器会将事件对象打包传到参数里。ie会记录在window.event</span></span><br><span class="line">  <span class="keyword">var</span> event = e || <span class="built_in">window</span>.event;</span><br><span class="line">  <span class="keyword">var</span> target = event.target || event.srcElement;</span><br><span class="line">  <span class="built_in">console</span>.log(target.innerText);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p><strong>非 ie 浏览器会将事件对象打包传到参数里。ie 会记录在 window.event</strong></p>
-<h2 id="事件委托"><a href="#事件委托" class="headerlink" title="事件委托"></a>事件委托</h2><p>利用事件冒泡，和事件源对象进行处理</p>
-<ul>
-<li>优点：<ol>
-<li>性能 不需要循环所有的元素一个个绑定事件</li>
-<li>灵活 当有新的子元素时不需要重新绑定事件</li>
-</ol>
-</li>
-</ul>
-<h2 id="事件分类"><a href="#事件分类" class="headerlink" title="事件分类"></a>事件分类</h2><ul>
-<li><p>鼠标事件<br>click、mousedown、mousemove、mouseup、contextmenu、mouseover、mouseout、 mouseenter mouseleave</p>
-</li>
-<li><p>用 button 来区分鼠标的按键，0/1/2</p>
-</li>
-<li><p>DOM3 标准规定:<br>click 事件只能监听左键,只能通过 mousedown 和 mouseu p 来判断鼠标键<br>如何解决 mousedown 和 click 的冲突</p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>笔记</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>JS时间线</title>
-    <url>/2021/11/06/%E6%97%B6%E9%97%B4%E7%BA%BF/</url>
-    <content><![CDATA[<h1 id="js-时间线"><a href="#js-时间线" class="headerlink" title="js 时间线"></a>js 时间线</h1><p>1、创建 Document 对象，开始解析 web 页面。解析 HTML 元素和他们的文本内容后添加 Element 对象和 Text 节点到文档中。这个阶段 document.readyState = ‘loading’。</p>
-<p>2、遇到 link 外部 css，创建线程加载，并继续解析文档。</p>
-<p>3、遇到 script 外部 js，并且没有设置 async、defer，浏览器加载，并阻塞，等待 js 加载完成并执行该脚本，然后继续解析文档。</p>
-<p>4、遇到 script 外部 js，并且设置有 async、defer，浏览器创建线程加载，并继续解析文档。</p>
-<p>对于 async 属性的脚本，脚本加载完成后立即执行。（**异步禁止使用 document.write()**）</p>
-<p>5、遇到 img 等，先正常解析 dom 结构，然后浏览器<strong>异步加载 src</strong>，并继续解析文档。</p>
-<p>6、当文档解析完成，document.readyState = ‘interactive’。</p>
-<p>7、文档解析完成后，所有设置有 defer 的脚本会按照顺序执行。（注意与 async 的不同,但同样禁止使用 document.write()）;</p>
-<p>8、document 对象触发 DOMContentLoaded 事件，这也标志着程序执行从同步脚本执行阶段，转化为事件驱动阶段。</p>
-<p>9、当所有 async 的脚本加载完成并执行后、img 等加载完成后，document.readyState = ‘complete’，window 对象触发 load 事件。</p>
-<p>10、从此，以异步响应方式处理用户输入、网络事件等。</p>
-]]></content>
-      <categories>
-        <category>笔记</category>
-      </categories>
-  </entry>
-  <entry>
     <title>RegExp-正则表达式</title>
     <url>/2021/11/06/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</url>
     <content><![CDATA[<p>正则表达式式一种描述文本的对象。</p>
@@ -1277,6 +1202,81 @@ document.write(b);
         <tag>Hexo</tag>
         <tag>Markdown</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>JS事件</title>
+    <url>/2021/11/06/%E4%BA%8B%E4%BB%B6/</url>
+    <content><![CDATA[<h1 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h1><p>ie6，没有 flex 定位</p>
+<p>事件传播的三个阶段执行顺序：Capturing &gt; Target &gt; Bubbling 捕获 目标 冒泡</p>
+<h2 id="事件绑定函数"><a href="#事件绑定函数" class="headerlink" title="事件绑定函数"></a>事件绑定函数</h2><p>1.ele.onxxx = function (event) {}<br>兼容性很好，但是一个元素只能绑定一个处理程序<br>基本等同于写在 HTML 行间上<br>2.ele.addEventListener(type, fn, false);<br>IE9 以下不兼容，可以为一个事件绑定多个处理程序<br>同一个函数只能绑定一次<br>3.ele.attachEvent(‘on’ + type, fn);<br>IE 独有，一个事件同样可以绑定多个处理程序</p>
+<p>eg: 行间不用写 function</p>
+<pre><code>一旦事件出现在了函数里面，就要考虑是否出现闭包，考虑要不要用立即执行函数解决。
+</code></pre>
+<h2 id="事件处理程序的运行环境"><a href="#事件处理程序的运行环境" class="headerlink" title="事件处理程序的运行环境"></a>事件处理程序的运行环境</h2><p>1.ele.onxxx = function (event) {}<br>程序 this 指向是 dom 元素本身<br>2.obj.addEventListener(type, fn, false);<br>程序 this 指向是 dom 元素本身<br>3.obj.attachEvent(‘on’ + type, fn);<br>程序 this 指向 window 4.封装兼容性的 addEvent(elem, type, handle);方法</p>
+<h2 id="解除事件处理程序"><a href="#解除事件处理程序" class="headerlink" title="解除事件处理程序"></a>解除事件处理程序</h2><ol>
+<li>ele.onclick = false/‘’/null;</li>
+<li>ele.removeEventListener(type, fn, false);</li>
+<li>ele.detachEvent(‘on’ + type, fn);<br><strong>注:若绑定匿名函数，则无法解除</strong></li>
+</ol>
+<h2 id="事件处理模型-—-事件冒泡、捕获"><a href="#事件处理模型-—-事件冒泡、捕获" class="headerlink" title="事件处理模型 — 事件冒泡、捕获"></a>事件处理模型 — 事件冒泡、捕获</h2><ul>
+<li>事件冒泡：<br>结构上（非视觉上）嵌套关系的元素，会存在事件冒泡的功能，即同一事件，自子元素冒泡向父元素。（自底向上）</li>
+<li>事件捕获：<br>结构上（非视觉上）嵌套关系的元素，会存在事件捕获的功能，即同一事件，自父元素捕获至子元素（事件源元素）。（自底向上）<br>IE 没有捕获事件</li>
+</ul>
+<p>但是：ie 的两个事件捕获函数：<br>div.setCapture();div.releaseCapture();</p>
+<p>触发顺序，先捕获，后冒泡,</p>
+<p>事件执行顺序是先绑定先执行</p>
+<p>focus，blur，change，submit，reset，select 等事件不冒泡</p>
+<h2 id="取消冒泡和阻止默认事件"><a href="#取消冒泡和阻止默认事件" class="headerlink" title="取消冒泡和阻止默认事件"></a>取消冒泡和阻止默认事件</h2><ul>
+<li>取消冒泡：<br>W3C 标准 event.stopPropagation();但不支持 ie9 以下版本<br>IE 独有 event.cancelBubble = true;<br>封装取消冒泡的函数 stopBubble(event)</li>
+<li>阻止默认事件:<br>默认事件 — 表单提交，a 标签跳转，右键菜单等<br>1.return false; 以对象属性的方式注册的事件才生效<br>2.event.preventDefault(); W3C 标注，IE9 以下不兼容<br>3.event.returnValue = false; 兼容 IE<br>封装阻止默认事件的函数 cancelHandler(event);<br>取消 a 标签默认事件：<a href="javascript:void(fasle)"></a></li>
+</ul>
+<h2 id="事件对象"><a href="#事件对象" class="headerlink" title="事件对象"></a>事件对象</h2><ul>
+<li>event || window.event 用于 IE</li>
+<li>事件源对象:<br>event.target 火狐独有的<br>event.srcElement ie 独有的<br>这俩 chrome 都有</li>
+<li>兼容性写法：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> ul = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&quot;ul&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">ul.onclick = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="comment">//非ie浏览器会将事件对象打包传到参数里。ie会记录在window.event</span></span><br><span class="line">  <span class="keyword">var</span> event = e || <span class="built_in">window</span>.event;</span><br><span class="line">  <span class="keyword">var</span> target = event.target || event.srcElement;</span><br><span class="line">  <span class="built_in">console</span>.log(target.innerText);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>非 ie 浏览器会将事件对象打包传到参数里。ie 会记录在 window.event</strong></p>
+<h2 id="事件委托"><a href="#事件委托" class="headerlink" title="事件委托"></a>事件委托</h2><p>利用事件冒泡，和事件源对象进行处理</p>
+<ul>
+<li>优点：<ol>
+<li>性能 不需要循环所有的元素一个个绑定事件</li>
+<li>灵活 当有新的子元素时不需要重新绑定事件</li>
+</ol>
+</li>
+</ul>
+<h2 id="事件分类"><a href="#事件分类" class="headerlink" title="事件分类"></a>事件分类</h2><ul>
+<li><p>鼠标事件<br>click、mousedown、mousemove、mouseup、contextmenu、mouseover、mouseout、 mouseenter mouseleave</p>
+</li>
+<li><p>用 button 来区分鼠标的按键，0/1/2</p>
+</li>
+<li><p>DOM3 标准规定:<br>click 事件只能监听左键,只能通过 mousedown 和 mouseu p 来判断鼠标键<br>如何解决 mousedown 和 click 的冲突</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>JS时间线</title>
+    <url>/2021/11/06/%E6%97%B6%E9%97%B4%E7%BA%BF/</url>
+    <content><![CDATA[<h1 id="js-时间线"><a href="#js-时间线" class="headerlink" title="js 时间线"></a>js 时间线</h1><p>1、创建 Document 对象，开始解析 web 页面。解析 HTML 元素和他们的文本内容后添加 Element 对象和 Text 节点到文档中。这个阶段 document.readyState = ‘loading’。</p>
+<p>2、遇到 link 外部 css，创建线程加载，并继续解析文档。</p>
+<p>3、遇到 script 外部 js，并且没有设置 async、defer，浏览器加载，并阻塞，等待 js 加载完成并执行该脚本，然后继续解析文档。</p>
+<p>4、遇到 script 外部 js，并且设置有 async、defer，浏览器创建线程加载，并继续解析文档。</p>
+<p>对于 async 属性的脚本，脚本加载完成后立即执行。（**异步禁止使用 document.write()**）</p>
+<p>5、遇到 img 等，先正常解析 dom 结构，然后浏览器<strong>异步加载 src</strong>，并继续解析文档。</p>
+<p>6、当文档解析完成，document.readyState = ‘interactive’。</p>
+<p>7、文档解析完成后，所有设置有 defer 的脚本会按照顺序执行。（注意与 async 的不同,但同样禁止使用 document.write()）;</p>
+<p>8、document 对象触发 DOMContentLoaded 事件，这也标志着程序执行从同步脚本执行阶段，转化为事件驱动阶段。</p>
+<p>9、当所有 async 的脚本加载完成并执行后、img 等加载完成后，document.readyState = ‘complete’，window 对象触发 load 事件。</p>
+<p>10、从此，以异步响应方式处理用户输入、网络事件等。</p>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
   </entry>
   <entry>
     <title>JavaScript 权威指南</title>
