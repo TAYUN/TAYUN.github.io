@@ -194,6 +194,20 @@
       </categories>
   </entry>
   <entry>
+    <title>Mock.js</title>
+    <url>/2021/11/07/Mock/</url>
+    <content><![CDATA[<h1 id="Mock（1）——js-工具库"><a href="#Mock（1）——js-工具库" class="headerlink" title="Mock（1）——js 工具库"></a>Mock（1）——js 工具库</h1><h3 id="语法规范"><a href="#语法规范" class="headerlink" title="语法规范"></a>语法规范</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//1. 属性值是字符串 String</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(</span></span><br><span class="line"><span class="javascript">			Mock.mock(&#123;</span></span><br><span class="line"><span class="javascript">				<span class="string">&#x27;data1|1-4&#x27;</span>: <span class="string">&#x27;张三&#x27;</span>,		<span class="comment">//随机重复1-4次</span></span></span><br><span class="line"><span class="javascript">				<span class="string">&#x27;data2|3&#x27;</span>: <span class="string">&#x27;李四&#x27;</span>,	<span class="comment">//固定重置3次</span></span></span><br><span class="line"><span class="javascript">			&#125;)</span></span><br><span class="line"><span class="javascript">		);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//2. 属性值是数字 Number</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(</span></span><br><span class="line"><span class="javascript">			Mock.mock(&#123;</span></span><br><span class="line"><span class="javascript">				<span class="string">&#x27;number1|+1&#x27;</span>: <span class="number">100</span>,	<span class="comment">//整数，自动加1并且初始值为100</span></span></span><br><span class="line"><span class="javascript">				<span class="string">&#x27;number2|1-100&#x27;</span>: <span class="number">12</span>,	<span class="comment">//整数，1-100之间的随机数，包括1和100（1=&lt;数字&lt;=100）	12用来确定是数据为数字类型</span></span></span><br><span class="line"><span class="javascript">				<span class="string">&#x27;number3|1-100.5&#x27;</span>: <span class="number">12</span>,	<span class="comment">//小数，整数部分为为1-100间随机数，包括1和100；小数部分为固定5位随机数</span></span></span><br><span class="line"><span class="javascript">				<span class="string">&#x27;number4|1-100.1-10&#x27;</span>: <span class="number">12</span>,	<span class="comment">//小数，整数部分为为1-100间随机数，包括1和100；小数部分为1-10个随机数（位数随机，数字也随机）</span></span></span><br><span class="line"><span class="javascript">				<span class="string">&#x27;number5|123.1-10&#x27;</span>: <span class="number">12</span>,	<span class="comment">//数字123后面随机添加1-10位小数</span></span></span><br><span class="line"><span class="javascript">				<span class="string">&#x27;number6|123.10&#x27;</span>: <span class="number">12</span>,	<span class="comment">//数字123后面固定添加10位小数，但小数的值是随机的</span></span></span><br><span class="line"><span class="javascript">			&#125;)</span></span><br><span class="line"><span class="javascript">		);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//3. 属性值是布尔型 Boolean</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(</span></span><br><span class="line"><span class="javascript">			Mock.mock(&#123;</span></span><br><span class="line"><span class="javascript">				<span class="string">&#x27;b1|1&#x27;</span>: <span class="literal">false</span>,	<span class="comment">//随机生成一个布尔值，true与false的概率各为一半</span></span></span><br><span class="line"><span class="javascript">				<span class="string">&#x27;b2|1-5&#x27;</span>: <span class="literal">true</span>,	<span class="comment">//随机生成一个布尔值，值为value的概率是min / (min + max)，值为!value的概率是max / (min + max)</span></span></span><br><span class="line"><span class="javascript">			&#125;)</span></span><br><span class="line"><span class="javascript">		);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//4. 属性值是对象 Object</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(</span></span><br><span class="line"><span class="javascript">			Mock.mock(&#123;</span></span><br><span class="line"><span class="javascript">				<span class="string">&#x27;num1|1-3&#x27;</span>: &#123; <span class="attr">a</span>: <span class="number">10</span>, <span class="attr">b</span>: <span class="number">20</span>, <span class="attr">c</span>: <span class="number">30</span>, <span class="attr">d</span>: <span class="number">40</span> &#125;,	<span class="comment">//随机选取对象里1-3个属性</span></span></span><br><span class="line"><span class="javascript">				<span class="string">&#x27;num2|2&#x27;</span>: &#123; <span class="attr">a</span>: <span class="number">10</span>, <span class="attr">b</span>: <span class="number">20</span>, <span class="attr">c</span>: <span class="number">30</span>, <span class="attr">d</span>: <span class="number">40</span> &#125;,	<span class="comment">//随机选取对象里2个属性</span></span></span><br><span class="line"><span class="javascript">			&#125;)</span></span><br><span class="line"><span class="javascript">		);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//属性值是数组 Array</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(</span></span><br><span class="line"><span class="javascript">			Mock.mock(&#123;</span></span><br><span class="line"><span class="javascript">				<span class="string">&#x27;arr1|1&#x27;</span>: [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>, <span class="string">&#x27;e&#x27;</span>],	<span class="comment">//随机选取数组里1个数据</span></span></span><br><span class="line"><span class="javascript">				<span class="string">&#x27;arr2|1-3&#x27;</span>: [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>, <span class="string">&#x27;e&#x27;</span>],	<span class="comment">//通过重复属性值生成一个新数组，min&lt;=重复次数&lt;=max</span></span></span><br><span class="line"><span class="javascript">			&#125;)</span></span><br><span class="line"><span class="javascript">		);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//6. 属性值是函数 Function</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(</span></span><br><span class="line"><span class="javascript">			Mock.mock(&#123;</span></span><br><span class="line"><span class="javascript">				<span class="string">&#x27;result&#x27;</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="number">1</span> + <span class="number">2</span> &#125;	<span class="comment">//把函数的返回值当作属性的结果</span></span></span><br><span class="line"><span class="javascript">			&#125;)</span></span><br><span class="line"><span class="javascript">		)</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//7. 属性值是正则表达式 RegExp</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(</span></span><br><span class="line"><span class="javascript">			Mock.mock(&#123;</span></span><br><span class="line"><span class="javascript">				<span class="string">&#x27;reg1&#x27;</span>: <span class="regexp">/[a-z][A-Z][0-9]/</span>,</span></span><br><span class="line"><span class="javascript">				<span class="string">&#x27;reg2&#x27;</span>: <span class="regexp">/\w\W\s\S\d\D/</span>,</span></span><br><span class="line"><span class="javascript">				<span class="string">&#x27;reg3&#x27;</span>: <span class="regexp">/\d&#123;5,10&#125;/</span></span></span><br><span class="line"><span class="javascript">			&#125;)</span></span><br><span class="line"><span class="javascript">		)</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//Mock.Random</span></span></span><br><span class="line"><span class="javascript">		<span class="keyword">var</span> Random = Mock.Random;</span></span><br><span class="line"><span class="javascript">		<span class="comment">// console.log(Random);</span></span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//1、Basics	基础类里的方法，共7个</span></span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//Random.boolean()		随机一个布尔值</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(</span></span><br><span class="line"><span class="javascript">			Random.boolean(),</span></span><br><span class="line"><span class="javascript">			Random.boolean(<span class="number">1</span>, <span class="number">9</span>, <span class="literal">true</span>),</span></span><br><span class="line"><span class="javascript">			Random.boolean(<span class="number">1</span>, <span class="number">2</span>, <span class="literal">false</span>),</span></span><br><span class="line"><span class="javascript">		);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//Random.natural()		随机一个自然数（大于等于 0 的整数）</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(</span></span><br><span class="line"><span class="javascript">			Random.natural(),</span></span><br><span class="line"><span class="javascript">			Random.natural(<span class="number">100</span>),</span></span><br><span class="line"><span class="javascript">			Random.natural(<span class="number">0</span>, <span class="number">50</span>),</span></span><br><span class="line"><span class="javascript">		);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//Random.integer()	随机一个整数（包含负数）</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(</span></span><br><span class="line"><span class="javascript">			Random.integer(),</span></span><br><span class="line"><span class="javascript">			Random.integer(-<span class="number">100</span>),</span></span><br><span class="line"><span class="javascript">			Random.integer(-<span class="number">50</span>, <span class="number">50</span>),</span></span><br><span class="line"><span class="javascript">		);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//Random.float()	随机一个小数</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(</span></span><br><span class="line"><span class="javascript">			Random.float(),</span></span><br><span class="line"><span class="javascript">			Random.float(<span class="number">0</span>),</span></span><br><span class="line"><span class="javascript">			Random.float(-<span class="number">10</span>, <span class="number">10</span>),</span></span><br><span class="line"><span class="javascript">			Random.float(-<span class="number">10</span>, <span class="number">10</span>, <span class="number">3</span>),</span></span><br><span class="line"><span class="javascript">			Random.float(-<span class="number">10</span>, <span class="number">10</span>, <span class="number">2</span>, <span class="number">5</span>),</span></span><br><span class="line"><span class="javascript">		);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//Random.character()	//随机一个字符</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(</span></span><br><span class="line"><span class="javascript">			Random.character(),</span></span><br><span class="line"><span class="javascript">			Random.character(<span class="string">&#x27;abc123&#x27;</span>),</span></span><br><span class="line"><span class="javascript">			Random.character(<span class="string">&#x27;lower&#x27;</span>),</span></span><br><span class="line"><span class="javascript">			Random.character(<span class="string">&#x27;symbol&#x27;</span>),</span></span><br><span class="line"><span class="javascript">		);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//Random.string()	随机一个字符串</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(</span></span><br><span class="line"><span class="javascript">			Random.string(),</span></span><br><span class="line"><span class="javascript">			Random.string(<span class="number">5</span>),</span></span><br><span class="line"><span class="javascript">			Random.string(<span class="number">7</span>, <span class="number">10</span>),</span></span><br><span class="line"><span class="javascript">			Random.string(<span class="string">&#x27;symbol&#x27;</span>, <span class="number">5</span>),</span></span><br><span class="line"><span class="javascript">			Random.string(<span class="string">&#x27;abc123&#x27;</span>, <span class="number">1</span>, <span class="number">3</span>),</span></span><br><span class="line"><span class="javascript">		);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//Random.range()	随机一个整数数据的数组</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(</span></span><br><span class="line"><span class="javascript">			Random.range(<span class="number">7</span>),</span></span><br><span class="line"><span class="javascript">			Random.range(<span class="number">3</span>, <span class="number">7</span>),</span></span><br><span class="line"><span class="javascript">			Random.range(<span class="number">1</span>, <span class="number">10</span>, <span class="number">2</span>),</span></span><br><span class="line"><span class="javascript">		);</span></span><br><span class="line"><span class="javascript">	</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Random-对象"><a href="#Random-对象" class="headerlink" title="Random 对象"></a>Random 对象</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="keyword">var</span> Random = Mock.Random;</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//2、Date	日期类里的方法，共4个</span></span></span><br><span class="line"><span class="javascript">		<span class="comment">//Random.date()		随机一个日期</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(</span></span><br><span class="line"><span class="javascript">			Random.date(),</span></span><br><span class="line"><span class="javascript">			Random.date(<span class="string">&#x27;yyyy-MM--dd : HH-m-ss&#x27;</span>),</span></span><br><span class="line"><span class="javascript">		);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//Random.time()		随机一个时间</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(</span></span><br><span class="line"><span class="javascript">			Random.time(),</span></span><br><span class="line"><span class="javascript">			Random.time(<span class="string">&#x27;A HH:mm:ss:SS&#x27;</span>),</span></span><br><span class="line"><span class="javascript">		);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//Random.datetime()	随机一个日期+时间</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(</span></span><br><span class="line"><span class="javascript">			Random.datetime(),</span></span><br><span class="line"><span class="javascript">		);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//Random.now()	返回当前的日期和时间字符串</span></span></span><br><span class="line"><span class="javascript">		<span class="comment">//week 定到这个周的第一天</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(</span></span><br><span class="line"><span class="javascript">			Random.now(),</span></span><br><span class="line"><span class="javascript">			Random.now(<span class="string">&#x27;minute&#x27;</span>),</span></span><br><span class="line"><span class="javascript">		);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//3、Image	图片类里的方法，花2个</span></span></span><br><span class="line"><span class="javascript">		<span class="comment">//Random.image()	生成一个随机的图片地址</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(</span></span><br><span class="line"><span class="javascript">			Random.image(),</span></span><br><span class="line"><span class="javascript">			Random.image(<span class="string">&#x27;200x100&#x27;</span>),</span></span><br><span class="line"><span class="javascript">			Random.image(<span class="string">&#x27;200x100&#x27;</span>, <span class="string">&#x27;#ffcc33&#x27;</span>, <span class="string">&#x27;#FFF&#x27;</span>, <span class="string">&#x27;png&#x27;</span>, <span class="string">&#x27;kaivon&#x27;</span>),</span></span><br><span class="line"><span class="javascript">		);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//Random.dataImage()	//生成一段随机的 Base64 图片编码</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(</span></span><br><span class="line"><span class="javascript">			<span class="comment">//Random.dataImage(),</span></span></span><br><span class="line"><span class="javascript">			Random.dataImage(<span class="string">&#x27;200x100&#x27;</span>),</span></span><br><span class="line"><span class="javascript">		)</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//Color	颜色类里的方法，共5个</span></span></span><br><span class="line"><span class="javascript">		<span class="comment">//Random.color()	随机一个16进制的颜色</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(</span></span><br><span class="line"><span class="javascript">			Random.color(),</span></span><br><span class="line"><span class="javascript">		);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//Random.hex()</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(</span></span><br><span class="line"><span class="javascript">			Random.hex(),</span></span><br><span class="line"><span class="javascript">		);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//Random.rgb()</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(</span></span><br><span class="line"><span class="javascript">			Random.rgb(),	<span class="comment">//随机生成一个rgb格式的颜色</span></span></span><br><span class="line"><span class="javascript">		);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//Random.rgba()</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(</span></span><br><span class="line"><span class="javascript">			Random.rgba(),	<span class="comment">//随机生成一个rgba格式的颜色</span></span></span><br><span class="line"><span class="javascript">		);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//Random.hsl()</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(</span></span><br><span class="line"><span class="javascript">			Random.hsl(),	<span class="comment">//随机生成一个hsl格式(色相、饱和度、亮度)的颜色</span></span></span><br><span class="line"><span class="javascript">		);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//5、Text	文本类里的方法，共8个</span></span></span><br><span class="line"><span class="javascript">		<span class="comment">//Random.paragraph()	随机生成一段文本</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.paragraph());</span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.paragraph(<span class="number">2</span>));</span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.paragraph(<span class="number">1</span>, <span class="number">3</span>));</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//Random.cparagraph()	随机生成一段中文文本。</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.cparagraph());</span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.cparagraph(<span class="number">2</span>));</span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.cparagraph(<span class="number">1</span>, <span class="number">3</span>));</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//Random.sentence()	随机生成一个句子，句子首字母大写</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.sentence());</span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.sentence(<span class="number">5</span>));</span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.sentence(<span class="number">1</span>, <span class="number">5</span>));</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//Random.csentence()	随机生成一段中文文本</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.csentence());</span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.csentence(<span class="number">5</span>));</span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.csentence(<span class="number">1</span>, <span class="number">5</span>));</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//Random.word()		随机生成一个单词</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.word());</span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.word(<span class="number">5</span>));</span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.word(<span class="number">1</span>, <span class="number">5</span>));</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//Random.cword()	随机生成一个汉字</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.cword());</span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.cword(<span class="number">5</span>));</span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.cword(<span class="number">1</span>, <span class="number">5</span>));</span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.cword(<span class="string">&#x27;零一二三四五六七八九十&#x27;</span>, <span class="number">3</span>));</span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.cword(<span class="string">&#x27;零一二三四五六七八九十&#x27;</span>, <span class="number">5</span>, <span class="number">7</span>));</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//Random.title()	随机生成一个标题</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.title());</span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.title(<span class="number">3</span>));</span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.title(<span class="number">1</span>, <span class="number">5</span>));</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//Random.ctitle()	随机生成一句中文标题</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.ctitle());</span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.ctitle(<span class="number">3</span>));</span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.ctitle(<span class="number">1</span>, <span class="number">5</span>));</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//6、Name	名字类里的方法，共6个</span></span></span><br><span class="line"><span class="javascript">		<span class="comment">//Random.first()	随机生成一个常见的英文名</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.first())</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//Random.last()		随机生成一个常见的英文姓</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.last());</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//Random.name()		随机生成一个常见的英文姓名</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.name(<span class="literal">true</span>));	<span class="comment">//是否添加一个中间值</span></span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//Random.cfirst()	//随机生成一个常见的中文名</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.cfirst());</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//Random.clast()	//随机生成一个常见的中文姓</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.clast());</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//Random.cname()	随机生成一个常见的中文姓名</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.cname());</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//7、Web	Web类里的方法，共6个</span></span></span><br><span class="line"><span class="javascript">		<span class="comment">//Random.url()	//随机生成一个 URL</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.url());</span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.url(<span class="string">&#x27;http&#x27;</span>));	<span class="comment">//指定协议</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.url(<span class="string">&#x27;http&#x27;</span>, <span class="string">&#x27;kaivon.cn&#x27;</span>));	<span class="comment">//指定域名</span></span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//Random.protocol()		随机生成一个 URL 协议</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.protocol());</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//Random.domain()	随机生成一个域名</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.domain());</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//Random.tld()	随机生成一个顶级域名</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.tld());</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//Random.email()	随机生成一个邮件地址</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.email());</span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.email(<span class="string">&#x27;kaivon.cn&#x27;</span>));	<span class="comment">//指定@后的域名</span></span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//Random.ip()	随机生成一个 IP 地址</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.ip());</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//8、Address	地址类里的方法，共5个</span></span></span><br><span class="line"><span class="javascript">		<span class="comment">//Random.region()	随机生成一个（中国）大区</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.region());</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//Random.province()	随机生成一个（中国）省（或直辖市、自治区、特别行政区）</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.province());</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//Random.city()		随机生成一个（中国）市</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.city());</span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.city(<span class="literal">true</span>));	<span class="comment">//是否生成所属的省</span></span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//Random.county()		随机生成一个（中国）县</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.county());</span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.county(<span class="literal">true</span>));	<span class="comment">//指示是否生成所属的省、市</span></span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//Random.zip()		随机生成一个邮政编码</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.zip());</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//9、Helper	帮助类里的方法，共5个</span></span></span><br><span class="line"><span class="javascript">		<span class="comment">//Random.capitalize()	//把字符串的第一个字母转换为大写</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.capitalize(<span class="string">&#x27;kaivon&#x27;</span>));</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//Random.upper()	//把字符串转换为大写</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.upper(<span class="string">&#x27;kaivon&#x27;</span>));</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//Random.lower()	//把字符串转换为小写</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.lower(<span class="string">&#x27;KAI&#x27;</span>));</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//Random.pick()		//从数组中随机选取一个元素</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.pick([<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>, <span class="string">&#x27;e&#x27;</span>]));</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//Random.shuffle()	//打乱数组中元素的顺序</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.shuffle([<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>, <span class="string">&#x27;e&#x27;</span>]));</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//10、Miscellaneous	其它类里的方法，共3个</span></span></span><br><span class="line"><span class="javascript">		<span class="comment">//Random.guid()		随机生成一个 GUID</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.guid());</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//Random.id()		随机生成一个 18 位身份证</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.id());</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(</span></span><br><span class="line"><span class="javascript">			Mock.mock(<span class="string">&#x27;@EMAIL&#x27;</span>),</span></span><br><span class="line"><span class="javascript">			Mock.mock(<span class="string">&#x27;@CITY(true)&#x27;</span>),</span></span><br><span class="line"><span class="javascript">			Mock.mock(<span class="string">&#x27;@cword(&quot;陈学辉好帅&quot;, 1, 3)&#x27;</span>),</span></span><br><span class="line"><span class="javascript">		);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//扩展方法</span></span></span><br><span class="line"><span class="javascript">		Random.extend(&#123;</span></span><br><span class="line"><span class="javascript">			<span class="attr">constellation</span>: <span class="function"><span class="keyword">function</span> (<span class="params">date</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">				<span class="keyword">var</span> constellations = [<span class="string">&#x27;白羊座&#x27;</span>, <span class="string">&#x27;金牛座&#x27;</span>, <span class="string">&#x27;双子座&#x27;</span>, <span class="string">&#x27;巨蟹座&#x27;</span>, <span class="string">&#x27;狮子座&#x27;</span>, <span class="string">&#x27;处女座&#x27;</span>, <span class="string">&#x27;天秤座&#x27;</span>, <span class="string">&#x27;天蝎座&#x27;</span>, <span class="string">&#x27;射手座&#x27;</span>, <span class="string">&#x27;摩羯座&#x27;</span>, <span class="string">&#x27;水瓶座&#x27;</span>, <span class="string">&#x27;双鱼座&#x27;</span>];</span></span><br><span class="line"><span class="javascript">				<span class="keyword">return</span> <span class="built_in">this</span>.pick(constellations)</span></span><br><span class="line"><span class="javascript">			&#125;</span></span><br><span class="line"><span class="javascript">		&#125;);</span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Random.constellation());</span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(Mock.mock(<span class="string">&#x27;@constellation&#x27;</span>))</span></span><br><span class="line"><span class="javascript">	</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="mock方法"><a href="#mock方法" class="headerlink" title="mock方法"></a>mock方法</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></span><br><span class="line"><span class="css">		<span class="selector-tag">table</span> &#123;</span></span><br><span class="line"><span class="css">			<span class="attribute">border-collapse</span>: collapse;</span></span><br><span class="line"><span class="css">			<span class="attribute">width</span>: <span class="number">90%</span>;</span></span><br><span class="line"><span class="css">			<span class="attribute">margin</span>: <span class="number">0</span> auto;</span></span><br><span class="line"><span class="css">			<span class="attribute">font-size</span>: <span class="number">20px</span>;</span></span><br><span class="line"><span class="css">			<span class="attribute">line-height</span>: <span class="number">60px</span>;</span></span><br><span class="line"><span class="css">		&#125;</span></span><br><span class="line"><span class="css"></span></span><br><span class="line"><span class="css">		<span class="selector-tag">th</span>,</span></span><br><span class="line"><span class="css">		<span class="selector-tag">td</span> &#123;</span></span><br><span class="line"><span class="css">			<span class="attribute">padding</span>: <span class="number">0</span>;</span></span><br><span class="line"><span class="css">			<span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#99b0da</span>;</span></span><br><span class="line"><span class="css">			<span class="attribute">text-align</span>: center;</span></span><br><span class="line"><span class="css">		&#125;</span></span><br><span class="line"><span class="css"></span></span><br><span class="line"><span class="css">		<span class="selector-tag">th</span> &#123;</span></span><br><span class="line"><span class="css">			<span class="attribute">background</span>: <span class="number">#dbe3fa</span>;</span></span><br><span class="line"><span class="css">		&#125;</span></span><br><span class="line"><span class="css">	</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;js/mock.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;js/jquery-3.4.1.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;btn&quot;</span>&gt;</span>请求数据<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">table</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">thead</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">th</span>&gt;</span>学号<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">th</span>&gt;</span>姓名<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">th</span>&gt;</span>性别<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">th</span>&gt;</span>邮箱<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">th</span>&gt;</span>生日<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">th</span>&gt;</span>手机号<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">th</span>&gt;</span>住址<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">th</span>&gt;</span>操作<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">thead</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">tbody</span> <span class="attr">id</span>=<span class="string">&quot;table-body&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">		$(<span class="string">&#x27;#btn&#x27;</span>).click(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">			$.ajax(&#123;</span></span><br><span class="line"><span class="javascript">				<span class="attr">url</span>: <span class="string">&#x27;js/data.json&#x27;</span>,</span></span><br><span class="line"><span class="javascript">				<span class="attr">type</span>: <span class="string">&#x27;get&#x27;</span>,</span></span><br><span class="line"><span class="javascript">				<span class="attr">dataType</span>: <span class="string">&#x27;json&#x27;</span>,</span></span><br><span class="line"><span class="javascript">				<span class="attr">success</span>: <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">					<span class="built_in">console</span>.log(data);</span></span><br><span class="line"><span class="javascript">					createDom(data.data);</span></span><br><span class="line"><span class="javascript">				&#125;</span></span><br><span class="line"><span class="javascript">			&#125;);</span></span><br><span class="line"><span class="javascript">		&#125;);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="function"><span class="keyword">function</span> <span class="title">createDom</span>(<span class="params">data</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">			<span class="keyword">var</span> str = <span class="string">&#x27;&#x27;</span>;</span></span><br><span class="line"><span class="javascript">			data.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">item, index</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">				str += <span class="string">`</span></span></span><br><span class="line"><span class="string"><span class="javascript">					&lt;tr&gt;</span></span></span><br><span class="line"><span class="string"><span class="javascript">						&lt;td&gt;<span class="subst">$&#123;item.sNo&#125;</span>&lt;/td&gt;</span></span></span><br><span class="line"><span class="string"><span class="javascript">						&lt;td&gt;<span class="subst">$&#123;item.name&#125;</span>&lt;/td&gt;</span></span></span><br><span class="line"><span class="string"><span class="javascript">						&lt;td&gt;<span class="subst">$&#123;item.sex&#125;</span>&lt;/td&gt;</span></span></span><br><span class="line"><span class="string"><span class="javascript">						&lt;td&gt;<span class="subst">$&#123;item.email&#125;</span>&lt;/td&gt;</span></span></span><br><span class="line"><span class="string"><span class="javascript">						&lt;td&gt;<span class="subst">$&#123;item.birth&#125;</span>&lt;/td&gt;</span></span></span><br><span class="line"><span class="string"><span class="javascript">						&lt;td&gt;<span class="subst">$&#123;item.phone&#125;</span>&lt;/td&gt;</span></span></span><br><span class="line"><span class="string"><span class="javascript">						&lt;td&gt;<span class="subst">$&#123;item.address&#125;</span>&lt;/td&gt;</span></span></span><br><span class="line"><span class="string"><span class="javascript">						&lt;td&gt;</span></span></span><br><span class="line"><span class="string"><span class="javascript">							&lt;button&gt;编辑&lt;/button&gt;</span></span></span><br><span class="line"><span class="string"><span class="javascript">							&lt;button&gt;删除&lt;/button&gt;</span></span></span><br><span class="line"><span class="string"><span class="javascript">						&lt;/td&gt;</span></span></span><br><span class="line"><span class="string"><span class="javascript">					&lt;/tr&gt;</span></span></span><br><span class="line"><span class="string"><span class="javascript">				`</span>;</span></span><br><span class="line"><span class="javascript">			&#125;);</span></span><br><span class="line"><span class="javascript">			$(<span class="string">&#x27;#table-body&#x27;</span>).html(str);</span></span><br><span class="line"><span class="javascript">		&#125;;</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		Mock.mock(<span class="string">&#x27;js/data.json&#x27;</span>, &#123;</span></span><br><span class="line"><span class="javascript">			<span class="string">&quot;status&quot;</span>: <span class="string">&quot;success&quot;</span>,</span></span><br><span class="line"><span class="javascript">			<span class="string">&quot;msg&quot;</span>: <span class="string">&quot;查询成功&quot;</span>,</span></span><br><span class="line"><span class="javascript">			<span class="string">&quot;data|10&quot;</span>: [&#123;</span></span><br><span class="line"><span class="javascript">				<span class="string">&quot;id|+1&quot;</span>: <span class="number">1</span>,</span></span><br><span class="line"><span class="javascript">				<span class="string">&quot;name&quot;</span>: <span class="string">&quot;@cname&quot;</span>,</span></span><br><span class="line"><span class="javascript">				<span class="string">&quot;birth&quot;</span>: <span class="string">&quot;@date&quot;</span>,</span></span><br><span class="line"><span class="javascript">				<span class="string">&quot;sex|1&quot;</span>: [<span class="string">&#x27;男&#x27;</span>, <span class="string">&#x27;女&#x27;</span>],</span></span><br><span class="line"><span class="javascript">				<span class="string">&quot;sNo|+1&quot;</span>: <span class="number">11000</span>,</span></span><br><span class="line"><span class="javascript">				<span class="string">&quot;email&quot;</span>: <span class="string">&quot;@email&quot;</span>,</span></span><br><span class="line"><span class="javascript">				<span class="string">&quot;phone&quot;</span>: <span class="string">&quot;@natural(13000000000,19900000000)&quot;</span>,</span></span><br><span class="line"><span class="javascript">				<span class="string">&quot;address&quot;</span>: <span class="string">&quot;@county(true) @ctitle(5,10)&quot;</span>,</span></span><br><span class="line"><span class="javascript">				<span class="string">&quot;appkey&quot;</span>: <span class="string">&quot;@string(4,7)_@date(T)&quot;</span>,</span></span><br><span class="line"><span class="javascript">				<span class="string">&quot;ctime&quot;</span>: <span class="string">&quot;@date(T)&quot;</span>,</span></span><br><span class="line"><span class="javascript">           		<span class="string">&quot;utime&quot;</span>: <span class="string">&quot;@date(T)&quot;</span></span></span><br><span class="line"><span class="javascript">			&#125;],</span></span><br><span class="line"><span class="javascript">		&#125;);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		Mock.setup(&#123;</span></span><br><span class="line"><span class="javascript">			<span class="attr">timeout</span>:<span class="number">5000</span>,</span></span><br><span class="line"><span class="javascript">		&#125;);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="comment">//https://github.com/YMFE/yapi</span></span></span><br><span class="line"><span class="javascript">	</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>js工具库</category>
+      </categories>
+      <tags>
+        <tag>js工具库</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JSON</title>
     <url>/2021/11/06/json,%E5%BC%82%E6%AD%A5%E5%8A%A0%E8%BD%BD/</url>
     <content><![CDATA[<h2 id="json"><a href="#json" class="headerlink" title="json"></a>json</h2><p>json.parse() string -&gt; json<br>json.stringify jsosn -&gt; string</p>
@@ -210,205 +224,6 @@
       <categories>
         <category>笔记</category>
       </categories>
-  </entry>
-  <entry>
-    <title>JavaScript 笔记02</title>
-    <url>/2021/11/07/js%E6%97%A7%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h1 id=""><a href="#" class="headerlink" title=""></a></h1><h1 id="JavaScript-笔记"><a href="#JavaScript-笔记" class="headerlink" title="JavaScript 笔记"></a>JavaScript 笔记</h1><h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><ul>
-<li><p><strong>原因</strong> ：内部函数被保存到了外部,一定产生闭包</p>
-</li>
-<li><p><strong>坏处</strong> ：当内部函数被保存到外部时,将会生成闭包。闭包会导致原有作用域链不释放，造成内存泄露。</p>
-</li>
-<li><p><strong>闭包的防范</strong>：闭包导致多个执行函数共用一个私有变量,非必要尽量避免这样使用。</p>
-</li>
-</ul>
-<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><ul>
-<li><p>实现共有变量</p>
-</li>
-<li><p>可以做缓存</p>
-</li>
-<li><p>可以实现封装，属性是私有化</p>
-</li>
-<li><p>模块化开发，防止污染全局变量</p>
-</li>
-</ul>
-<h3 id="一道闭包题和解决办法-1·"><a href="#一道闭包题和解决办法-1·" class="headerlink" title="一道闭包题和解决办法 1·"></a>一道闭包题和解决办法 1·</h3><hr>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="line">     <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">       <span class="keyword">var</span> arr = [];</span><br><span class="line">       <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i ++)&#123;</span><br><span class="line">           arr[i] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">               <span class="built_in">document</span>.writeln(i);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> arr;</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">var</span> myArr = test();</span><br><span class="line">     <span class="keyword">for</span>(<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; <span class="number">10</span>; j ++)&#123;</span><br><span class="line">         myArr[j]();</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">   &lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> arr = [];</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">                (</span><br><span class="line">                    <span class="function"><span class="keyword">function</span> (<span class="params">j</span>) </span>&#123;</span><br><span class="line">                        arr[j] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                            <span class="built_in">document</span>.writeln(j);</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;(i)</span><br><span class="line">                );</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> arr;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">var</span> myArr = test();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; <span class="number">10</span>; j++) &#123;</span><br><span class="line">            myArr[j]();</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="JS-运行三部曲"><a href="#JS-运行三部曲" class="headerlink" title="JS 运行三部曲"></a>JS 运行三部曲</h2><ol>
-<li>预编译</li>
-</ol>
-<blockquote>
-<p>预编译发生在函数执行的前一刻</p>
-</blockquote>
-<h3 id="预编译前奏"><a href="#预编译前奏" class="headerlink" title="预编译前奏"></a>预编译前奏</h3><ul>
-<li><p>任何变量, 如果未经声明就赋值,此变量就归全局对象所有。</p>
-</li>
-<li><p>全局中 一切声明的变量，全是 window 属性。</p>
-</li>
-<li><p>window 就是全局。</p>
-</li>
-</ul>
-<h3 id="预编译四部曲"><a href="#预编译四部曲" class="headerlink" title="预编译四部曲"></a>预编译四部曲</h3><ol>
-<li>创建 AO 对象</li>
-<li>找形参和变量声明,将形参和变量声明作为 AO 对象的属性名,并赋值为 undefined。</li>
-<li>将实参值和形参值相统一。</li>
-<li>在函数体里找到函数声明,值赋给函数体。</li>
-</ol>
-<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><blockquote>
-<p>对象中有些属性可以被获取,有些仅供 javascript 引擎获取,如:</p>
-</blockquote>
-<ul>
-<li>[[scoope]]</li>
-</ul>
-<h3 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h3><blockquote>
-<ul>
-<li>[[scopel]指的就是我们所说的作用域,其中存储了运行期上下文的集合。</li>
-<li>[[scope]]中储存的执行期上下文对象的集合,这个集合呈链式链接,我们把这种链接称为作用域链</li>
-</ul>
-</blockquote>
-<h3 id="运行期上下文"><a href="#运行期上下文" class="headerlink" title="运行期上下文"></a>运行期上下文</h3><p>运行期上下文:当函数执行时，会创建一个称为<strong>执行期上下文</strong>的<strong>内部对象</strong>。一个执行期上下文定义了一个函数执行时的环境,函数每次执行时对应的执行上下文都是独一无二的，所以多次调用一个函数会导致创建多个执行上下文，当函数执行完毕，它所产生的执行上下文被销毁。</p>
-<p><strong>查找变量</strong>:从作用域链的顶端依次向下查找。</p>
-<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ul>
-<li><p>只有函数被执行的时候，才能执行函数内的语句；</p>
-</li>
-<li><p>函数不执行，系统就不知道函数内的写了什么</p>
-</li>
-</ul>
-<h3 id="函数声明"><a href="#函数声明" class="headerlink" title="函数声明"></a>函数声明</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;Hello World&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="函数表达式"><a href="#函数表达式" class="headerlink" title="函数表达式"></a>函数表达式</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> test = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;Hello World&quot;</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h3 id="立即执行函数"><a href="#立即执行函数" class="headerlink" title="立即执行函数"></a>立即执行函数</h3><ul>
-<li><p><strong>在函数声明前加个正 + 号,函数声明会被转换成表达式,从而可以被函数执行符号()执行</strong></p>
-</li>
-<li><p><strong>只有表达式才能被执行符号执行</strong></p>
-</li>
-<li><p><strong>能被执行符号执行的表达式,这个函数的名字就会被自动忽略</strong></p>
-</li>
-</ul>
-<p><strong>格式</strong>：执行完立即被销毁</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">//语句</span></span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> <span class="title">abc</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">//语句</span></span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">+(<span class="function"><span class="keyword">function</span> <span class="title">abc</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">//语句</span></span><br><span class="line">&#125;)();</span><br><span class="line"><span class="comment">// 可以是+ - ！（正 负 非）</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> num = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">//语句</span></span><br><span class="line">  <span class="keyword">var</span> a = <span class="number">3</span>;</span><br><span class="line">  <span class="keyword">return</span> a;</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line"><span class="comment">//执行完abc也会被销毁</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><p>-大驼峰</p>
-<h4 id="构造函数内部原理"><a href="#构造函数内部原理" class="headerlink" title="构造函数内部原理"></a>构造函数内部原理</h4><ol>
-<li><p>在函数体最前面隐式加上 this = {}；（有 new 之后）</p>
-</li>
-<li><p>执行 this.xxx = xxx;</p>
-</li>
-<li><p>隐式返回 this</p>
-</li>
-</ol>
-<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><p>属性和方法，对象独有；</p>
-<h3 id="创建对象三种方式"><a href="#创建对象三种方式" class="headerlink" title="创建对象三种方式"></a>创建对象三种方式</h3><ol>
-<li>对象字面量/对象直接量</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> empty = &#123;&#125;;</span><br><span class="line"><span class="keyword">let</span> point = &#123;</span><br><span class="line">  <span class="attr">x</span>: <span class="number">0</span>,</span><br><span class="line">  <span class="attr">y</span>: <span class="number">0</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>使用 new 关键字，构造函数</li>
-</ol>
-<ul>
-<li>有 new 了，不会返回原始值，就隐式的返回对象</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> o = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line"><span class="keyword">let</span> a = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line"><span class="keyword">let</span> b = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"><span class="keyword">let</span> c = <span class="keyword">new</span> <span class="built_in">Map</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">//约束用大驼峰</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">this</span>.sex = <span class="string">&quot;male&quot;</span>;</span><br><span class="line">  <span class="built_in">this</span>.color = cl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Person1 = <span class="keyword">new</span> Person(cl);</span><br><span class="line">person.name = <span class="string">&quot;韦业&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 加方法,要用 = 号</span></span><br><span class="line">o.fangfa = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;;</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>用 Object.Create()函数创建</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> o1 = <span class="built_in">Object</span>.Create(&#123; <span class="attr">x</span>: <span class="number">1</span>, <span class="attr">y</span>: <span class="number">2</span> &#125;); <span class="comment">//第一个参数作为新对象的原型</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> o2 = <span class="built_in">Object</span>.Create(<span class="literal">null</span>); <span class="comment">//null为参数，创建一个没用原型的的新对象</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> o3 = <span class="built_in">Object</span>.Create(<span class="built_in">Object</span>.prototype); <span class="comment">//创建普通空对象</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="查看对象"><a href="#查看对象" class="headerlink" title="查看对象"></a>查看对象</h3><blockquote>
-<p><strong>一个对象没有声明就访问，会输出 undefined</strong></p>
-</blockquote>
-<h3 id="对象的枚举"><a href="#对象的枚举" class="headerlink" title="对象的枚举"></a>对象的枚举</h3><p>区别对象和数组的三种方法 ！！！</p>
-<p><code>&#39;height&#39; in obj</code>要写字符串<br>写对象的属性时尽量用 obj[‘key’]的形式</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> obj) &#123;</span><br><span class="line">  consloe.log(ker + <span class="string">&quot;&quot;</span> + obj[key]);</span><br><span class="line">  <span class="comment">//对象的枚举不能用obj.key和obj[&#x27;key&#x27;]</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h2><ul>
-<li><p>定义：原型是个对象。原型是 function 的一个属性。它定义了构造函数制造出的新对象的一个共同祖先。通过构造函数产生的对象可以继承原型的属性和方法。</p>
-</li>
-<li><p>利用原型的特点和概念，可以提取共有属性。</p>
-</li>
-<li><p>不能通过<strong>后代对象</strong>修改原型的属性。</p>
-</li>
-</ul>
-<h3 id="原型对象的修改"><a href="#原型对象的修改" class="headerlink" title="原型对象的修改"></a>原型对象的修改</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//方法一</span></span><br><span class="line">Person.prototype = &#123;</span><br><span class="line">  <span class="attr">LastName</span>: wei,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//方法二</span></span><br><span class="line">Person.prototype.LastName = ye;</span><br></pre></td></tr></table></figure>
-
-<h3 id="查看原型的方法"><a href="#查看原型的方法" class="headerlink" title="查看原型的方法"></a>查看原型的方法</h3><p>prototype 查看原型<br>prototype 放的是原型</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 数字代表执行顺序</span></span><br><span class="line">Person.prototype.name = <span class="string">&quot; sunny&quot;</span>; <span class="comment">//2</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// var this = &#123;__proto_ : Person.prototype //5</span></span><br><span class="line">&#125; <span class="comment">//1</span></span><br><span class="line"></span><br><span class="line">Person.prototype = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;cherry&quot;</span>,</span><br><span class="line">&#125;; <span class="comment">//3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> Person(); <span class="comment">//4</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>constructor 返回构造当前对象的构造方法</strong><br>用法：<br><code>Person.constructor</code><br>也可以修改它的值</p>
-<h3 id="原型-prototype"><a href="#原型-prototype" class="headerlink" title="原型 prototype"></a>原型 prototype</h3><ul>
-<li>每一个函数（类）都有一个 prototype 属性，属性值是一个对象；这个对象中存储了当前类供实例调取使用的共有属性和方法</li>
-</ul>
-<h4 id="构造器-constructor"><a href="#构造器-constructor" class="headerlink" title="构造器 constructor"></a>构造器 constructor</h4><ul>
-<li>浏览器默认给原型开辟的堆内存中有一个属性 constructor:存储的是当前类本身</li>
-<li>可读可写</li>
-</ul>
-<h3 id="原型链proto"><a href="#原型链proto" class="headerlink" title="原型链proto"></a>原型链<strong>proto</strong></h3><ul>
-<li>每一个对象（实例）都有<strong>proto</strong>(原型链)属性，这个属性指向当前实例所属类的原型（不确定所属的类，都指向 Object.prototype）</li>
-</ul>
-<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><h3 id="圣杯模式"><a href="#圣杯模式" class="headerlink" title="圣杯模式"></a>圣杯模式</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 圣杯模式</span></span><br><span class="line">Father.prototype.LastName = <span class="string">&quot;wei&quot;</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">inherit</span>(<span class="params">Target, Origin</span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">  F.prototype = Origin.prototype;</span><br><span class="line">  <span class="comment">//这上下两行顺序不能颠倒</span></span><br><span class="line">  Target.prototype = <span class="keyword">new</span> F();</span><br><span class="line">  Target.prototype.constutor = Target;</span><br><span class="line">  Target.prototype.uber = Origin.prototype;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Father</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Son</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">inherit(Son, Father);</span><br><span class="line"><span class="keyword">var</span> son = <span class="keyword">new</span> Son();</span><br><span class="line"><span class="keyword">var</span> father = <span class="keyword">new</span> Father();</span><br></pre></td></tr></table></figure>
-
-<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>数组是原始值，放到栈内存</p>
-<p>字符串索引：</p>
-<ol>
-<li><p>原串的索引 = 字串的索引 + 挪动次数</p>
-</li>
-<li><p>数组索引没有负数，如 arr[-1] = undefined,只不过数组的方法可以给负数</p>
-</li>
-</ol>
-<h3 id="改变原数组"><a href="#改变原数组" class="headerlink" title="改变原数组"></a>改变原数组</h3><ul>
-<li><p>push()</p>
-</li>
-<li><p>reverse()</p>
-</li>
-<li><p>sort()</p>
-</li>
-<li><p>pop()</p>
-</li>
-<li><p>unshift()</p>
-</li>
-<li><p>shift()</p>
-</li>
-<li><p>splice()</p>
-</li>
-</ul>
-<h3 id="不改变原数组"><a href="#不改变原数组" class="headerlink" title="不改变原数组"></a>不改变原数组</h3><ul>
-<li>concat()</li>
-<li>join()</li>
-<li>split()</li>
-<li>toString()</li>
-<li>slice()</li>
-</ul>
-<h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><ol>
-<li>必须写两个参数</li>
-<li>看返回值</li>
-</ol>
-<ul>
-<li>当返回值为负数时，那么前面的数放在前面。</li>
-<li>当返回值为正数时，那么后面的数在前</li>
-<li>为零，不动</li>
-</ul>
-<h2 id="类数组"><a href="#类数组" class="headerlink" title="类数组"></a>类数组</h2><p>组成：<br>属性为索引（数字）属性，必须有 length 有属性，最好有 push()<br>原理：</p>
-<p>Array.prototype.push = function (target){<br>obj.[obj.length] = target;<br>length ++；</p>
-<p>}</p>
-]]></content>
-      <categories>
-        <category>笔记</category>
-      </categories>
-      <tags>
-        <tag>笔记</tag>
-      </tags>
   </entry>
   <entry>
     <title>浏览器组成部分</title>
@@ -660,6 +475,205 @@ document.write(b);
       </tags>
   </entry>
   <entry>
+    <title>JavaScript 笔记02</title>
+    <url>/2021/11/07/js%E6%97%A7%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="JavaScript-笔记"><a href="#JavaScript-笔记" class="headerlink" title="JavaScript 笔记"></a>JavaScript 笔记</h1><h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><ul>
+<li><p><strong>原因</strong> ：内部函数被保存到了外部,一定产生闭包</p>
+</li>
+<li><p><strong>坏处</strong> ：当内部函数被保存到外部时,将会生成闭包。闭包会导致原有作用域链不释放，造成内存泄露。</p>
+</li>
+<li><p><strong>闭包的防范</strong>：闭包导致多个执行函数共用一个私有变量,非必要尽量避免这样使用。</p>
+</li>
+</ul>
+<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><ul>
+<li><p>实现共有变量</p>
+</li>
+<li><p>可以做缓存</p>
+</li>
+<li><p>可以实现封装，属性是私有化</p>
+</li>
+<li><p>模块化开发，防止污染全局变量</p>
+</li>
+</ul>
+<h3 id="一道闭包题和解决办法-1·"><a href="#一道闭包题和解决办法-1·" class="headerlink" title="一道闭包题和解决办法 1·"></a>一道闭包题和解决办法 1·</h3><hr>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="line">     <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">       <span class="keyword">var</span> arr = [];</span><br><span class="line">       <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i ++)&#123;</span><br><span class="line">           arr[i] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">               <span class="built_in">document</span>.writeln(i);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> arr;</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">var</span> myArr = test();</span><br><span class="line">     <span class="keyword">for</span>(<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; <span class="number">10</span>; j ++)&#123;</span><br><span class="line">         myArr[j]();</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">   &lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> arr = [];</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">                (</span><br><span class="line">                    <span class="function"><span class="keyword">function</span> (<span class="params">j</span>) </span>&#123;</span><br><span class="line">                        arr[j] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                            <span class="built_in">document</span>.writeln(j);</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;(i)</span><br><span class="line">                );</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> arr;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">var</span> myArr = test();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; <span class="number">10</span>; j++) &#123;</span><br><span class="line">            myArr[j]();</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="JS-运行三部曲"><a href="#JS-运行三部曲" class="headerlink" title="JS 运行三部曲"></a>JS 运行三部曲</h2><ol>
+<li>预编译</li>
+</ol>
+<blockquote>
+<p>预编译发生在函数执行的前一刻</p>
+</blockquote>
+<h3 id="预编译前奏"><a href="#预编译前奏" class="headerlink" title="预编译前奏"></a>预编译前奏</h3><ul>
+<li><p>任何变量, 如果未经声明就赋值,此变量就归全局对象所有。</p>
+</li>
+<li><p>全局中 一切声明的变量，全是 window 属性。</p>
+</li>
+<li><p>window 就是全局。</p>
+</li>
+</ul>
+<h3 id="预编译四部曲"><a href="#预编译四部曲" class="headerlink" title="预编译四部曲"></a>预编译四部曲</h3><ol>
+<li>创建 AO 对象</li>
+<li>找形参和变量声明,将形参和变量声明作为 AO 对象的属性名,并赋值为 undefined。</li>
+<li>将实参值和形参值相统一。</li>
+<li>在函数体里找到函数声明,值赋给函数体。</li>
+</ol>
+<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><blockquote>
+<p>对象中有些属性可以被获取,有些仅供 javascript 引擎获取,如:</p>
+</blockquote>
+<ul>
+<li>[[scoope]]</li>
+</ul>
+<h3 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h3><blockquote>
+<ul>
+<li>[[scopel]指的就是我们所说的作用域,其中存储了运行期上下文的集合。</li>
+<li>[[scope]]中储存的执行期上下文对象的集合,这个集合呈链式链接,我们把这种链接称为作用域链</li>
+</ul>
+</blockquote>
+<h3 id="运行期上下文"><a href="#运行期上下文" class="headerlink" title="运行期上下文"></a>运行期上下文</h3><p>运行期上下文:当函数执行时，会创建一个称为<strong>执行期上下文</strong>的<strong>内部对象</strong>。一个执行期上下文定义了一个函数执行时的环境,函数每次执行时对应的执行上下文都是独一无二的，所以多次调用一个函数会导致创建多个执行上下文，当函数执行完毕，它所产生的执行上下文被销毁。</p>
+<p><strong>查找变量</strong>:从作用域链的顶端依次向下查找。</p>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ul>
+<li><p>只有函数被执行的时候，才能执行函数内的语句；</p>
+</li>
+<li><p>函数不执行，系统就不知道函数内的写了什么</p>
+</li>
+</ul>
+<h3 id="函数声明"><a href="#函数声明" class="headerlink" title="函数声明"></a>函数声明</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;Hello World&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="函数表达式"><a href="#函数表达式" class="headerlink" title="函数表达式"></a>函数表达式</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> test = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;Hello World&quot;</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="立即执行函数"><a href="#立即执行函数" class="headerlink" title="立即执行函数"></a>立即执行函数</h3><ul>
+<li><p><strong>在函数声明前加个正 + 号,函数声明会被转换成表达式,从而可以被函数执行符号()执行</strong></p>
+</li>
+<li><p><strong>只有表达式才能被执行符号执行</strong></p>
+</li>
+<li><p><strong>能被执行符号执行的表达式,这个函数的名字就会被自动忽略</strong></p>
+</li>
+</ul>
+<p><strong>格式</strong>：执行完立即被销毁</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">//语句</span></span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> <span class="title">abc</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">//语句</span></span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">+(<span class="function"><span class="keyword">function</span> <span class="title">abc</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">//语句</span></span><br><span class="line">&#125;)();</span><br><span class="line"><span class="comment">// 可以是+ - ！（正 负 非）</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> num = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">//语句</span></span><br><span class="line">  <span class="keyword">var</span> a = <span class="number">3</span>;</span><br><span class="line">  <span class="keyword">return</span> a;</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line"><span class="comment">//执行完abc也会被销毁</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><p>-大驼峰</p>
+<h4 id="构造函数内部原理"><a href="#构造函数内部原理" class="headerlink" title="构造函数内部原理"></a>构造函数内部原理</h4><ol>
+<li><p>在函数体最前面隐式加上 this = {}；（有 new 之后）</p>
+</li>
+<li><p>执行 this.xxx = xxx;</p>
+</li>
+<li><p>隐式返回 this</p>
+</li>
+</ol>
+<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><p>属性和方法，对象独有；</p>
+<h3 id="创建对象三种方式"><a href="#创建对象三种方式" class="headerlink" title="创建对象三种方式"></a>创建对象三种方式</h3><ol>
+<li>对象字面量/对象直接量</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> empty = &#123;&#125;;</span><br><span class="line"><span class="keyword">let</span> point = &#123;</span><br><span class="line">  <span class="attr">x</span>: <span class="number">0</span>,</span><br><span class="line">  <span class="attr">y</span>: <span class="number">0</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>使用 new 关键字，构造函数</li>
+</ol>
+<ul>
+<li>有 new 了，不会返回原始值，就隐式的返回对象</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> o = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line"><span class="keyword">let</span> a = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line"><span class="keyword">let</span> b = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"><span class="keyword">let</span> c = <span class="keyword">new</span> <span class="built_in">Map</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">//约束用大驼峰</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">this</span>.sex = <span class="string">&quot;male&quot;</span>;</span><br><span class="line">  <span class="built_in">this</span>.color = cl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Person1 = <span class="keyword">new</span> Person(cl);</span><br><span class="line">person.name = <span class="string">&quot;韦业&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 加方法,要用 = 号</span></span><br><span class="line">o.fangfa = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>用 Object.Create()函数创建</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> o1 = <span class="built_in">Object</span>.Create(&#123; <span class="attr">x</span>: <span class="number">1</span>, <span class="attr">y</span>: <span class="number">2</span> &#125;); <span class="comment">//第一个参数作为新对象的原型</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> o2 = <span class="built_in">Object</span>.Create(<span class="literal">null</span>); <span class="comment">//null为参数，创建一个没用原型的的新对象</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> o3 = <span class="built_in">Object</span>.Create(<span class="built_in">Object</span>.prototype); <span class="comment">//创建普通空对象</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="查看对象"><a href="#查看对象" class="headerlink" title="查看对象"></a>查看对象</h3><blockquote>
+<p><strong>一个对象没有声明就访问，会输出 undefined</strong></p>
+</blockquote>
+<h3 id="对象的枚举"><a href="#对象的枚举" class="headerlink" title="对象的枚举"></a>对象的枚举</h3><p>区别对象和数组的三种方法 ！！！</p>
+<p><code>&#39;height&#39; in obj</code>要写字符串<br>写对象的属性时尽量用 obj[‘key’]的形式</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> obj) &#123;</span><br><span class="line">  consloe.log(ker + <span class="string">&quot;&quot;</span> + obj[key]);</span><br><span class="line">  <span class="comment">//对象的枚举不能用obj.key和obj[&#x27;key&#x27;]</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h2><ul>
+<li><p>定义：原型是个对象。原型是 function 的一个属性。它定义了构造函数制造出的新对象的一个共同祖先。通过构造函数产生的对象可以继承原型的属性和方法。</p>
+</li>
+<li><p>利用原型的特点和概念，可以提取共有属性。</p>
+</li>
+<li><p>不能通过<strong>后代对象</strong>修改原型的属性。</p>
+</li>
+</ul>
+<h3 id="原型对象的修改"><a href="#原型对象的修改" class="headerlink" title="原型对象的修改"></a>原型对象的修改</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//方法一</span></span><br><span class="line">Person.prototype = &#123;</span><br><span class="line">  <span class="attr">LastName</span>: wei,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//方法二</span></span><br><span class="line">Person.prototype.LastName = ye;</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看原型的方法"><a href="#查看原型的方法" class="headerlink" title="查看原型的方法"></a>查看原型的方法</h3><p>prototype 查看原型<br>prototype 放的是原型</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 数字代表执行顺序</span></span><br><span class="line">Person.prototype.name = <span class="string">&quot; sunny&quot;</span>; <span class="comment">//2</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// var this = &#123;__proto_ : Person.prototype //5</span></span><br><span class="line">&#125; <span class="comment">//1</span></span><br><span class="line"></span><br><span class="line">Person.prototype = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;cherry&quot;</span>,</span><br><span class="line">&#125;; <span class="comment">//3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> Person(); <span class="comment">//4</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>constructor 返回构造当前对象的构造方法</strong><br>用法：<br><code>Person.constructor</code><br>也可以修改它的值</p>
+<h3 id="原型-prototype"><a href="#原型-prototype" class="headerlink" title="原型 prototype"></a>原型 prototype</h3><ul>
+<li>每一个函数（类）都有一个 prototype 属性，属性值是一个对象；这个对象中存储了当前类供实例调取使用的共有属性和方法</li>
+</ul>
+<h4 id="构造器-constructor"><a href="#构造器-constructor" class="headerlink" title="构造器 constructor"></a>构造器 constructor</h4><ul>
+<li>浏览器默认给原型开辟的堆内存中有一个属性 constructor:存储的是当前类本身</li>
+<li>可读可写</li>
+</ul>
+<h3 id="原型链proto"><a href="#原型链proto" class="headerlink" title="原型链proto"></a>原型链<strong>proto</strong></h3><ul>
+<li>每一个对象（实例）都有<strong>proto</strong>(原型链)属性，这个属性指向当前实例所属类的原型（不确定所属的类，都指向 Object.prototype）</li>
+</ul>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><h3 id="圣杯模式"><a href="#圣杯模式" class="headerlink" title="圣杯模式"></a>圣杯模式</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 圣杯模式</span></span><br><span class="line">Father.prototype.LastName = <span class="string">&quot;wei&quot;</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">inherit</span>(<span class="params">Target, Origin</span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">  F.prototype = Origin.prototype;</span><br><span class="line">  <span class="comment">//这上下两行顺序不能颠倒</span></span><br><span class="line">  Target.prototype = <span class="keyword">new</span> F();</span><br><span class="line">  Target.prototype.constutor = Target;</span><br><span class="line">  Target.prototype.uber = Origin.prototype;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Father</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Son</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">inherit(Son, Father);</span><br><span class="line"><span class="keyword">var</span> son = <span class="keyword">new</span> Son();</span><br><span class="line"><span class="keyword">var</span> father = <span class="keyword">new</span> Father();</span><br></pre></td></tr></table></figure>
+
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>数组是原始值，放到栈内存</p>
+<p>字符串索引：</p>
+<ol>
+<li><p>原串的索引 = 字串的索引 + 挪动次数</p>
+</li>
+<li><p>数组索引没有负数，如 arr[-1] = undefined,只不过数组的方法可以给负数</p>
+</li>
+</ol>
+<h3 id="改变原数组"><a href="#改变原数组" class="headerlink" title="改变原数组"></a>改变原数组</h3><ul>
+<li><p>push()</p>
+</li>
+<li><p>reverse()</p>
+</li>
+<li><p>sort()</p>
+</li>
+<li><p>pop()</p>
+</li>
+<li><p>unshift()</p>
+</li>
+<li><p>shift()</p>
+</li>
+<li><p>splice()</p>
+</li>
+</ul>
+<h3 id="不改变原数组"><a href="#不改变原数组" class="headerlink" title="不改变原数组"></a>不改变原数组</h3><ul>
+<li>concat()</li>
+<li>join()</li>
+<li>split()</li>
+<li>toString()</li>
+<li>slice()</li>
+</ul>
+<h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><ol>
+<li>必须写两个参数</li>
+<li>看返回值</li>
+</ol>
+<ul>
+<li>当返回值为负数时，那么前面的数放在前面。</li>
+<li>当返回值为正数时，那么后面的数在前</li>
+<li>为零，不动</li>
+</ul>
+<h2 id="类数组"><a href="#类数组" class="headerlink" title="类数组"></a>类数组</h2><p>组成：<br>属性为索引（数字）属性，必须有 length 有属性，最好有 push()<br>原理：</p>
+<p>Array.prototype.push = function (target){<br>obj.[obj.length] = target;<br>length ++；</p>
+<p>}</p>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>三次握手/四次挥手</title>
     <url>/2022/01/06/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B+%E8%B7%A8%E5%9F%9F%E5%A4%84%E7%90%86/</url>
     <content><![CDATA[<h1 id="三次握手-四次挥手"><a href="#三次握手-四次挥手" class="headerlink" title="三次握手/四次挥手"></a><strong>三次握手/四次挥手</strong></h1><p><strong>TCP(Transmission control protocol)传输层协议中出现的两个概念</strong></p>
@@ -889,6 +903,81 @@ document.write(b);
       <tags>
         <tag>网络</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>JS事件</title>
+    <url>/2021/11/06/%E4%BA%8B%E4%BB%B6/</url>
+    <content><![CDATA[<h1 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h1><p>ie6，没有 flex 定位</p>
+<p>事件传播的三个阶段执行顺序：Capturing &gt; Target &gt; Bubbling 捕获 目标 冒泡</p>
+<h2 id="事件绑定函数"><a href="#事件绑定函数" class="headerlink" title="事件绑定函数"></a>事件绑定函数</h2><p>1.ele.onxxx = function (event) {}<br>兼容性很好，但是一个元素只能绑定一个处理程序<br>基本等同于写在 HTML 行间上<br>2.ele.addEventListener(type, fn, false);<br>IE9 以下不兼容，可以为一个事件绑定多个处理程序<br>同一个函数只能绑定一次<br>3.ele.attachEvent(‘on’ + type, fn);<br>IE 独有，一个事件同样可以绑定多个处理程序</p>
+<p>eg: 行间不用写 function</p>
+<pre><code>一旦事件出现在了函数里面，就要考虑是否出现闭包，考虑要不要用立即执行函数解决。
+</code></pre>
+<h2 id="事件处理程序的运行环境"><a href="#事件处理程序的运行环境" class="headerlink" title="事件处理程序的运行环境"></a>事件处理程序的运行环境</h2><p>1.ele.onxxx = function (event) {}<br>程序 this 指向是 dom 元素本身<br>2.obj.addEventListener(type, fn, false);<br>程序 this 指向是 dom 元素本身<br>3.obj.attachEvent(‘on’ + type, fn);<br>程序 this 指向 window 4.封装兼容性的 addEvent(elem, type, handle);方法</p>
+<h2 id="解除事件处理程序"><a href="#解除事件处理程序" class="headerlink" title="解除事件处理程序"></a>解除事件处理程序</h2><ol>
+<li>ele.onclick = false/‘’/null;</li>
+<li>ele.removeEventListener(type, fn, false);</li>
+<li>ele.detachEvent(‘on’ + type, fn);<br><strong>注:若绑定匿名函数，则无法解除</strong></li>
+</ol>
+<h2 id="事件处理模型-—-事件冒泡、捕获"><a href="#事件处理模型-—-事件冒泡、捕获" class="headerlink" title="事件处理模型 — 事件冒泡、捕获"></a>事件处理模型 — 事件冒泡、捕获</h2><ul>
+<li>事件冒泡：<br>结构上（非视觉上）嵌套关系的元素，会存在事件冒泡的功能，即同一事件，自子元素冒泡向父元素。（自底向上）</li>
+<li>事件捕获：<br>结构上（非视觉上）嵌套关系的元素，会存在事件捕获的功能，即同一事件，自父元素捕获至子元素（事件源元素）。（自底向上）<br>IE 没有捕获事件</li>
+</ul>
+<p>但是：ie 的两个事件捕获函数：<br>div.setCapture();div.releaseCapture();</p>
+<p>触发顺序，先捕获，后冒泡,</p>
+<p>事件执行顺序是先绑定先执行</p>
+<p>focus，blur，change，submit，reset，select 等事件不冒泡</p>
+<h2 id="取消冒泡和阻止默认事件"><a href="#取消冒泡和阻止默认事件" class="headerlink" title="取消冒泡和阻止默认事件"></a>取消冒泡和阻止默认事件</h2><ul>
+<li>取消冒泡：<br>W3C 标准 event.stopPropagation();但不支持 ie9 以下版本<br>IE 独有 event.cancelBubble = true;<br>封装取消冒泡的函数 stopBubble(event)</li>
+<li>阻止默认事件:<br>默认事件 — 表单提交，a 标签跳转，右键菜单等<br>1.return false; 以对象属性的方式注册的事件才生效<br>2.event.preventDefault(); W3C 标注，IE9 以下不兼容<br>3.event.returnValue = false; 兼容 IE<br>封装阻止默认事件的函数 cancelHandler(event);<br>取消 a 标签默认事件：<a href="javascript:void(fasle)"></a></li>
+</ul>
+<h2 id="事件对象"><a href="#事件对象" class="headerlink" title="事件对象"></a>事件对象</h2><ul>
+<li>event || window.event 用于 IE</li>
+<li>事件源对象:<br>event.target 火狐独有的<br>event.srcElement ie 独有的<br>这俩 chrome 都有</li>
+<li>兼容性写法：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> ul = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&quot;ul&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">ul.onclick = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="comment">//非ie浏览器会将事件对象打包传到参数里。ie会记录在window.event</span></span><br><span class="line">  <span class="keyword">var</span> event = e || <span class="built_in">window</span>.event;</span><br><span class="line">  <span class="keyword">var</span> target = event.target || event.srcElement;</span><br><span class="line">  <span class="built_in">console</span>.log(target.innerText);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>非 ie 浏览器会将事件对象打包传到参数里。ie 会记录在 window.event</strong></p>
+<h2 id="事件委托"><a href="#事件委托" class="headerlink" title="事件委托"></a>事件委托</h2><p>利用事件冒泡，和事件源对象进行处理</p>
+<ul>
+<li>优点：<ol>
+<li>性能 不需要循环所有的元素一个个绑定事件</li>
+<li>灵活 当有新的子元素时不需要重新绑定事件</li>
+</ol>
+</li>
+</ul>
+<h2 id="事件分类"><a href="#事件分类" class="headerlink" title="事件分类"></a>事件分类</h2><ul>
+<li><p>鼠标事件<br>click、mousedown、mousemove、mouseup、contextmenu、mouseover、mouseout、 mouseenter mouseleave</p>
+</li>
+<li><p>用 button 来区分鼠标的按键，0/1/2</p>
+</li>
+<li><p>DOM3 标准规定:<br>click 事件只能监听左键,只能通过 mousedown 和 mouseu p 来判断鼠标键<br>如何解决 mousedown 和 click 的冲突</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>JS时间线</title>
+    <url>/2021/11/06/%E6%97%B6%E9%97%B4%E7%BA%BF/</url>
+    <content><![CDATA[<h1 id="js-时间线"><a href="#js-时间线" class="headerlink" title="js 时间线"></a>js 时间线</h1><p>1、创建 Document 对象，开始解析 web 页面。解析 HTML 元素和他们的文本内容后添加 Element 对象和 Text 节点到文档中。这个阶段 document.readyState = ‘loading’。</p>
+<p>2、遇到 link 外部 css，创建线程加载，并继续解析文档。</p>
+<p>3、遇到 script 外部 js，并且没有设置 async、defer，浏览器加载，并阻塞，等待 js 加载完成并执行该脚本，然后继续解析文档。</p>
+<p>4、遇到 script 外部 js，并且设置有 async、defer，浏览器创建线程加载，并继续解析文档。</p>
+<p>对于 async 属性的脚本，脚本加载完成后立即执行。（**异步禁止使用 document.write()**）</p>
+<p>5、遇到 img 等，先正常解析 dom 结构，然后浏览器<strong>异步加载 src</strong>，并继续解析文档。</p>
+<p>6、当文档解析完成，document.readyState = ‘interactive’。</p>
+<p>7、文档解析完成后，所有设置有 defer 的脚本会按照顺序执行。（注意与 async 的不同,但同样禁止使用 document.write()）;</p>
+<p>8、document 对象触发 DOMContentLoaded 事件，这也标志着程序执行从同步脚本执行阶段，转化为事件驱动阶段。</p>
+<p>9、当所有 async 的脚本加载完成并执行后、img 等加载完成后，document.readyState = ‘complete’，window 对象触发 load 事件。</p>
+<p>10、从此，以异步响应方式处理用户输入、网络事件等。</p>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
   </entry>
   <entry>
     <title>RegExp-正则表达式</title>
@@ -1202,81 +1291,6 @@ document.write(b);
         <tag>Hexo</tag>
         <tag>Markdown</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>JS事件</title>
-    <url>/2021/11/06/%E4%BA%8B%E4%BB%B6/</url>
-    <content><![CDATA[<h1 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h1><p>ie6，没有 flex 定位</p>
-<p>事件传播的三个阶段执行顺序：Capturing &gt; Target &gt; Bubbling 捕获 目标 冒泡</p>
-<h2 id="事件绑定函数"><a href="#事件绑定函数" class="headerlink" title="事件绑定函数"></a>事件绑定函数</h2><p>1.ele.onxxx = function (event) {}<br>兼容性很好，但是一个元素只能绑定一个处理程序<br>基本等同于写在 HTML 行间上<br>2.ele.addEventListener(type, fn, false);<br>IE9 以下不兼容，可以为一个事件绑定多个处理程序<br>同一个函数只能绑定一次<br>3.ele.attachEvent(‘on’ + type, fn);<br>IE 独有，一个事件同样可以绑定多个处理程序</p>
-<p>eg: 行间不用写 function</p>
-<pre><code>一旦事件出现在了函数里面，就要考虑是否出现闭包，考虑要不要用立即执行函数解决。
-</code></pre>
-<h2 id="事件处理程序的运行环境"><a href="#事件处理程序的运行环境" class="headerlink" title="事件处理程序的运行环境"></a>事件处理程序的运行环境</h2><p>1.ele.onxxx = function (event) {}<br>程序 this 指向是 dom 元素本身<br>2.obj.addEventListener(type, fn, false);<br>程序 this 指向是 dom 元素本身<br>3.obj.attachEvent(‘on’ + type, fn);<br>程序 this 指向 window 4.封装兼容性的 addEvent(elem, type, handle);方法</p>
-<h2 id="解除事件处理程序"><a href="#解除事件处理程序" class="headerlink" title="解除事件处理程序"></a>解除事件处理程序</h2><ol>
-<li>ele.onclick = false/‘’/null;</li>
-<li>ele.removeEventListener(type, fn, false);</li>
-<li>ele.detachEvent(‘on’ + type, fn);<br><strong>注:若绑定匿名函数，则无法解除</strong></li>
-</ol>
-<h2 id="事件处理模型-—-事件冒泡、捕获"><a href="#事件处理模型-—-事件冒泡、捕获" class="headerlink" title="事件处理模型 — 事件冒泡、捕获"></a>事件处理模型 — 事件冒泡、捕获</h2><ul>
-<li>事件冒泡：<br>结构上（非视觉上）嵌套关系的元素，会存在事件冒泡的功能，即同一事件，自子元素冒泡向父元素。（自底向上）</li>
-<li>事件捕获：<br>结构上（非视觉上）嵌套关系的元素，会存在事件捕获的功能，即同一事件，自父元素捕获至子元素（事件源元素）。（自底向上）<br>IE 没有捕获事件</li>
-</ul>
-<p>但是：ie 的两个事件捕获函数：<br>div.setCapture();div.releaseCapture();</p>
-<p>触发顺序，先捕获，后冒泡,</p>
-<p>事件执行顺序是先绑定先执行</p>
-<p>focus，blur，change，submit，reset，select 等事件不冒泡</p>
-<h2 id="取消冒泡和阻止默认事件"><a href="#取消冒泡和阻止默认事件" class="headerlink" title="取消冒泡和阻止默认事件"></a>取消冒泡和阻止默认事件</h2><ul>
-<li>取消冒泡：<br>W3C 标准 event.stopPropagation();但不支持 ie9 以下版本<br>IE 独有 event.cancelBubble = true;<br>封装取消冒泡的函数 stopBubble(event)</li>
-<li>阻止默认事件:<br>默认事件 — 表单提交，a 标签跳转，右键菜单等<br>1.return false; 以对象属性的方式注册的事件才生效<br>2.event.preventDefault(); W3C 标注，IE9 以下不兼容<br>3.event.returnValue = false; 兼容 IE<br>封装阻止默认事件的函数 cancelHandler(event);<br>取消 a 标签默认事件：<a href="javascript:void(fasle)"></a></li>
-</ul>
-<h2 id="事件对象"><a href="#事件对象" class="headerlink" title="事件对象"></a>事件对象</h2><ul>
-<li>event || window.event 用于 IE</li>
-<li>事件源对象:<br>event.target 火狐独有的<br>event.srcElement ie 独有的<br>这俩 chrome 都有</li>
-<li>兼容性写法：</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> ul = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&quot;ul&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">ul.onclick = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="comment">//非ie浏览器会将事件对象打包传到参数里。ie会记录在window.event</span></span><br><span class="line">  <span class="keyword">var</span> event = e || <span class="built_in">window</span>.event;</span><br><span class="line">  <span class="keyword">var</span> target = event.target || event.srcElement;</span><br><span class="line">  <span class="built_in">console</span>.log(target.innerText);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p><strong>非 ie 浏览器会将事件对象打包传到参数里。ie 会记录在 window.event</strong></p>
-<h2 id="事件委托"><a href="#事件委托" class="headerlink" title="事件委托"></a>事件委托</h2><p>利用事件冒泡，和事件源对象进行处理</p>
-<ul>
-<li>优点：<ol>
-<li>性能 不需要循环所有的元素一个个绑定事件</li>
-<li>灵活 当有新的子元素时不需要重新绑定事件</li>
-</ol>
-</li>
-</ul>
-<h2 id="事件分类"><a href="#事件分类" class="headerlink" title="事件分类"></a>事件分类</h2><ul>
-<li><p>鼠标事件<br>click、mousedown、mousemove、mouseup、contextmenu、mouseover、mouseout、 mouseenter mouseleave</p>
-</li>
-<li><p>用 button 来区分鼠标的按键，0/1/2</p>
-</li>
-<li><p>DOM3 标准规定:<br>click 事件只能监听左键,只能通过 mousedown 和 mouseu p 来判断鼠标键<br>如何解决 mousedown 和 click 的冲突</p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>笔记</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>JS时间线</title>
-    <url>/2021/11/06/%E6%97%B6%E9%97%B4%E7%BA%BF/</url>
-    <content><![CDATA[<h1 id="js-时间线"><a href="#js-时间线" class="headerlink" title="js 时间线"></a>js 时间线</h1><p>1、创建 Document 对象，开始解析 web 页面。解析 HTML 元素和他们的文本内容后添加 Element 对象和 Text 节点到文档中。这个阶段 document.readyState = ‘loading’。</p>
-<p>2、遇到 link 外部 css，创建线程加载，并继续解析文档。</p>
-<p>3、遇到 script 外部 js，并且没有设置 async、defer，浏览器加载，并阻塞，等待 js 加载完成并执行该脚本，然后继续解析文档。</p>
-<p>4、遇到 script 外部 js，并且设置有 async、defer，浏览器创建线程加载，并继续解析文档。</p>
-<p>对于 async 属性的脚本，脚本加载完成后立即执行。（**异步禁止使用 document.write()**）</p>
-<p>5、遇到 img 等，先正常解析 dom 结构，然后浏览器<strong>异步加载 src</strong>，并继续解析文档。</p>
-<p>6、当文档解析完成，document.readyState = ‘interactive’。</p>
-<p>7、文档解析完成后，所有设置有 defer 的脚本会按照顺序执行。（注意与 async 的不同,但同样禁止使用 document.write()）;</p>
-<p>8、document 对象触发 DOMContentLoaded 事件，这也标志着程序执行从同步脚本执行阶段，转化为事件驱动阶段。</p>
-<p>9、当所有 async 的脚本加载完成并执行后、img 等加载完成后，document.readyState = ‘complete’，window 对象触发 load 事件。</p>
-<p>10、从此，以异步响应方式处理用户输入、网络事件等。</p>
-]]></content>
-      <categories>
-        <category>笔记</category>
-      </categories>
   </entry>
   <entry>
     <title>JavaScript 权威指南</title>
